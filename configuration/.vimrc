@@ -135,6 +135,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 " 插件
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+Plug 'godlygeek/tabular'                          " 对齐插件
 Plug 'chxuan/prepare-code'                        " 新建文件时，生成预定义代码片段
 Plug 'mhinz/vim-startify'                         " 开始页面
 Plug 'preservim/tagbar'                           " 使用preservim/tagbar的最新版本，taglist的替代品，显示类/方法/变量
