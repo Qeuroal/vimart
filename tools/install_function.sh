@@ -259,7 +259,7 @@ function installSoftwareOnUbuntu()
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
     
     if [ $version -ge 18 ];then
-        sudo apt-get install -y vim
+        sudo apt-get install -y vim vim-gtk
     else
         compileVimOnUbuntu
     fi
