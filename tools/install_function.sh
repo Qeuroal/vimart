@@ -117,14 +117,19 @@ function installVimPlugins() {
     isVimrcYcmConfigExist=$(isExistFile ${vimrcYcmConfigPath})
     if [ ${isVimrcYcmConfigExist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
-        ycmExtraConfPath=${HOME}"/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py"
-        isYcmExtraConfExist=$(isExistFile ${ycmExtraConfPath})
-        if [ ${isYcmExtraConfExist} == 0 ]; then
-            ycmExtraConfPath=${PWD}"/configuration/.ycm_extra_conf.py"
-            # echo -e "\033[32m===============================>Existing ${ycmExtraConfPath}\033[0m"
-            # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
-        fi
+        echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
+        ycmExtraConfPath=${PWD}"/configuration/.ycm_extra_conf.py"
         cp -f ${ycmExtraConfPath} ~
+
+        ################################################################################################################
+        # 使用自带的 ycm_extra_conf 文件 (!!!!!!!!!!!!!!!!!! 舍弃 !!!!!!!!!!!!!!!!!!)
+        # isYcmExtraConfExist=$(isExistFile ${ycmExtraConfPath})
+        # if [ ${isYcmExtraConfExist} == 0 ]; then
+        #     ycmExtraConfPath=${HOME}"/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+        #     # echo -e "\033[32m===============================>Existing ${ycmExtraConfPath}\033[0m"
+        #     # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
+        # fi
+        ################################################################################################################
     fi
 }
 
