@@ -1,7 +1,6 @@
 
 
 # 全局
-
 | command            | statement                 |
 | -                  | -                         |
 | `:h[elp] 关键字`   | 打开关键字帮助            |
@@ -13,7 +12,6 @@
 > **Tip** 在终端中运行 vimtutor 以学习最基础的 Vim 命令。
 
 # 移动光标
-
 | command     | statement                                                                                          |
 | -           | -                                                                                                  |
 | `h`         | 左移光标                                                                                           |
@@ -66,7 +64,6 @@
 
 
 # 插入模式-追加/插入文本
-
 | command           | statement                                          |
 | -                 | -                                                  |
 | `i`               | 从光标前开始插入字符                               |
@@ -132,7 +129,6 @@
 > **Tip** 也可以使用 ( 和 { 分别代替 b 和 B
 
 # 可视化模式命令
-
 | command | statement            |
 | -       | -                    |
 | `>`     | 向右缩进             |
@@ -157,7 +153,6 @@
 
 
 ## Tip 特殊寄存器：
-
 | command | statement                    |
 | -       | -                            |
 | ` 0`    | 上次复制                     |
@@ -198,7 +193,6 @@
 
 
 # 宏
-
 | command | statement            |
 | -       | -                    |
 | `qa`    | 录制宏 a             |
@@ -244,7 +238,6 @@
 
 
 # 文字缩进
-
 | command | statement                                         |
 | -       | -                                                 |
 | `>>`    | 将当前行向右缩进，宽度由 shiftwidth 控制          |
