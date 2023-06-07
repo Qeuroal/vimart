@@ -41,6 +41,10 @@ function copyFiles() {
     rm -rf ~/.vim/ftplugin
     ln -s ${PWD}/ftplugin ~/.vim/
 
+    # settings
+    rm -rf ~/.vim/settings
+    ln -s ${PWD}/settings ~/.vim/
+
     # .vimart
     rm -rf ~/.vimart
     ln -s ${PWD} ~/.vimart
