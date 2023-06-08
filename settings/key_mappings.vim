@@ -7,6 +7,9 @@ if exists("s:did_load_mappings_vim")
 endif
 let s:did_load_mappings_vim = 1
 
+" 导入 functions.vim
+source ${HOME}/.vim/settings/functions.vim
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 端点
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,6 +58,9 @@ nnoremap <leader>s :source $MYVIMRC<cr>
 nnoremap <leader><leader>i :PlugInstall<cr>
 nnoremap <leader><leader>u :PlugUpdate<cr>
 nnoremap <leader><leader>c :PlugClean<cr>
+
+" 相对行号的开启/关闭
+nnoremap <silent> <leader>tn :call ToggleNumber()<cr>
 
 " 分屏窗口移动
 " nnoremap <c-j> <c-w>j
