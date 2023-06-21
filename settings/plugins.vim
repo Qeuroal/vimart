@@ -22,6 +22,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug 'jiangmiao/auto-pairs'                       " 自动匹配括号
 Plug 'godlygeek/tabular'                          " 对齐插件
 Plug 'chxuan/prepare-code'                        " 新建文件时，生成预定义代码片段
 Plug 'mhinz/vim-startify'                         " 开始页面

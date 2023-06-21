@@ -33,9 +33,9 @@ inoremap <c-w> <c-g>u<c-w>
     " inoremap \"<LEFT><CR> <CR>\"<ESC><UP>o
     " inoremap '<LEFT><CR> <CR>'<ESC><UP>o
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap }<LEFT><CR> <CR>}<ESC><UP>o
-inoremap ]<LEFT><CR> <CR>]<ESC><UP>o
-inoremap )<LEFT><CR> <CR><BS><BS>)<ESC><UP>o<BS>
+" inoremap }<LEFT><CR> <CR>}<ESC><UP>o
+" inoremap ]<LEFT><CR> <CR>]<ESC><UP>o
+" inoremap )<LEFT><CR> <CR><BS><BS>)<ESC><UP>o<BS>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 正常模式绑定按键
