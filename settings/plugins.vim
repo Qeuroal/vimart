@@ -22,6 +22,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug 'chxuan/vim-buffer'                          " buffer 管理
 Plug 'jiangmiao/auto-pairs'                       " 自动匹配括号
 Plug 'godlygeek/tabular'                          " 对齐插件
 Plug 'chxuan/prepare-code'                        " 新建文件时，生成预定义代码片段
@@ -67,6 +68,12 @@ runtime macros/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-buffer
+nnoremap <c-p> :PreviousBuffer<cr>
+nnoremap <c-n> :NextBuffer<cr>
+nnoremap <leader>d :CloseCurrentBuffer<cr>
+nnoremap <leader>D :BufOnly<cr>
+
 " airline
 let g:airline_theme="onedark"
 let g:airline_powerline_fonts = 1
