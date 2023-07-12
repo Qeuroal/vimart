@@ -91,6 +91,7 @@ let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1 
 let g:NERDTreeDirArrowExpandable='▷'
 let g:NERDTreeDirArrowCollapsible='▼'
+let g:NERDTreeShowHidden=1
 
 " vim-commentary
 " 为 python, shell 等添加注释
