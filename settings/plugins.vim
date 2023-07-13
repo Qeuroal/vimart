@@ -98,6 +98,7 @@ let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1 
 let g:NERDTreeDirArrowExpandable='▷'
 let g:NERDTreeDirArrowCollapsible='▼'
+" 显示隐藏文件
 let g:NERDTreeShowHidden=1
 
 " vim-commentary
