@@ -69,10 +69,10 @@ runtime macros/matchit.vim
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-buffer
-nnoremap <c-p> :PreviousBuffer<cr>
-nnoremap <c-n> :NextBuffer<cr>
-nnoremap <leader>d :CloseCurrentBuffer<cr>
-nnoremap <leader>D :BufOnly<cr>
+nnoremap <silent> <c-p> :PreviousBuffer<cr>
+nnoremap <silent> <c-n> :NextBuffer<cr>
+nnoremap <silent> <leader>d :CloseBuffer<cr>
+nnoremap <silent> <leader>D :BufOnly<cr>
 
 " airline
 let g:airline_theme="onedark"
