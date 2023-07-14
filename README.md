@@ -120,7 +120,7 @@ python3 ./install.py --clang-completer
 3. 安装全部语言支持
 
    ```shell
-   curl -JLO https://github.com/Qeuroal/vimart/raw/master/local_install_ycm.sh
+   curl -JLO https://raw.githubusercontent.com/Qeuroal/vimart/master/tools/local_install_ycm.sh
    bash local_install_ycm.sh
    ```
 
