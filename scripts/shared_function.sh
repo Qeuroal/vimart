@@ -42,6 +42,10 @@ function copy_files() {
     rm -rf ~/.vim/settings
     ln -s ${PWD}/settings ~/.vim/
 
+    # ultisnips
+    rm -rf ~/.vim/UltiSnips
+    ln -s ${PWD}/plugin_configuration/UltiSnips ~/.vim/UltiSnips
+
     # .vimart
     rm -rf ~/.vimart
     ln -s ${PWD} ~/.vimart
