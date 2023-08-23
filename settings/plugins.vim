@@ -1,11 +1,12 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件列表
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 判断是否已经加载过
+"{{{> 判断是否已经加载过该配置文件
 if exists("s:did_load_plugins_vim")
     finish
 endif
 let s:did_load_plugins_vim = 1
+"<}}}
 
 " {{{> 卸载默认插件 Unplug
 function! s:deregister(repo)
@@ -18,6 +19,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'sirver/ultisnips', { 'for': ['tex'] }         " 管理片段
 Plug 'lervag/vimtex', { 'for': ['tex'] }            " latex
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }   " markdown 即时预览
 Plug 'chxuan/vim-buffer'                            " buffer 管理
@@ -57,10 +59,16 @@ if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
     source $HOME/.vimrc.custom.plugins
 endif
 
+" 加载过去/待选的插件
+source $HOME/.vim/settings/former_plugins.vim
+
 call plug#end()
 " <}}}
 
 " {{{> load vim default plugin
 runtime macros/matchit.vim
 " <}}}
+
+
+
 

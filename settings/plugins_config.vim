@@ -1,11 +1,23 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 判断是否已经加载过
+"{{{> 判断是否已经加载过该配置文件
 if exists("s:did_load_plugins_config_vim")
     finish
 endif
 let s:did_load_plugins_config_vim = 1
+"<}}}
+
+"{{{> ultisnips
+" 设置 tab 触发
+let g:UltiSnipsExpandTrigger="<tab>"
+" 使用 tab 切换下一个触发点，
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+" 使用 shit+tab 上一个触发点
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" 使用 UltiSnipsEdit 命令时垂直分割屏幕
+let g:UltiSnipsEditSplit="vertical"
+"<}}}
 
 "{{{> markdown-preview
 " set to 1, nvim will open the preview window after entering the markdown buffer (default: 0)
