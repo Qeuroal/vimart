@@ -1,0 +1,25 @@
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 用户自定义插件列表（该文件只放插件，若要增加其他配置，请放入~/.vimrc.custom.config）
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 使用说明:
+" 增加插件后需要进行插件安装，安装步骤如下：
+"   1.执行 `:w` 保存修改
+"   2.执行 `:sorce $MYVIMRC` 重新加载vim配置
+"   3.执行 `:PlugInstall` 进行插件安装
+
+"{{{> 增加~/.vimrc里没有的插件
+" Plug 'iamcco/mathjax-support-for-mkdp'
+" (需要自己安装nodejs和yarn) Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" Plug 'Yggdroot/indentLine'
+" Plug 'gorodinskiy/vim-coloresque'
+" Plug 'vim-scripts/DoxygenToolkit.vim'
+"<}}}
+
+"{{{> 卸载/禁用~/.vimrc里的默认插件 (即使配置了相关的插件设置, 但是卸载之后也不会影响)
+" UnPlug 'lervag/vimtex'
+"<}}}
+
+
+
