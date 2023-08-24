@@ -11,7 +11,7 @@ let s:did_load_command_automation_vim = 1
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 "<}}}
 
-"{{{> 关闭自动折叠代码块(目前有bug)
+"{{{> 关闭自动折叠代码块(目前有bug: 导致buffer中的"撤销"和"重做"没有记录)
 " autocmd! BufNewFile,BufRead * setlocal nofoldenable
 "<}}}
 
