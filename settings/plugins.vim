@@ -19,7 +19,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
-Plug 'sirver/ultisnips', { 'for': ['tex'] }         " 管理片段
+Plug 'sirver/ultisnips', { 'for': ['tex', 'markdown'] } " 管理片段
 Plug 'lervag/vimtex', { 'for': ['tex'] }            " latex
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }   " markdown 即时预览
 Plug 'chxuan/vim-buffer'                            " buffer 管理

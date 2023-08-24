@@ -11,8 +11,8 @@ let s:did_load_command_automation_vim = 1
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 "<}}}
 
-"{{{> 关闭自动折叠代码块
-autocmd! BufNewFile,BufRead * setlocal nofoldenable
+"{{{> 关闭自动折叠代码块(目前有bug)
+" autocmd! BufNewFile,BufRead * setlocal nofoldenable
 "<}}}
 
 "{{{> 自动创建视图
