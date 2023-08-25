@@ -4,8 +4,7 @@ https://github.com/sirver/ultisnips
 Standing On The Shoulders of Giants
 ===================================
 
-My main source for inspiration where the following
-two projects:
+My main source for inspiration where the following projects:
 
 - vim-snippets: https://github.com/honza/vim-snippets
 - TextMate: http://svn.textmate.org/trunk/Bundles/
