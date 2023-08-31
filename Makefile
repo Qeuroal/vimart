@@ -1,10 +1,10 @@
 .PHONY: install uninstall clean
 
 install:
-	@bash install.sh
+	@bash scripts/install.sh
 
 uninstall:
-	@bash uninstall.sh
+	@bash scripts/uninstall.sh
 
 clean:
 	@sudo rm -rf ${HOME}/.vim
@@ -12,5 +12,5 @@ clean:
 	@sudo rm -rf ${HOME}/.vimrc.ycm.config
 	@sudo rm -rf ${HOME}/.vimrc.custom.config
 	@sudo rm -rf ${HOME}/.vimrc.custom.plugins
-	@yes y | bash uninstall.sh
+	@yes y | bash scripts/uninstall.sh
 
