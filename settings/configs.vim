@@ -57,6 +57,7 @@ set completeopt=menu,menuone,noselect       " 补全时不选择第一项
 set hlsearch                " 高亮显示搜索结果
 set incsearch               " 开启实时搜索功能
 set ignorecase smartcase    " 智能大小写不敏感
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow " 设置grep 为 grepprg
 " <}}}
 
 " {{{> 缓存设置
