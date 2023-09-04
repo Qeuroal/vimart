@@ -7,7 +7,7 @@ function install_softwares_on_mac() {
     # echo -e "\033[32m===> Installing softwares...\033[0m"
     color_print "info" "Installing softwares..."
     # xcode-select --install
-    brew install vim gcc cmake ctags-exuberant ack
+    brew install vim gcc cmake ctags-exuberant ack ripgrep
 
 }
 # <}}}

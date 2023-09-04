@@ -49,7 +49,7 @@ function install_software_on_ubuntu() {
         sudo apt-get install -y cmake
     fi
 
-    sudo apt-get install -y build-essential fontconfig libfile-next-perl ack-grep git
+    sudo apt-get install -y build-essential fontconfig libfile-next-perl ack-grep git ripgrep
     # sudo apt-get install -y python3-dev python python-dev
     sudo apt-get install -y python3 python3-dev
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
