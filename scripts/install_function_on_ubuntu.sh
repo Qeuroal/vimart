@@ -97,6 +97,36 @@ function install_ycm_on_ubuntu() {
 }
 # <}}}
 
+#{{{> configure fzf
+function configure_fzf_on_ubuntu() {
+    # configure in zshrc
+    if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
+    fi
+
+    # configure in bashrc
+    if test `cat ${HOME}/.bashrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "fi" | tee -a ${HOME}/.bashrc > /dev/null
+    fi
+}
+#<}}}
+
+#{{{> configure plugins
+function configure_plugins_on_ubuntu() {
+    configure_fzf_on_ubuntu
+}
+#<}}}
+
 # {{{> 在ubuntu上安装vimart
 function install_vimart_on_ubuntu() {
     # backup data
@@ -110,8 +140,10 @@ function install_vimart_on_ubuntu() {
     install_fonts_on_linux
     # install ycm
     install_ycm_on_ubuntu
-    # install vim plugin
+    # install vim plugins
     install_vim_plugins
+    # configure vim plugins
+    configure_plugins_on_ubuntu
     # print end
     print_logo
 }

@@ -67,6 +67,37 @@ function install_ycm_on_mac() {
 }
 # <}}}
 
+#{{{> configure fzf
+function configure_fzf_on_mac() {
+    # configure in zshrc
+    if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
+    fi
+
+    # configure in bashrc
+    if test `cat ${HOME}/.bash_profile | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.bash_profile > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.bash_profile > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.bash_profile > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.bash_profile > /dev/null
+        echo "fi" | tee -a ${HOME}/.bash_profile > /dev/null
+    fi
+}
+#<}}}
+
+#{{{> configure plugins
+function configure_plugins_on_mac() {
+    # configure fzf
+    configure_fzf_on_mac
+}
+#<}}}
+
 # {{{> install vimart
 function install_vimart_on_mac() {
     # backup data
@@ -79,8 +110,10 @@ function install_vimart_on_mac() {
     install_fonts_on_mac
     # install ycm
     install_ycm_on_mac
-    # install vim plugin
+    # install vim plugins
     install_vim_plugins
+    # config vim plugins
+    configure_plugins_on_mac
     # print end
     print_logo
 }
