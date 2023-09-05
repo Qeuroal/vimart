@@ -35,7 +35,7 @@ let g:mkdp_open_ip = '127.0.0.1'
 " specify browser to open preview page for path with space valid: `/path/with\ space/xxx` invalid: `/path/with\\ space/xxx` (default: '')
 let g:mkdp_browser = ''
 " set to 1, echo preview page url in command line when open preview page (default is 0)
-let g:mkdp_echo_preview_url = 0
+let g:mkdp_echo_preview_url = 1
 " a custom vim function name to open preview page this function will receive url as param (default is empty)
 let g:mkdp_browserfunc = ''
 " use a custom port to start server or empty for random
