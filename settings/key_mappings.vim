@@ -57,7 +57,7 @@ nnoremap <leader><leader>u :PlugUpdate<cr>
 nnoremap <leader><leader>c :PlugClean<cr>
 
 " 相对行号的开启/关闭
-nnoremap <silent> <leader>tn :call ToggleNumber()<cr>
+nnoremap <silent> <leader>kn :call ToggleNumber()<cr>
 
 " 分屏窗口移动
 " nnoremap <c-j> <c-w>j
