@@ -11,9 +11,9 @@
 | `<leader>tn`        | 相对行号的开启/关闭               |
 | `<leader><leader>y` | 复制当前选中到系统剪贴板          |
 | `<leader><leader>p` | 将系统剪贴板的内容粘贴到vim       |
-| `<leader>kc`        | 清理所有空行的空格                |
-| `<leader>km`        | 创建会话                          |
-| `<leader>kl`        | 加载会话                          |
+| `<leader>kcs`       | 清理所有空行的空格                |
+| `<leader>kms`       | 创建会话                          |
+| `<leader>kls`       | 加载会话                          |
 
 # 全局
 | command            | statement                 |

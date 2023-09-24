@@ -52,9 +52,9 @@ nnoremap <leader>h :view +let\ &l:modifiable=0 ~/.vimart/docs/help.md<cr>
 nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 
 " 安装、更新、删除插件
-nnoremap <leader><leader>i :PlugInstall<cr>
-nnoremap <leader><leader>u :PlugUpdate<cr>
-nnoremap <leader><leader>c :PlugClean<cr>
+nnoremap <leader>kpi :PlugInstall<cr>
+nnoremap <leader>kpu :PlugUpdate<cr>
+nnoremap <leader>kpc :PlugClean<cr>
 
 " 相对行号的开启/关闭
 nnoremap <silent> <leader>kn :call ToggleNumber()<cr>
@@ -72,14 +72,14 @@ vmap <leader><leader>y "+y
 nnoremap <leader><leader>p "+p
 
 " 清理所有空行的空格
-nnoremap <leader>kc :%s/^\s*$//g<cr>
+nnoremap <leader>kcs :%s/^\s*$//g<cr>
 "<}}}
 
 "{{{> 会话相关
 " 创建会话
-nnoremap <silent> <leader>km :mksession! .Session.vim<cr>
+nnoremap <silent> <leader>kms :mksession! .Session.vim<cr>
 " 加载会话
-nnoremap <silent> <leader>kl :source .Session.vim<cr>
+nnoremap <silent> <leader>kls :source .Session.vim<cr>
 "<}}}
 
 
