@@ -19,6 +19,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'chxuan/cpp-mode'                              " cpp-mode
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fzf 搜索
