@@ -14,7 +14,6 @@
 " (需要自己安装nodejs和yarn) Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plug 'Yggdroot/indentLine'
 " Plug 'gorodinskiy/vim-coloresque'
-" Plug 'vim-scripts/DoxygenToolkit.vim'
 "<}}}
 
 "{{{> 卸载/禁用~/.vimrc里的默认插件 (即使配置了相关的插件设置, 但是卸载之后也不会影响)

@@ -211,6 +211,20 @@ else
 endif
 "<}}}
 
+"{{{> DoxygenToolkit
+let g:DoxygenToolkit_authorName="Qeuroal, Qeuroal@163.com"
+let s:licenseTag = "Copyright(C)\<enter>"
+let s:licenseTag = s:licenseTag . "For free\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+let g:DoxygenToolkit_briefTag_pre="\\brief "
+let g:DoxygenToolkit_paramTag_pre="\\param "
+let g:DoxygenToolkit_returnTag="\\return "
+" let g:DoxygenToolkit_commentType="Qt"
+let g:DoxygenToolkit_commentType="C++"
+"<}}}
 
 
 
