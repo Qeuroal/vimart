@@ -125,6 +125,31 @@ python3 ./install.py --clang-completer
    ```
 
 
+# ctags 使用
+1. 安装 ctags
+    | 系统 | 命令 |
+    |------|------|
+    | Ubuntu | `sudo apt install ctags` |
+    | MacOS | `brew install ctags` |
+
+2. 在项目根目录运行下面的命令以生成 `ctags` 文件
+    ```shell
+    ctags -R .
+    ```
+
+3. ctags 用法
+
+    - 跳转到定义: `ctrl-]`
+    - 跳转回到上一个位置: `ctrl-t`
+    - ctags的vim命令及描述
+        | 命令 | 描述 |
+        |:---------------|:----------------|
+        | `:ts`/`:tselect` | 显示 tag list |
+        | `:tn`/`:tnext` | 跳到 list 中的下一个 |
+        | `:tp`/`:tprevious` | 跳到 list 中的上一个 |
+        | `:tf`/`:tfirst` | 跳到 list 中的第一个 |
+        | `:tl`/`:tlast` | 跳到 list 中的最后一个 |
+
 
 
 
