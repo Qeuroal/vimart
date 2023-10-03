@@ -133,10 +133,14 @@ python3 ./install.py --clang-completer
     | MacOS | `brew install ctags` |
 
 2. 在项目根目录运行下面的命令以生成 `ctags` 文件
-    ```shell
+    ```bash
     ctags -R .
     ```
-
+    
+    只对特定文件生成 tags: 
+    ```bash
+    ctags `find -name "*.h"`
+    ```
 3. ctags 用法
 
     - 跳转到定义: `ctrl-]`
@@ -149,6 +153,11 @@ python3 ./install.py --clang-completer
         | `:tp`/`:tprevious` | 跳到 list 中的上一个 |
         | `:tf`/`:tfirst` | 跳到 list 中的第一个 |
         | `:tl`/`:tlast` | 跳到 list 中的最后一个 |
+        | `g]` | 列出变量的所有引用供用户选择 |
+        | `vi –t tag` | 找到名为 tag 的变量的定义处 |
+        | `Ctrl + W + ]` | 分割当前窗口，并在新窗口中显示跳转到的定义 |
+        | `:ta tag` | 带你到 tag 定义 |
+        | `:tag /^tag` | 将转到名称以 tag 开头的函数定义，并构建一个列表来导航相关函数 |
 
 
 
