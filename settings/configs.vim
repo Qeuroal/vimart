@@ -126,7 +126,7 @@ set sessionoptions+=options
 
 "{{{> ctags设置: vim首先在当前目录里寻找tags文件，如果没有找到tags文件，或者没有找到对应的目标，就到父目录中查找，一直向上递归
 set tags=tags;
-set autochdir
+" set autochdir     " 会导致 nerdtree 也变更目录, 使得无法使用 find 查找根目录的所有文件
 "<}}}
 
 
