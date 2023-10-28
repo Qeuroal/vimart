@@ -14,6 +14,8 @@
 | `<leader>kcs`       | 清理所有空行的空格                |
 | `<leader>kms`       | 创建会话                          |
 | `<leader>kls`       | 加载会话                          |
+| `<leader><leader>l` | 按`|` 对齐                        |
+| `<leader><leader>=` | 按`=` 对齐                        |
 
 # 全局
 | command            | statement                 |
