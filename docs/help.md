@@ -16,6 +16,7 @@
 | `<leader>kls`       | 加载会话                          |
 | `<leader><leader>l` | 按`|` 对齐                        |
 | `<leader><leader>=` | 按`=` 对齐                        |
+| `<leader>kr`        | 手动重加载文件                    |
 
 # 全局
 | command            | statement                 |
