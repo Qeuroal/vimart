@@ -7,20 +7,28 @@ function install_fonts_on_linux() {
     # echo -e "\033[32m===> Installing fonts...\033[0m"
     color_print "info" "Installing fonts..."
     mkdir -p ~/.local/share/fonts
+
+    # install Droid Sans Mono Nerd Font Complete
     rm -rf ~/.local/share/fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf
     cp ./fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ~/.local/share/fonts
 
-    # rm MesloLGS
+    # install MesloLGS
     rm -rf ~/.local/share/fonts/MesloLGS\ NF\ Bold\ Italic.ttf
     rm -rf ~/.local/share/fonts/MesloLGS\ NF\ Bold.ttf
     rm -rf ~/.local/share/fonts/MesloLGS\ NF\ Italic.ttf
     rm -rf ~/.local/share/fonts/MesloLGS\ NF\ Regular.ttf
 
-    # cp MesloLGS to fonts
     cp -f ./fonts/MesloLGS\ NF\ Bold\ Italic.ttf ~/.local/share/fonts
     cp -f ./fonts/MesloLGS\ NF\ Bold.ttf ~/.local/share/fonts
     cp -f ./fonts/MesloLGS\ NF\ Italic.ttf ~/.local/share/fonts
     cp -f ./fonts/MesloLGS\ NF\ Regular.ttf ~/.local/share/fonts
+
+    # install JetBrainsMono
+    rm -rf ~/.local/share/fonts/JetBrainsMono\-Regular.ttf
+    rm -rf ~/.local/share/fonts/JetBrainsMonoNL\-Regular.ttf
+
+    cp -f ./fonts/JetBrainsMonoNL\-Regular.ttf ~/.local/share/fonts
+    cp -f ./fonts/JetBrainsMono\-Regular.ttf ~/.local/share/fonts
 
     fc-cache -vf ~/.local/share/fonts
 }
