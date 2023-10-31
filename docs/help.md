@@ -19,16 +19,17 @@
 | `<leader>kr`        | 手动重加载文件                    |
 
 # 全局
-| command            | statement                                                              |
-| -                  | -                                                                      |
-| `:h[elp] 关键字`   | 打开关键字帮助                                                         |
-| `:sav[eas] 文件名` | 另存为                                                                 |
-| `:clo[se]`         | 关闭当前窗口                                                           |
-| `:ter[minal]`      | 打开一个shell窗口                                                      |
-| `K`                | 打开光标所在单词的man页面                                              |
-| `:cope[n]`         | 打开quickfix                                                           |
-| `:cw[indow]`       | 如果有错误, 则打开quickfix; 如果没有错误且quickfix开启, 则关闭quickfix |
-| `:ls`              | 列出缓冲区                                                             |
+| command             | statement                                                              |
+| -                   | -                                                                      |
+| `:h[elp] 关键字`    | 打开关键字帮助                                                         |
+| `:sav[eas] 文件名`  | 另存为                                                                 |
+| `:clo[se]`          | 关闭当前窗口                                                           |
+| `:ter[minal]`       | 打开一个shell窗口                                                      |
+| `K`                 | 打开光标所在单词的man页面                                              |
+| `:cope[n]`          | 打开quickfix                                                           |
+| `:cw[indow]`        | 如果有错误, 则打开quickfix; 如果没有错误且quickfix开启, 则关闭quickfix |
+| `:ls` or `:buffers` | 查看缓冲区                                                             |
+| `:b[uffer] n`       | 选择编号为n的缓冲区                                                    |
 
 > **Tip** 在终端中运行 vimtutor 以学习最基础的 Vim 命令。
 
