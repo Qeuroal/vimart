@@ -19,15 +19,15 @@ function install_fonts_on_mac() {
 
     # instal Droid Sans
     rm -rf ~/Library/Fonts/droid_sans_mono
-    cp -rf ./font/droid_sans_mono ~/Library/Fonts
+    cp -rf ./fonts/droid_sans_mono ~/Library/Fonts
 
     # install JetBrainsMono
     rm -rf ~/Library/Fonts/jetbrainsmono
-    cp -rf ./font/jetbrainsmono ~/Library/Fonts
+    cp -rf ./fonts/jetbrainsmono ~/Library/Fonts
 
     # install MesloLGS
     rm -rf ~/Library/Fonts/meslolgs
-    cp -rf ./font/meslolgs ~/Library/Fonts
+    cp -rf ./fonts/meslolgs ~/Library/Fonts
 
     #################################################################
     ## 待测试
