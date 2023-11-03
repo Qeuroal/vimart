@@ -16,20 +16,32 @@ function install_softwares_on_mac() {
 function install_fonts_on_mac() {
     # echo -e "\033[32m===> Installing fonts...\033[0m"
     color_print "info" "Installing fonts..."
-    # remove Droid Sans 字体
-    rm -rf ~/Library/Fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf
-    cp ./fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ~/Library/Fonts
+
+    # instal Droid Sans
+    rm -rf ~/Library/Fonts/droid_sans_mono
+    cp -rf ./font/droid_sans_mono ~/Library/Fonts
+
+    # install JetBrainsMono
+    rm -rf ~/Library/Fonts/jetbrainsmono
+    cp -rf ./font/jetbrainsmono ~/Library/Fonts
+
+    # install MesloLGS
+    rm -rf ~/Library/Fonts/meslolgs
+    cp -rf ./font/meslolgs ~/Library/Fonts
 
     #################################################################
     ## 待测试
     #################################################################
+    # # remove Droid Sans 字体
+    # rm -rf ~/Library/Fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf
+    # cp ./fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ~/Library/Fonts
+
     # # rm MesloLGS
     # rm -rf ~/Library/Fonts/MesloLGS\ NF\ Bold\ Italic.ttf
     # rm -rf ~/Library/Fonts/MesloLGS\ NF\ Bold.ttf
     # rm -rf ~/Library/Fonts/MesloLGS\ NF\ Italic.ttf
     # rm -rf ~/Library/Fonts/MesloLGS\ NF\ Regular.ttf
 
-    # # cp MesloLGS to fonts
     # cp -f ./fonts/MesloLGS\ NF\ Bold\ Italic.ttf ~/Library/Fonts
     # cp -f ./fonts/MesloLGS\ NF\ Bold.ttf ~/Library/Fonts
     # cp -f ./fonts/MesloLGS\ NF\ Italic.ttf ~/Library/Fonts
