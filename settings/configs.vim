@@ -80,7 +80,8 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 if has("gui_running")
     let system = system('uname -s')
     if system == "Darwin\n"
-        set guifont=JetBrains\ Mono:h18                                 " 设置字体: Jetbrain Mono
+        set guifont=JetBrainsMono\ Nerd\ Font:h18                     " 设置字体: JetBrainsMono Nerd Font
+        " set guifont=JetBrains\ Mono:h18                               " 设置字体: Jetbrain Mono
         " set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18       " 设置字体
         " set guifont=MesloLGS\ NF:h18                                  " 设置字体: MesloLGS NF
     else
