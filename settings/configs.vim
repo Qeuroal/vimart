@@ -29,6 +29,7 @@ set virtualedit=block,onemore           " 允许光标出现在最后一个字�
 set clipboard=unnamed                   " 设置 vim 与系统共用剪贴板
 set foldmarker={{{>,<}}}                " 设置标志折叠的标志
 set foldmethod=marker                   " 设置折叠为标志折叠
+source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
 " <}}}
 
 " {{{> 代码缩进和排版
