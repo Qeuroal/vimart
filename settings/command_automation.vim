@@ -21,7 +21,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 "<}}}
 
 "{{{> markdown 设置缩进为3个空格
-autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=4 | set softtabstop=4
+autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=3 | set softtabstop=3
 "<}}}
 
 
