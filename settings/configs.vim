@@ -67,6 +67,10 @@ set noswapfile          " 禁止生成临时文件
 set autoread            " 文件在vim之外修改过，自动重新读入
 set autowrite           " 设置自动保存
 set confirm             " 在处理未保存或只读文件的时候，弹出确认
+set undodir=~/.vim/undodir      " 保留跨会话撤销编辑的能力
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p', 0700)
+endif
 " <}}}
 
 " {{{> 编码设置
