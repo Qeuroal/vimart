@@ -142,4 +142,10 @@ set tags=tags;
 " set autochdir     " 会导致 nerdtree 也变更目录, 使得无法使用 find 查找根目录的所有文件
 "<}}}
 
+"{{{> vim 与 tmux 兼容问题
+if exists('$TMUX')
+    set term=screen-256color
+endif
+"<}}}"
+
 
