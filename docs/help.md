@@ -30,6 +30,8 @@
 | `:cw[indow]`        | 如果有错误, 则打开quickfix; 如果没有错误且quickfix开启, 则关闭quickfix |
 | `:ls` or `:buffers` | 查看缓冲区                                                             |
 | `:b[uffer] n`       | 选择编号为n的缓冲区                                                    |
+| `:set list`         | 进入List Mode: 查看空格、tab(^I)、换行符($)                            |
+| `:set nolist`       | 退出List Mode                                                          |
 
 > **Tip** 在终端中运行 vimtutor 以学习最基础的 Vim 命令。
 
