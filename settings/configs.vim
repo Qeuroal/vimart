@@ -148,4 +148,12 @@ if exists('$TMUX')
 endif
 "<}}}"
 
+"{{{> vimrc_example 的设定修改
+set scrolloff=0         " vimrc_example 设置值为5, 导致只要屏幕能滚动, 光标就移不到最上面的 4 行和最下面的 4 行里, 因为一移进去屏幕就会自动滚动
+"<}}}
+
+
+
+
+
 
