@@ -170,7 +170,7 @@ python3 ./install.py --clang-completer --verbose
         | `:tj`/`:tjump`                    | 跟 `:tselect` 类似，但在只有一个匹配项的时候会直接跳转到匹配位置       |
         | `:sts`/`:stselect`                | 跟 `:tselect` 类似，但结果会打开到一个新分割的窗口中                   |
         | `:stj`/`:stjump`                  | 跟 `:tjump` 类似，但结果会打开到一个新分割的窗口中                     |
-        | `vi –t tag`                       | 找到名为 tag 的变量的定义处                                            |
+        | `vim –t <name>`                   | 找到名为 name 的变量的定义处                                           |
         | `Ctrl + W + ]`                    | 分割当前窗口，并在新窗口中显示跳转到的定义                             |
         | `:ta <name>`/`:tag <name>`        | 跳转到该符号的定义或声明位置                                           |
         | `:tag`/`:^tag`                    | 将转到名称以 tag 开头的函数定义，并构建一个列表来导航相关函数          |
