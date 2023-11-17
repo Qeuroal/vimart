@@ -31,6 +31,8 @@ set foldmarker={{{>,<}}}                " 设置标志折叠的标志
 set foldmethod=marker                   " 设置折叠为标志折叠
 source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
 set mouse=""                            " 设置鼠标不可用
+set splitbelow                          " 分割窗口, 默认在下方
+set splitright                          " 分割窗口, 默认在右侧
 " <}}}
 
 " {{{> 代码缩进和排版
