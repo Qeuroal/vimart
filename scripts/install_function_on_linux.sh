@@ -73,10 +73,10 @@ function install_vimart_on_linux() {
         echo "not support ${distro}"
     elif [ ${distro} == "ArchLinux" ]; then
         # echo "not support ${distro}"
-        install_function_on_archlinux
+        install_vimart_on_archlinux
     elif [ ${distro} == "ManjaroLinux" ]; then
         # echo "not support ${distro}"
-        install_function_on_archlinux
+        install_vimart_on_archlinux
     elif [ ${distro} == "Gentoo" ]; then
         echo "not support ${distro}"
     elif [ ${distro} == "Alpine" ]; then
