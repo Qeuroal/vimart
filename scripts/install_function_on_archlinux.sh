@@ -26,6 +26,13 @@ function install_ycm_on_archlinux() {
     # 添加 vim.ycm.config
     rm -rf ~/.vimrc.ycm.config
     ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
+
+    # install go on archlinux
+    sudo pacman -S --noconfirm go
+    # install npm on archlinux
+    sudo pacman -S --noconfirm npm
+    # install java on archlinux
+    sudo pacman -S --noconfirm jdk8-openjdk
 }
 
 # {{{> 在archlinux安装vimart
