@@ -23,6 +23,8 @@ set ruler                               " 总是显示光标位置
 set laststatus=2                        " 总是显示状态栏
 set relativenumber number               " 开启行号显示: relative and number
 set cursorline                          " 高亮显示当前行
+set guicursor=n-v-c-i:block             " 设置光标为方块
+" set guicursor=a:block                   " 设置光标为方块
 set whichwrap+=<,>,h,l                  " 设置光标键跨行
 set ttimeoutlen=0                       " 设置<ESC>键响应时间
 set virtualedit=block,onemore           " 允许光标出现在最后一个字符的后面
@@ -92,22 +94,27 @@ set fileencodings=ucs-bom,utf-8,gb18030,latin1
 
 " {{{> gvim/macvim 设置
 if has("gui_running")
-    let system = system('uname -s')
-    if system == "Darwin\n"
-        set guifont=JetBrainsMono\ Nerd\ Font:h18                     " 设置字体: JetBrainsMono Nerd Font
-        " set guifont=JetBrains\ Mono:h18                               " 设置字体: Jetbrain Mono
-        " set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18       " 设置字体
-        " set guifont=MesloLGS\ NF:h18                                  " 设置字体: MesloLGS NF
+    if has('win32') || has('win64') || has('win16')
+        set guifont=JetBrainsMono\ Nerd\ Font:h18                           " 设置字体: JetBrainsMono Nerd Font
     else
-        set guifont=DroidSansMono\ Nerd\ Font\ Regular\ 18      " 设置字体
+        let system = system('uname -s')
+        if system == "Darwin\n"
+            set guifont=JetBrainsMono\ Nerd\ Font:h18                       " 设置字体: JetBrainsMono Nerd Font
+            " set guifont=JetBrains\ Mono:h18                               " 设置字体: Jetbrain Mono
+            " set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18       " 设置字体
+            " set guifont=MesloLGS\ NF:h18                                  " 设置字体: MesloLGS NF
+        else
+            set guifont=DroidSansMono\ Nerd\ Font\ Regular\ 18      " 设置字体
+        endif
     endif
-    set guioptions-=m           " 隐藏菜单栏
-    set guioptions-=T           " 隐藏工具栏
-    set guioptions-=L           " 隐藏左侧滚动条
-    set guioptions-=r           " 隐藏右侧滚动条
-    set guioptions-=b           " 隐藏底部滚动条
-    set showtabline=0           " 隐藏Tab栏
-    set guicursor=n-v-c:ver5    " 设置光标为竖线
+
+    set guioptions-=m               " 隐藏菜单栏
+    set guioptions-=T               " 隐藏工具栏
+    set guioptions-=L               " 隐藏左侧滚动条
+    set guioptions-=r               " 隐藏右侧滚动条
+    set guioptions-=b               " 隐藏底部滚动条
+    set showtabline=0               " 隐藏Tab栏
+    " set guicursor=n-v-c-i:block     " 设置光标为方块
 endif
 " <}}}
 
