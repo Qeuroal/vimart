@@ -200,15 +200,19 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 " skim relative
-let system = system('uname -s')
-if system == "Darwin\n"
-    let g:vimtex_view_method='skim'
-    let g:vimtex_view_skim_sync=1
-    let g:vimtex_view_skim_activate=1
-elseif system == "Linux\n"
-    let g:vimtex_view_method='zathura'
-else
+if has('win32') || has('win64') || has('win16')
     let g:vimtex_view_method=''
+else
+    let system = system('uname -s')
+    if system == "Darwin\n"
+        let g:vimtex_view_method='skim'
+        let g:vimtex_view_skim_sync=1
+        let g:vimtex_view_skim_activate=1
+    elseif system == "Linux\n"
+        let g:vimtex_view_method='zathura'
+    else
+        let g:vimtex_view_method=''
+    endif
 endif
 "<}}}
 
