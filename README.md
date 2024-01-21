@@ -1,10 +1,20 @@
 # vimart 安装
 
-```shell
-git clone https://github.com/Qeuroal/vimart.git
-cd ~/vimart
-bash ./install.sh
-```
+- make 安装
+
+   ```shell
+   git clone https://github.com/Qeuroal/vimart.git
+   cd ~/vimart
+   make install
+   ```
+
+- 脚本安装
+
+   ```shell
+   git clone https://github.com/Qeuroal/vimart.git
+   cd ~/vimart
+   bash ./script/install.sh
+   ```
 
 **注意**：
 
@@ -29,7 +39,7 @@ docs/help.md
 
 - vim-auto-popmenu + vim-dcit (***<u>推荐</u>***)
 
-- ycm
+- ycm (**需自行配置**)
 
    目前支持 python3 版本的编译 （因为 ycm 用的是最新版本的）
 
@@ -70,13 +80,30 @@ cd ~/.vim/plugged/YouCompleteMe
 python3 ./install.py --all --verbose
 ```
 
-**c/c++**
+> 使用 `--all` 并不会安装 clangd, 需手动安装: `python3 ./install.py --clangd-completer --verbose`
+
+**各种语言支持命令**
+
+| 语言                | 命令                                                |
+| -                   | -                                                   |
+| c/c++               | `python3 ./install.py --clang-completer --verbose`  |
+| c/c++(基于实验阶段) | `python3 ./install.py --clangd-completer --verbose` |
+| C#                  | `python3 ./install.py --cs-completer --verbose`     |
+| Go                  | `python3 ./install.py --go-completer --verbose`     |
+| JavaScript          | `python3 ./install.py --ts-completer --verbose`     |
+| Rust                | `python3 ./install.py --rust-completer --verbose`   |
+| Java                | `python3 ./install.py --java-completer --verbose`   |
+
+> 更多请查看[这里](https://ycm-wiki-zhcn.readthedocs.io/zh-cn/latest/official_doc/intro.html)
+
+**实例: c/c++**
 
 ```shell
 # 进入 ycm 目录
 cd ~/.vim/plugged/YouCompleteMe
 # 编译
 python3 ./install.py --clang-completer --verbose
+python3 ./install.py --clangd-completer --verbose
 ```
 
 **注意**
@@ -90,7 +117,15 @@ python3 ./install.py --clang-completer --verbose
    ```shell
    git clone https://github.com/Qeuroal/vimart.git
    cd ~/vimart
-   bash ./install.sh
+   make install
+   ```
+
+   或者
+
+   ```shell
+   git clone https://github.com/Qeuroal/vimart.git
+   cd ~/vimart
+   bash ./scripts/install.sh
    ```
 
 2. 下载 `vim_empty.tar.gz` 文件
@@ -113,6 +148,23 @@ python3 ./install.py --clang-completer --verbose
    curl -JLO https://raw.githubusercontent.com/Qeuroal/vimart/master/scripts/local_install_ycm.sh
    bash local_install_ycm.sh
    ```
+
+### Python第三方库补全设置
+
+1. 修改 `~/.ycm_extra_conf.py` 的 PythonSysPath 函数
+
+   > windows系统在 `%USERPROFILE%\.ycm_extra_conf.py`
+
+2. 在 `return sys_path` 前添加如下语句
+
+   ```python
+   sys_path.insert(1, '<absolute_path_to_third_party_package>')
+   ```
+
+   > Note:
+   > - 第三方库的路径使用绝对路径, 如: `sys_path.insert(1, '/opt/anaconda3/lib/python3.10/site-packages')`
+   > - 可以将 `sys_path.insert` 函数的 `1` 换成 `0`
+   > - 对于相关配置, 已在 `~/.ycm_extra_conf.py` 中写好, 仅需要按照说明修改后, 取消相关行注释即可
 
 # ctags
 
