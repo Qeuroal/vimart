@@ -80,8 +80,8 @@ if [ ${isExist} == 1 ]; then
 fi
 
 # delete custom config data
-# echo -n -e "\033[32m===> Can you want to remove your custom config? [Y/N]\033[0m"
-color_print "opt" "Can you want to remove your custom config? [Y/N]"
+# echo -n -e "\033[32m===> Would you like to remove your custom config? [Y/N]\033[0m"
+color_print "opt" "Would you like to remove your custom config? [Y/N]"
 choice=n
 read -n1 -p "" choice
 echo ""

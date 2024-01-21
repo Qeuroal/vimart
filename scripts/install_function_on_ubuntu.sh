@@ -65,7 +65,7 @@ function install_software_on_ubuntu() {
 # {{{> install_ycm_on_ubuntu
 function install_ycm_on_ubuntu() {
     install_choice=n
-    read -n1 -p "Can you want to install ycm? [y/n]" install_choice
+    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
     echo ""
     if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
         echo "don't install ycm"
@@ -84,12 +84,19 @@ function install_ycm_on_ubuntu() {
     rm -rf ~/.vimrc.ycm.config
     ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
 
-    # install golang on Ubuntu
-    sudo apt install -y golang
-    # install npm on Ubuntu
-    sudo apt install -y npm
-    # install java on Ubuntu
-    sudo apt install -y openjdk-8-jdk
+    # install dependency
+    install_choice=n
+    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+    echo ""
+    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+        color_print "warning" "Installing dependencies of ycm..."
+        # install golang on Ubuntu
+        sudo apt install -y golang
+        # install npm on Ubuntu
+        sudo apt install -y npm
+        # install java on Ubuntu
+        sudo apt install -y openjdk-8-jdk
+    fi
 
     # python 编译
     # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
