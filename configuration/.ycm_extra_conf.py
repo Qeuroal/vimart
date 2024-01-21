@@ -227,4 +227,5 @@ def PythonSysPath( **kwargs ):
                       p.join( DIR_OF_THIRD_PARTY, 'waitress' ) ]
 
   sys_path.append( p.join( DIR_OF_THIRD_PARTY, 'jedi_deps', 'numpydoc' ) )
+  # sys_path.insert(1, '<path_to_third_party_package>') # or sys_path.insert(0, '<path_to_third_party_package>')
   return sys_path
