@@ -52,7 +52,7 @@ function install_fonts_on_mac() {
 # {{{> install ycm
 function install_ycm_on_mac() {
     install_choice=n
-    read -n1 -p "Can you want to install ycm? [y/n]" install_choice
+    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
     echo ""
     if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
         # echo -e "\033[31m===> Canceling install ycm...\033[0m"
@@ -71,7 +71,13 @@ function install_ycm_on_mac() {
     ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
 
     # install dependency
-    brew install cmake python go nodejs
+    install_choice=n
+    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+    echo ""
+    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+        color_print "warning" "Installing dependencies of ycm..."
+        brew install cmake python go nodejs
+    fi
     # brew install java
 
     # python 编译
