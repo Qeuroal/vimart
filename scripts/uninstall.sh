@@ -30,7 +30,7 @@ isExist=$(is_exist_folder ${vimPath})
 if [ ${isExist} == 1 ]; then
     # echo -e "\033[31mRemove ${vimPath}\033[0m"
     color_print "info" "Remove ${vimPath}"
-    rm -rf ${vimPath}
+    sudo rm -rf ${vimPath}
 fi
 
 # delete .viminfo
