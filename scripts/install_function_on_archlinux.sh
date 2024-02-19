@@ -2,7 +2,7 @@
 function install_software_on_archlinux() {
     # sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig
     # sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
-    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig
+    sudo pacman -S --noconfirm vim ctags automake gcc cmake python3 python2 ack git fontconfig ripgrep
     sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 }
 
