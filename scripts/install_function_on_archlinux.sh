@@ -41,6 +41,36 @@ function install_ycm_on_archlinux() {
     fi
 }
 
+#{{{> configure fzf
+function configure_fzf_on_archlinux() {
+    # configure in zshrc
+    if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
+    fi
+
+    # configure in bashrc
+    if test `cat ${HOME}/.bashrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    then
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "fi" | tee -a ${HOME}/.bashrc > /dev/null
+    fi
+}
+#<}}}
+
+#{{{> configure plugins
+function configure_plugins_on_archlinux() {
+    configure_fzf_on_archlinux
+}
+#<}}}
+
 # {{{> 在archlinux安装vimart
 function install_vimart_on_archlinux() {
     # backup data
