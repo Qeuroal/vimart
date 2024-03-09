@@ -121,13 +121,13 @@ function configure_fzf_on_ubuntu() {
     # configure in bashrc
     if test `cat ${HOME}/.bashrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
     then
-        echo "" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "" | tee -a ${HOME}/.bashrc > /dev/null
         echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.bashrc > /dev/null
         echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.bashrc > /dev/null
         echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.bashrc > /dev/null
         echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.bashrc > /dev/null
         echo "fi" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "" | tee -a ${HOME}/.zshrc > /dev/null
+        echo "" | tee -a ${HOME}/.bashrc > /dev/null
     fi
 }
 #<}}}
