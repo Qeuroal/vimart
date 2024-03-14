@@ -36,6 +36,20 @@
 
 > **Tip** 在终端中运行 vimtutor 以学习最基础的 Vim 命令。
 
+> **P.S.**
+>
+> 使用 `:set listchars` 命令，可以配置使用何种符号来显示不可见字符。使用 `:help listchars` 查看关于非可见字符的帮助信息
+>
+> 例如以下命令，将换行符(eol)显示为`↵`; 将制表符（tab）显示为`»·`; 将尾部空格（trail）显示为`╳`; 将左则超出屏幕范围部分（precedes）标识为`«`; 将右侧超出屏幕范围部分（extends）标识为`»`。
+>
+> ```vimrc
+> if has("patch-7.4.710")
+>    	set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_
+> else
+>    	set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«
+> endif
+> ```
+
 # 移动光标
 | command     | statement                                                                                          |
 | -           | -                                                                                                  |
