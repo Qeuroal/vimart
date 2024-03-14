@@ -35,6 +35,11 @@ source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打
 set mouse=""                            " 设置鼠标不可用
 set splitbelow                          " 分割窗口, 默认在下方
 set splitright                          " 分割窗口, 默认在右侧
+if has("patch-7.4.710")
+    set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_ " 设置不可见字符
+else
+    set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«         " 设置不可见字符
+endif
 " <}}}
 
 " {{{> 代码缩进和排版

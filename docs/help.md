@@ -44,9 +44,9 @@
 >
 > ```vimrc
 > if has("patch-7.4.710")
->    	set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_
+>        set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_
 > else
->    	set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«
+>        set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«
 > endif
 > ```
 
