@@ -243,7 +243,8 @@ xnoremap <leader><leader>t d :GenTryCatch<cr>
 "<}}}
 
 "{{{> vim-rainbow
-autocmd VimEnter * :RainbowLoad
+" autocmd VimEnter * :RainbowLoad
+autocmd BufWinEnter *.* RainbowLoad
 "<}}}
 
 
