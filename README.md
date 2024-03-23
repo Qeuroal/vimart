@@ -39,6 +39,8 @@ docs/help.md
 
 - vim-auto-popmenu + vim-dcit (***<u>推荐</u>***)
 
+   目前发现的bug: 使用vim-auto-popmenu与插件auto-pairs冲突, 导致括号换行不会自动缩进
+
 - ycm (**需自行配置**)
 
    目前支持 python3 版本的编译 （因为 ycm 用的是最新版本的）

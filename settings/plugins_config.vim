@@ -242,5 +242,10 @@ nnoremap <leader><leader>t dd :GenTryCatch<cr>
 xnoremap <leader><leader>t d :GenTryCatch<cr>
 "<}}}
 
+"{{{> vim-rainbow
+" autocmd VimEnter * :RainbowLoad
+autocmd BufWinEnter *.* RainbowLoad
+" 补充: 效果默认不自动启用，可以用 :RainbowToggle 命令来切换，或用 :RainbowLoad 命令来加载
+"<}}}
 
 

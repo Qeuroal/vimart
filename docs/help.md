@@ -36,6 +36,20 @@
 
 > **Tip** 在终端中运行 vimtutor 以学习最基础的 Vim 命令。
 
+> **P.S.**
+>
+> 使用 `:set listchars` 命令，可以配置使用何种符号来显示不可见字符。使用 `:help listchars` 查看关于非可见字符的帮助信息
+>
+> 本版本使用的是: 换行符(eol)显示为`↵`; 制表符(tab)显示为`»·`; 尾部空格(trail)显示为`╳`; 左则超出屏幕范围部分(precedes)标识为`«`; 右侧超出屏幕范围部分(extends)标识为`»`; 空格(space)标识为`_`。
+>
+> ```vimrc
+> if has("patch-7.4.710")
+>        set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_
+> else
+>        set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«
+> endif
+> ```
+
 # 移动光标
 | command     | statement                                                                                          |
 | -           | -                                                                                                  |
@@ -83,6 +97,7 @@
 | `Ctrl + f`  | 向下滚动一屏                                                                                       |
 | `Ctrl + d`  | 向下滚动半屏                                                                                       |
 | `Ctrl + u`  | 向上滚动半屏                                                                                       |
+| `nK`        | 跳转到第n本man手册                                                                                 |
 
 > **Tip** 命令前追加数字表示命令的重复次数, 比如 4j 表示向下移动四行
 
