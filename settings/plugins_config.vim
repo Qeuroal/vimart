@@ -242,5 +242,8 @@ nnoremap <leader><leader>t dd :GenTryCatch<cr>
 xnoremap <leader><leader>t d :GenTryCatch<cr>
 "<}}}
 
+"{{{> vim-rainbow
+autocmd VimEnter * :RainbowLoad
+"<}}}
 
 
