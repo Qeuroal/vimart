@@ -48,6 +48,7 @@ Plug 'terryma/vim-smooth-scroll'                    " 让翻页更顺畅
 Plug 'rhysd/clever-f.vim'                           " 强化f和F键
 Plug 'vim-scripts/indentpython.vim'                 " 自动缩进
 Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
+Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 
 " 加载补全插件
 if filereadable(expand($HOME . '/.vimrc.ycm.config'))
