@@ -107,15 +107,18 @@ function install_ycm_on_ubuntu() {
 #{{{> configure fzf
 function configure_fzf_on_ubuntu() {
     # configure in zshrc
-    if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    if [[ -f ${HOME}/.zshrc ]]
     then
-        echo "" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
-        echo "" | tee -a ${HOME}/.zshrc > /dev/null
+        if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+        then
+            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+        fi
     fi
 
     # configure in bashrc
