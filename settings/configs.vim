@@ -45,7 +45,10 @@ endif
 " {{{> 代码缩进和排版
 set autoindent                  " 设置自动缩进
 set cindent                     " 设置使用C/C++语言的自动缩进方式
-set cinoptions=g0,:0,N-s,(0     " 设置C/C++语言的具体缩进方式
+set cinoptions=:0,g0,N-s,(0,w1  " 设置C/C++语言的具体缩进方式
+                                "  :0 表示 switch 下面的 case 语句不进行额外缩进
+                                "  g0 代表作用域声明(public:、private: 等)不额外缩进
+                                "  (0 和 w1 配合代表没结束的圆括号里的内容折行时不额外缩进
 set smartindent                 " 智能的选择对其方式
 filetype indent on              " 自适应不同语言的智能缩进
 set expandtab                   " 将制表符<Tab>扩展为空格
