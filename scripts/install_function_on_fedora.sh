@@ -8,7 +8,7 @@ function install_software_on_fedora() {
     color_print "info" "Installing softwares..."
 
     # sudo dnf install -y vim-enhanced ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel fontconfig ack git
-    sudo dnf install -y vim-enhanced ctags gcc make gcc gcc-c++
+    sudo dnf install -y vim-enhanced ctags gcc make gcc gcc-c++ cmake python3-devel
 }
 # <}}}
 
@@ -41,9 +41,9 @@ function install_ycm_on_fedora() {
     if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
         color_print "warning" "Installing dependencies of ycm..."
         # install golang on Fedora
-        # sudo dnf install -y golang
+        sudo dnf install -y golang
         # install npm on Fedora
-        # sudo dnf install -y npm
+        sudo dnf install -y npm
         # install java on Fedora
         # sudo dnf install -y openjdk-8-jdk
     fi
