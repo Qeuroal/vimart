@@ -42,6 +42,7 @@ function install_ycm_on_fedora() {
         color_print "warning" "Installing dependencies of ycm..."
         # install golang on Fedora
         sudo dnf install -y golang
+        go mod init ${HOME}/.vim/plugged/YouCompleteMe
         # install npm on Fedora
         sudo dnf install -y npm
         # install java on Fedora
