@@ -9,7 +9,9 @@ let s:did_load_configs_vim = 1
 " <}}}
 
 " {{{> 加载外部配置
-source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
+" source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
+                                        " 这会加载一些不知道的选项, 不利于整体维护
+                                        " 如果需要请自行添加
 " <}}}
 
 " {{{> 通用设置
