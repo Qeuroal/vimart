@@ -8,6 +8,10 @@ endif
 let s:did_load_configs_vim = 1
 " <}}}
 
+" {{{> 加载外部配置
+source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
+" <}}}
+
 " {{{> 通用设置
 let mapleader = "\\"                    " 定义<leader>键
 set nocompatible                        " 设置不兼容原始vi模式
@@ -31,7 +35,6 @@ set virtualedit=block,onemore           " 允许光标出现在最后一个字�
 set clipboard=unnamed                   " 设置 vim 与系统共用剪贴板
 set foldmarker={{{>,<}}}                " 设置标志折叠的标志
 set foldmethod=marker                   " 设置折叠为标志折叠
-source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（这会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
 set mouse=""                            " 设置鼠标不可用
 set splitbelow                          " 分割窗口, 默认在下方
 set splitright                          " 分割窗口, 默认在右侧
