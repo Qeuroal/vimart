@@ -4,9 +4,7 @@
 source ${PWD}/scripts/color_print.sh
 source ${PWD}/scripts/shared_function.sh
 source ${PWD}/scripts/install_function_on_mac.sh
-source ${PWD}/scripts/install_function_on_ubuntu.sh
 source ${PWD}/scripts/install_function_on_linux.sh
-source ${PWD}/scripts/install_function_on_archlinux.sh
 # <}}}
 
 function main() {

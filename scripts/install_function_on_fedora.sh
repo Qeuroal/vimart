@@ -2,68 +2,18 @@
 
 source ${PWD}/scripts/color_print.sh
 
-# {{{> 获取ubuntu版本
-function get_ubuntu_version() {
-    line=$(cat /etc/lsb-release | grep "DISTRIB_RELEASE")
-    arr=(${line//=/ })
-    version=(${arr[1]//./ })
-
-    echo ${version[0]}
-}
-# <}}}
-
-# {{{> 在ubuntu上源代码安装vim
-function compile_vim_on_ubuntu() {
-    sudo apt-get install -y libncurses5-dev libncurses5 libgnome2-dev libgnomeui-dev \
-        libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-        libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev
-
-    rm -rf ~/vim82
-    git clone https://gitee.com/chxuan/vim82.git ~/vim82
-    cd ~/vim82
-    ./configure --with-features=huge \
-        --enable-multibyte \
-        --enable-rubyinterp \
-        --enable-pythoninterp \
-        --enable-perlinterp \
-        --enable-luainterp \
-        --enable-gui=gtk2 \
-        --enable-cscope \
-        --prefix=/usr
-    make
-    sudo make install
-    cd -
-}
-# <}}}
-
-# {{{> 安装ubuntu必备软件
-function install_software_on_ubuntu() {
+# {{{> 安装fedora必备软件
+function install_software_on_fedora() {
     # echo -e "\033[32m===> Installing softwares...\033[0m"
     color_print "info" "Installing softwares..."
-    sudo apt-get update
 
-    version=$(get_ubuntu_version)
-    if [ $version -eq 14 ];then
-        sudo apt-get install -y cmake3
-    else
-        sudo apt-get install -y cmake
-    fi
-
-    sudo apt-get install -y build-essential fontconfig libfile-next-perl ack-grep git ripgrep
-    # sudo apt-get install -y python3-dev python python-dev
-    sudo apt-get install -y python3 python3-dev
-    sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
-    
-    if [ $version -ge 18 ];then
-        sudo apt-get install -y vim vim-gtk
-    else
-        compile_vim_on_ubuntu
-    fi
+    # sudo dnf install -y vim-enhanced ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel fontconfig ack git
+    sudo dnf install -y vim-enhanced ctags gcc make gcc gcc-c++ cmake python3-devel
 }
 # <}}}
 
-# {{{> install_ycm_on_ubuntu
-function install_ycm_on_ubuntu() {
+# {{{> install_ycm_on_fedora
+function install_ycm_on_fedora() {
     install_choice=n
     read -n1 -p "Would you like to install ycm? [y/n]" install_choice
     echo ""
@@ -90,22 +40,22 @@ function install_ycm_on_ubuntu() {
     echo ""
     if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
         color_print "warning" "Installing dependencies of ycm..."
-        # install golang on Ubuntu
-        sudo apt install -y golang
-        # install npm on Ubuntu
-        sudo apt install -y npm
-        # install java on Ubuntu
-        sudo apt install -y openjdk-8-jdk
+        # install golang on Fedora
+        sudo dnf install -y golang
+        go mod init ${HOME}/.vim/plugged/YouCompleteMe
+        # install npm on Fedora
+        sudo dnf install -y npm
+        # install java on Fedora
+        # sudo dnf install -y openjdk-8-jdk
     fi
 
     # python 编译
     # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
-
 }
 # <}}}
 
 #{{{> configure fzf
-function configure_fzf_on_ubuntu() {
+function configure_fzf_on_fedora() {
     # configure in zshrc
     if [[ -f ${HOME}/.zshrc ]]
     then
@@ -136,28 +86,28 @@ function configure_fzf_on_ubuntu() {
 #<}}}
 
 #{{{> configure plugins
-function configure_plugins_on_ubuntu() {
-    configure_fzf_on_ubuntu
+function configure_plugins_on_fedora() {
+    configure_fzf_on_fedora
 }
 #<}}}
 
-# {{{> 在ubuntu上安装vimart
-function install_vimart_on_ubuntu() {
+# {{{> 在fedora上安装vimart
+function install_vimart_on_fedora() {
     # backup data
     backup_vim_data
     # install prepare software
-    install_software_on_ubuntu
+    install_software_on_fedora
 
     # copy files
     copy_files
     # install fonts
     install_fonts_on_linux
     # install ycm
-    install_ycm_on_ubuntu
+    install_ycm_on_fedora
     # install vim plugins
     install_vim_plugins
     # configure vim plugins
-    configure_plugins_on_ubuntu
+    configure_plugins_on_fedora
     # print end
     print_logo
 }

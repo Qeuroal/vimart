@@ -1,6 +1,9 @@
 #!/bin/bash
 
 source ${PWD}/scripts/color_print.sh
+source ${PWD}/scripts/install_function_on_ubuntu.sh
+source ${PWD}/scripts/install_function_on_archlinux.sh
+source ${PWD}/scripts/install_function_on_fedora.sh
 
 # {{{>安装linux平台字体
 function install_fonts_on_linux() {
@@ -68,7 +71,7 @@ function install_vimart_on_linux() {
     elif [ ${distro} == "CentOS" ]; then
         echo "not support ${distro}"
     elif [ ${distro} == "fedora" ]; then
-        echo "not support ${distro}"
+        install_vimart_on_fedora
     elif [ ${distro} == "openSUSE" ]; then
         echo "not support ${distro}"
     elif [ ${distro} == "ArchLinux" ]; then
