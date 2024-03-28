@@ -88,7 +88,7 @@ set autoread            " 文件在vim之外修改过，自动重新读入
 set autowrite           " 设置自动保存
 set confirm             " 在处理未保存或只读文件的时候，弹出确认
 " 保留跨会话撤销编辑的能力
-set undofile
+set undofile            " 打开undofile特性, 以自动创建和保存历史记录
 if has('win32') || has('win64') || has('win16')
     set undodir=~\vimfiles\undodir
 else
