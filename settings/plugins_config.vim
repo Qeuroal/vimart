@@ -8,6 +8,13 @@ endif
 let s:did_load_plugins_config_vim = 1
 "<}}}
 
+"{{{>加载客制选项
+" 加载自定义配置
+if filereadable(expand($HOME . '/.vimrc.custom.config'))
+    source $HOME/.vimrc.custom.config
+endif
+"<}}}
+
 "{{{> ultisnips
 " 设置 tab 触发
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -166,7 +173,8 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "<}}}
 
-"{{{> 加载 ycm or (vim-auto-popmenu + vim-dcit) 配置
+"{{{> 加载补全配置
+" 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
 " if filereadable(expand($HOME . '/.vimrc.ycm.config'))
 if g:completeScheme == 1
