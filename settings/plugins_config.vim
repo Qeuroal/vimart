@@ -174,9 +174,11 @@ if g:completeScheme == 1
     source $HOME/.vimrc.ycm.config
 elseif g:completeScheme == 2
     " 添加自动补全字典
-    au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords.txt
-    au FileType java setlocal dict+=~/.vim/dictionary/java_keywords.txt
-    au FileType php setlocal dict+=~/.vim/dictionary/php_keywords.txt
+    au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords.dict
+    au FileType java setlocal dict+=~/.vim/dictionary/java_keywords.dict
+    au FileType python setlocal dict+=~/.vim/dictionary/python_keywords.dict
+    au FileType vim setlocal dict+=~/.vim/dictionary/vim_keywords.dict
+    au FileType php setlocal dict+=~/.vim/dictionary/php_keywords.dict
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
     " enable this plugin for filetypes, '*' for all files.
