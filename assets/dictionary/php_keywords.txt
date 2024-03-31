@@ -1,0 +1,3 @@
+" Copyright (c) 2024 by Qeuroal <Qeuroal@gmail.com>
+" php keywords
+

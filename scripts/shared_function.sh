@@ -46,6 +46,10 @@ function copy_files() {
     rm -rf ~/.vim/UltiSnips
     ln -s ${PWD}/plugin_configuration/UltiSnips ~/.vim/UltiSnips
 
+    # dictionary
+    rm -rf ~/.vim/dictionary
+    ln -s ${PWD}/assets/dictionary ~/.vim/dictionary
+
     # .vimart
     rm -rf ~/.vimart
     ln -s ${PWD} ~/.vimart

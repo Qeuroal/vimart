@@ -167,9 +167,16 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "<}}}
 
 "{{{> 加载 ycm or (vim-auto-popmenu + vim-dcit) 配置
-if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+let g:completeScheme=get(g:, "completeScheme", 0)
+" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+if g:completeScheme == 1
     source $HOME/.vimrc.ycm.config
-else
+elseif g:completeScheme == 2
+    " 添加自动补全字典
+    au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords.txt
+    au FileType java setlocal dict+=~/.vim/dictionary/java_keywords.txt
+    au FileType php setlocal dict+=~/.vim/dictionary/php_keywords.txt
+elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
     " enable this plugin for filetypes, '*' for all files.
     let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1, '*':1}

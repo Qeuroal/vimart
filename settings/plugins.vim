@@ -17,6 +17,15 @@ endfunction
 command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 " <}}}
 
+"{{{>加载客制选项
+" 加载自定义配置
+if filereadable(expand($HOME . '/.vimrc.custom.config'))
+    source $HOME/.vimrc.custom.config
+endif
+" 补全方案
+let g:completeScheme=get(g:, "completeScheme", 0)
+"<}}}
+
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
@@ -52,12 +61,16 @@ Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
 Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 
 " 加载补全插件
-if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+if g:completeScheme == 1
     "启用 ycm 插件
-    Plug 'Valloric/YouCompleteMe'                     " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
-else
-    Plug 'skywind3000/vim-auto-popmenu'               " 基于上下文的自动提示功能
-    Plug 'skywind3000/vim-dict'                       " 根据文件类型自动添加词典文件到当前缓存区
+    Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
+elseif g:completeScheme == 2
+    Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
+                                                        " http://www.vim.org/scripts/script.php?script_id=1879
+elseif g:completeScheme == 3
+    Plug 'skywind3000/vim-auto-popmenu'                 " 基于上下文的自动提示功能
+    Plug 'skywind3000/vim-dict'                         " 根据文件类型自动添加词典文件到当前缓存区
 endif
 
 " 加载自定义插件

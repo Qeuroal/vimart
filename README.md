@@ -35,39 +35,34 @@ docs/help.md
 
 # 补全
 
-注意针对*补全插件*的选择
+**注意针对*补全插件*的选择**
 
-- vim-auto-popmenu + vim-dcit (***<u>推荐</u>***)
+- AutoComplPop (**T0**)
 
-   目前发现的bug: 使用vim-auto-popmenu与插件auto-pairs冲突, 导致括号换行不会自动缩进
+   1. 需自己导入词库
 
-- ycm (**需自行配置**)
+- ycm (**T0**)
 
-   目前支持 python3 版本的编译 （因为 ycm 用的是最新版本的）
+   1. **需自行配置**
+   2. 目前支持 python3 版本的编译 （因为 ycm 用的是最新版本的）
+   3. 限制: python版本和vim版本
 
-两者**二选一**
+- vim-auto-popmenu + vim-dcit (**T2**)
 
-还有其他的补全工具, 暂不支持
+   1. bug: 使用vim-auto-popmenu与插件auto-pairs冲突, 导致括号换行不会自动缩进
 
-- omni-completion and echofunc
+补全插件**3选1**即可
 
-## vim-dcit 相关
+> 还有其他的补全工具, 暂不支持
+>
+> - omni-completion and echofunc
 
-### 添加额外的字典文件
+## 自定义设置补全方案
 
-- 字典文件的命名：`<文件类型后缀>.dict`
+1. 编辑 `~/.vimrc.custom.config`
+2. 修改 `let g:completeScheme=<n>` (n为方案选择)
 
-   如: cpp文件的字典文件 `cpp.dict`
-
-- 字典文件所在位置: `${HOME}/.vim/dict`
-
-   如果没有该文件夹，使用下面的命令创建
-
-   ```bash
-   mkdir ${HOME}/.vim/dict
-   ```
-
-## ycm 相关
+## ycm配置
 
 ### ycm 安装
 
@@ -167,6 +162,22 @@ python3 ./install.py --clangd-completer --verbose
    > - 第三方库的路径使用绝对路径, 如: `sys_path.insert(1, '/opt/anaconda3/lib/python3.10/site-packages')`
    > - 可以将 `sys_path.insert` 函数的 `1` 换成 `0`
    > - 对于相关配置, 已在 `~/.ycm_extra_conf.py` 中写好, 仅需要按照说明修改后, 取消相关行注释即可
+
+## vim-dcit配置
+
+### 添加额外的字典文件
+
+- 字典文件的命名：`<文件类型后缀>.dict`
+
+   如: cpp文件的字典文件 `cpp.dict`
+
+- 字典文件所在位置: `${HOME}/.vim/dict`
+
+   如果没有该文件夹，使用下面的命令创建
+
+   ```bash
+   mkdir ${HOME}/.vim/dict
+   ```
 
 # ctags
 
