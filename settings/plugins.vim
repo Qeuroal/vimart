@@ -62,8 +62,9 @@ if g:completeScheme == 1
     "启用 ycm 插件
     Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
 elseif g:completeScheme == 2
-    Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
-                                                        " http://www.vim.org/scripts/script.php?script_id=1879
+    " Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
+    "                                                     " http://www.vim.org/scripts/script.php?script_id=1879
+    Plug 'Qeuroal/vimautosense'                         " 自动补全插件, 默认: 不自动选择第一个匹配项
 elseif g:completeScheme == 3
     Plug 'skywind3000/vim-auto-popmenu'                 " 基于上下文的自动提示功能
     Plug 'skywind3000/vim-dict'                         " 根据文件类型自动添加词典文件到当前缓存区
