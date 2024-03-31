@@ -8,13 +8,6 @@ endif
 let s:did_load_plugins_config_vim = 1
 "<}}}
 
-"{{{>加载客制选项
-" 加载自定义配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
-endif
-"<}}}
-
 "{{{> ultisnips
 " 设置 tab 触发
 let g:UltiSnipsExpandTrigger="<tab>"
