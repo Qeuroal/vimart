@@ -60,7 +60,8 @@ docs/help.md
 ## 自定义设置补全方案
 
 1. 编辑 `~/.vimrc.custom.config`
-2. 修改 `let g:completeScheme=<n>` (n为方案选择)
+2. 修改 `let g:completeScheme=<n>` (n为方案序号)
+3. 更新: `:PlugInstall` 和 `:PlugClean`(可选)
 
 ## ycm配置
 
