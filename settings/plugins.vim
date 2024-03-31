@@ -18,10 +18,6 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 " <}}}
 
 "{{{>加载客制选项
-" 加载自定义配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
-endif
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
 "<}}}
