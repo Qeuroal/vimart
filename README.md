@@ -57,6 +57,11 @@ docs/help.md
 >
 > - omni-completion and echofunc
 
+## 自定义设置补全方案
+
+1. 编辑 `~/.vimrc.custom.config`
+2. 修改 `let g:completeScheme=<n>` (n为方案选择)
+
 ## ycm配置
 
 ### ycm 安装
