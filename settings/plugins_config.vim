@@ -170,7 +170,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
 " if filereadable(expand($HOME . '/.vimrc.ycm.config'))
-if g:completeScheme == 1
+if g:completeScheme == 1 && filereadable(expand($HOME . '/.vimrc.ycm.config'))
     source $HOME/.vimrc.ycm.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
