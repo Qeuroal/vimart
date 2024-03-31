@@ -57,6 +57,7 @@ function install_ycm_on_mac() {
     if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
         # echo -e "\033[31m===> Canceling install ycm...\033[0m"
         color_print "warning" "Canceling install ycm..."
+        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
         return 0
     fi
 
