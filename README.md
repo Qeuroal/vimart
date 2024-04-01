@@ -22,20 +22,20 @@
 
 > *默认*：vim-auto-popmenu + vim-dcit
 
-# 说明
-
-## 系统支持
+# 系统支持
 
 - mac
-- ubuntu 22.04
+- ubuntu
+- archlinux
+- fedora
 
-## 帮助文件
+# 帮助文件
 
 docs/help.md
 
 # 补全
 
-**注意针对*补全插件*的选择**
+**注意针对*<u>补全插件</u>*的选择**
 
 - AutoComplPop (**T0**)
 
@@ -61,11 +61,12 @@ docs/help.md
 
 1. 编辑 `~/.vimrc.custom.config`
 2. 修改 `let g:completeScheme=<n>` (n为方案序号)
-3. 更新: `:PlugInstall` 和 `:PlugClean`(可选)
+3. 安装插件: `:PlugInstall`
+4. 清理插件: `:PlugClean`(可选)
 
 ## ycm配置
 
-### ycm 安装
+### ycm安装
 
 #### 在线安装
 
@@ -78,7 +79,7 @@ cd ~/.vim/plugged/YouCompleteMe
 python3 ./install.py --all --verbose
 ```
 
-> 使用 `--all` 并不会安装 clangd, 需手动安装: `python3 ./install.py --clangd-completer --verbose`
+> 使用 `--all` 参数并不会安装 clangd, 需手动安装: `python3 ./install.py --clangd-completer --verbose`
 
 **各种语言支持命令**
 
@@ -108,7 +109,7 @@ python3 ./install.py --clangd-completer --verbose
 
 编译时不要有任何的 python 环境, 就用系统默认启动 shell 时的环境
 
-#### ~~离线安装~~
+#### 离线安装
 
 1. **安装完vimart**
 
@@ -164,31 +165,15 @@ python3 ./install.py --clangd-completer --verbose
    > - 可以将 `sys_path.insert` 函数的 `1` 换成 `0`
    > - 对于相关配置, 已在 `~/.ycm_extra_conf.py` 中写好, 仅需要按照说明修改后, 取消相关行注释即可
 
-## vim-dcit配置
-
-### 添加额外的字典文件
-
-- 字典文件的命名：`<文件类型后缀>.dict`
-
-   如: cpp文件的字典文件 `cpp.dict`
-
-- 字典文件所在位置: `${HOME}/.vim/dict`
-
-   如果没有该文件夹，使用下面的命令创建
-
-   ```bash
-   mkdir ${HOME}/.vim/dict
-   ```
-
 # ctags
 
 ## 安装 ctags
 
-| 系统   | 命令                     |
-| ------ | ------                   |
-| MacOS  | `brew install ctags`     |
+| 系统   | 命令                                                              |
+| ------ | ------                                                            |
+| MacOS  | `brew install ctags`                                              |
 | Ubuntu | `sudo apt install ctags`<br>或 `sudo apt install exuberant-ctags` |
-| CentOS | `sudo yum install ctags` |
+| CentOS | `sudo yum install ctags`                                          |
 
 ## 生成 ctags 文件
 
@@ -221,8 +206,11 @@ python3 ./install.py --clangd-completer --verbose
 3. ctags 用法
 
     - 跳转到定义: `ctrl-]`
+
     - 跳转回到上一个位置: `ctrl-t`
+
     - ctags的vim命令及描述
+
         | 命令                              | 描述                                                                   |
         | :---------------                  | :----------------                                                      |
         | `:ta <name>`/`:tag <name>`        | 跳转到该符号的定义或声明位置                                           |
@@ -242,12 +230,4 @@ python3 ./install.py --clangd-completer --verbose
         | ~~`:tag`/`:^tag`~~                | 将转到名称以 tag 开头的函数定义，并构建一个列表来导航相关函数          |
 
         我们的标签跳转分为 `:tag`、`:tselect` 和 `:tjump` 三种不同方法，正常模式和可视模式的命令 `<Ctrl-]>` 也同样有后两种方法的变体，对应的命令分别是 `g]` 和 `g<Ctrl-]>`。这三个命令前面也都可以额外加上 `<Ctrl-W>`，表示结果打开到新窗口中而非当前窗口。
-
-### Tagbar 插件
-
-Ctags 是一个可以从源代码中提取符号的工具。事实上，这个工具在我们不生成 tags 文件也都是有用的。Vim 的插件 tagbar 就可以利用 Ctags 来提取符号，生成源代码的结构图。只要 Ctags 能支持这种语言，插件就能“识别” 这种语言，来生成结构图；识别的好坏程度也视 Ctags 对其的支持程度而定
-
-```
-Plug 'preservim/tagbar'
-```
 
