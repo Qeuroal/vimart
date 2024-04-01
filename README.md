@@ -243,11 +243,11 @@ python3 ./install.py --clangd-completer --verbose
 
         我们的标签跳转分为 `:tag`、`:tselect` 和 `:tjump` 三种不同方法，正常模式和可视模式的命令 `<Ctrl-]>` 也同样有后两种方法的变体，对应的命令分别是 `g]` 和 `g<Ctrl-]>`。这三个命令前面也都可以额外加上 `<Ctrl-W>`，表示结果打开到新窗口中而非当前窗口。
 
-### ~~Tagbar 插件~~
+### Tagbar 插件
 
 Ctags 是一个可以从源代码中提取符号的工具。事实上，这个工具在我们不生成 tags 文件也都是有用的。Vim 的插件 tagbar 就可以利用 Ctags 来提取符号，生成源代码的结构图。只要 Ctags 能支持这种语言，插件就能“识别” 这种语言，来生成结构图；识别的好坏程度也视 Ctags 对其的支持程度而定
 
 ```
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 ```
 
