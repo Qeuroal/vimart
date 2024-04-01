@@ -70,44 +70,44 @@ docs/help.md
 
 #### 在线安装
 
-**全部语言的安装**
+- 全部语言的安装
 
-```shell
-# 进入 ycm 目录
-cd ~/.vim/plugged/YouCompleteMe
-# 编译
-python3 ./install.py --all --verbose
-```
+   ```shell
+   # 进入 ycm 目录
+   cd ~/.vim/plugged/YouCompleteMe
+   # 编译
+   python3 ./install.py --all --verbose
+   ```
 
-> 使用 `--all` 参数并不会安装 clangd, 需手动安装: `python3 ./install.py --clangd-completer --verbose`
+   > 使用 `--all` 参数并不会安装 clangd, 需手动安装: `python3 ./install.py --clangd-completer --verbose`
 
-**各种语言支持命令**
+- 各种语言支持命令
 
-| 语言                | 命令                                                |
-| -                   | -                                                   |
-| c/c++               | `python3 ./install.py --clang-completer --verbose`  |
-| c/c++(基于实验阶段) | `python3 ./install.py --clangd-completer --verbose` |
-| C#                  | `python3 ./install.py --cs-completer --verbose`     |
-| Go                  | `python3 ./install.py --go-completer --verbose`     |
-| JavaScript          | `python3 ./install.py --ts-completer --verbose`     |
-| Rust                | `python3 ./install.py --rust-completer --verbose`   |
-| Java                | `python3 ./install.py --java-completer --verbose`   |
+   | 语言                | 命令                                                |
+   | -                   | -                                                   |
+   | c/c++               | `python3 ./install.py --clang-completer --verbose`  |
+   | c/c++(基于实验阶段) | `python3 ./install.py --clangd-completer --verbose` |
+   | C#                  | `python3 ./install.py --cs-completer --verbose`     |
+   | Go                  | `python3 ./install.py --go-completer --verbose`     |
+   | JavaScript          | `python3 ./install.py --ts-completer --verbose`     |
+   | Rust                | `python3 ./install.py --rust-completer --verbose`   |
+   | Java                | `python3 ./install.py --java-completer --verbose`   |
 
-> 更多请查看[这里](https://ycm-wiki-zhcn.readthedocs.io/zh-cn/latest/official_doc/intro.html)
+   > 更多请查看[这里](https://ycm-wiki-zhcn.readthedocs.io/zh-cn/latest/official_doc/intro.html)
 
-**实例: c/c++**
+- **实例: c/c++**
 
-```shell
-# 进入 ycm 目录
-cd ~/.vim/plugged/YouCompleteMe
-# 编译
-python3 ./install.py --clang-completer --verbose
-python3 ./install.py --clangd-completer --verbose
-```
+   ```shell
+   # 进入 ycm 目录
+   cd ~/.vim/plugged/YouCompleteMe
+   # 编译
+   python3 ./install.py --clang-completer --verbose
+   python3 ./install.py --clangd-completer --verbose
+   ```
 
-**注意**
-
-编译时不要有任何的 python 环境, 就用系统默认启动 shell 时的环境
+> **注意**
+>
+> 编译时不要有任何的 python 环境, 就用系统默认启动 shell 时的环境
 
 #### 离线安装
 
@@ -205,29 +205,29 @@ python3 ./install.py --clangd-completer --verbose
 
 3. ctags 用法
 
-    - 跳转到定义: `ctrl-]`
+   - 跳转到定义: `ctrl-]`
 
-    - 跳转回到上一个位置: `ctrl-t`
+   - 跳转回到上一个位置: `ctrl-t`
 
-    - ctags的vim命令及描述
+   - ctags的vim命令及描述
 
-        | 命令                              | 描述                                                                   |
-        | :---------------                  | :----------------                                                      |
-        | `:ta <name>`/`:tag <name>`        | 跳转到该符号的定义或声明位置                                           |
-        | `:ts`/`:tselect`                  | 跟 `:tag` 类似，但会列举可能的匹配项，即显示 tag list, 让你自己选择(而非跳转到第一个匹配位置) |
-        | `:tn`/`:tnext`                    | 跳转到下一个标签匹配位置(跳到 list 中的下一个)                         |
-        | `:tN`/`:tNext`/`:tp`/`:tprevious` | 跳转到上一个标签匹配位置(跳到 list 中的上一个)                         |
-        | `:tf`/`:tfirst`/`:trewind`        | 跳转到第一个标签匹配位置(跳到 list 中的第一个)                         |
-        | `:tl`/`:tlast`                    | 跳转到最后一个标签匹配位置(跳到 list 中的最后一个)                     |
-        | `<Ctrl+]>`                        | 跳转到该符号的定义或声明位置                                           |
-        | `g]`                              | 列出变量的所有引用供用户选择                                           |
-        | `g<Ctrl-]>`                       | 跟 `g]` 类似，但跟 `:tjump` 一样在只有一个匹配项时会直接跳转到匹配位置 |
-        | `:tj`/`:tjump`                    | 跟 `:tselect` 类似，但在只有一个匹配项的时候会直接跳转到匹配位置       |
-        | `:sts`/`:stselect`                | 跟 `:tselect` 类似，但结果会打开到一个新分割的窗口中                   |
-        | `:stj`/`:stjump`                  | 跟 `:tjump` 类似，但结果会打开到一个新分割的窗口中                     |
-        | `vim –t <name>`                   | 找到名为 name 的变量的定义处                                           |
-        | `Ctrl + W + ]`                    | 分割当前窗口，并在新窗口中显示跳转到的定义                             |
-        | ~~`:tag`/`:^tag`~~                | 将转到名称以 tag 开头的函数定义，并构建一个列表来导航相关函数          |
+      | 命令                              | 描述                                                                   |
+      | :---------------                  | :----------------                                                      |
+      | `:ta <name>`/`:tag <name>`        | 跳转到该符号的定义或声明位置                                           |
+      | `:ts`/`:tselect`                  | 跟 `:tag` 类似，但会列举可能的匹配项，即显示 tag list, 让你自己选择(而非跳转到第一个匹配位置) |
+      | `:tn`/`:tnext`                    | 跳转到下一个标签匹配位置(跳到 list 中的下一个)                         |
+      | `:tN`/`:tNext`/`:tp`/`:tprevious` | 跳转到上一个标签匹配位置(跳到 list 中的上一个)                         |
+      | `:tf`/`:tfirst`/`:trewind`        | 跳转到第一个标签匹配位置(跳到 list 中的第一个)                         |
+      | `:tl`/`:tlast`                    | 跳转到最后一个标签匹配位置(跳到 list 中的最后一个)                     |
+      | `<Ctrl+]>`                        | 跳转到该符号的定义或声明位置                                           |
+      | `g]`                              | 列出变量的所有引用供用户选择                                           |
+      | `g<Ctrl-]>`                       | 跟 `g]` 类似，但跟 `:tjump` 一样在只有一个匹配项时会直接跳转到匹配位置 |
+      | `:tj`/`:tjump`                    | 跟 `:tselect` 类似，但在只有一个匹配项的时候会直接跳转到匹配位置       |
+      | `:sts`/`:stselect`                | 跟 `:tselect` 类似，但结果会打开到一个新分割的窗口中                   |
+      | `:stj`/`:stjump`                  | 跟 `:tjump` 类似，但结果会打开到一个新分割的窗口中                     |
+      | `vim –t <name>`                   | 找到名为 name 的变量的定义处                                           |
+      | `Ctrl + W + ]`                    | 分割当前窗口，并在新窗口中显示跳转到的定义                             |
+      | ~~`:tag`/`:^tag`~~                | 将转到名称以 tag 开头的函数定义，并构建一个列表来导航相关函数          |
 
-        我们的标签跳转分为 `:tag`、`:tselect` 和 `:tjump` 三种不同方法，正常模式和可视模式的命令 `<Ctrl-]>` 也同样有后两种方法的变体，对应的命令分别是 `g]` 和 `g<Ctrl-]>`。这三个命令前面也都可以额外加上 `<Ctrl-W>`，表示结果打开到新窗口中而非当前窗口。
+      我们的标签跳转分为 `:tag`、`:tselect` 和 `:tjump` 三种不同方法，正常模式和可视模式的命令 `<Ctrl-]>` 也同样有后两种方法的变体，对应的命令分别是 `g]` 和 `g<Ctrl-]>`。这三个命令前面也都可以额外加上 `<Ctrl-W>`，表示结果打开到新窗口中而非当前窗口。
 
