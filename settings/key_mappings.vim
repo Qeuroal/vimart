@@ -73,7 +73,7 @@ vmap <leader><leader>y "+y
 nnoremap <leader><leader>p "+p
 
 " 清理所有空行的空格
-nnoremap <leader>kcs :%s/^\s*$//g<cr>
+nnoremap <leader>ks :%s/^\s*$//g<cr>
 
 " 手动触发 CursorHold 事件
 nnoremap  <leader>kc :doautocmd CursorHold<cr>
