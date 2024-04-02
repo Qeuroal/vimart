@@ -1,5 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 键盘映射配置
+" Tips: 如何查看映射的按键: `:map <mapping_key>`
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 判断是否已经加载过
 if exists("s:did_load_mappings_vim")
@@ -73,6 +74,9 @@ nnoremap <leader><leader>p "+p
 
 " 清理所有空行的空格
 nnoremap <leader>kcs :%s/^\s*$//g<cr>
+
+" 手动触发 CursorHold 事件
+nnoremap  <leader>kc :doautocmd CursorHold<cr>
 "<}}}
 
 "{{{> 会话相关
