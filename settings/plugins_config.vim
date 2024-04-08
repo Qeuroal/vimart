@@ -255,4 +255,9 @@ autocmd BufWinEnter *.* RainbowLoad
 nnoremap <leader><F5> :UndotreeToggle<CR>
 "<}}}
 
+"{{{> vim-markdown
+" 关闭自动折叠
+let g:vim_markdown_folding_disabled = 1
+"<}}}
+
 
