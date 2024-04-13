@@ -45,6 +45,7 @@ function install_ycm_on_archlinux() {
 #{{{> configure plugins
 function configure_plugins_on_archlinux() {
     configure_fzf_on_linux
+    configure_tmux
 }
 #<}}}
 

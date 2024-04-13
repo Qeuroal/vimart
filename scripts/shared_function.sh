@@ -189,7 +189,7 @@ function configure_fzf_on_linux() {
 #<}}}
 
 #{{{> config tmux
-function configure_tmux{
+function configure_tmux {
     if test `cat ${HOME}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0
     then
         echo '' | tee -a ./.tmux.conf > /dev/null

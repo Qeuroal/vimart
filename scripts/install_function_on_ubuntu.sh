@@ -108,6 +108,7 @@ function install_ycm_on_ubuntu() {
 #{{{> configure plugins
 function configure_plugins_on_ubuntu() {
     configure_fzf_on_linux
+    configure_tmux
 }
 #<}}}
 
