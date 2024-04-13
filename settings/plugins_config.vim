@@ -251,11 +251,13 @@ let g:vim_markdown_folding_disabled = 1
 
 "{{{> preservim/vimux
 " Prompt for a command to run
-nnoremap <Leader>p :VimuxPromptCommand<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-nnoremap <Leader>l :VimuxRunLastCommand<CR>
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nnoremap <Leader>ki :VimuxInspectRunner<CR>
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+" Zoom the tmux runner pane
+nnoremap <leader>vz :VimuxZoomRunner<CR>
 "<}}}
 
 

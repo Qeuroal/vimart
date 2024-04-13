@@ -41,8 +41,8 @@ inoremap <c-w> <c-g>u<c-w>
 "{{{> 正常模式绑定按键
 " 编辑vimrc相关配置文件
 " nnoremap <leader>e :edit $MYVIMRC<cr>
-nnoremap <leader>vc :edit ~/.vimrc.custom.config<cr>
-nnoremap <leader>vp :edit ~/.vimrc.custom.plugins<cr>
+nnoremap <leader>evc :edit ~/.vimrc.custom.config<cr>
+nnoremap <leader>evp :edit ~/.vimrc.custom.plugins<cr>
 " 重新加载vimrc文件
 " nnoremap <leader>s :source $MYVIMRC<cr>
 
