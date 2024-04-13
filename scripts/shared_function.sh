@@ -192,34 +192,34 @@ function configure_fzf_on_linux() {
 function configure_tmux {
     if test `cat ${HOME}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0
     then
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo '# 配置vim-tmux-navigator冲突' | tee -a ./.tmux.conf > /dev/null
-        echo 'is_vim="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ./.tmux.conf > /dev/null
-        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"'"'"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo 'is_fzf="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ./.tmux.conf > /dev/null
-        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?fzf$'"'"'"' | tee -a ./.tmux.conf > /dev/null
-        echo 'bind -n C-h run "($is_vim && tmux send-keys C-h) || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 tmux select-pane -L"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo 'bind -n C-j run "($is_vim && tmux send-keys C-j)  || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 ($is_fzf && tmux send-keys C-j) || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 tmux select-pane -D"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo 'bind -n C-k run "($is_vim && tmux send-keys C-k) || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 ($is_fzf && tmux send-keys C-k)  || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 tmux select-pane -U"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo 'bind -n C-l run "($is_vim && tmux send-keys C-l) || \' | tee -a ./.tmux.conf > /dev/null
-        echo '                 tmux select-pane -R"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo '# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"' | tee -a ./.tmux.conf > /dev/null
-        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]'"'"' \' | tee -a ./.tmux.conf > /dev/null
-        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ./.tmux.conf > /dev/null
-        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]'"'"' \' | tee -a ./.tmux.conf > /dev/null
-        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
-        echo '' | tee -a ./.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '# 配置vim-tmux-navigator冲突' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'is_vim="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'is_fzf="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?fzf$'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'bind -n C-h run "($is_vim && tmux send-keys C-h) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -L"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'bind -n C-j run "($is_vim && tmux send-keys C-j)  || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 ($is_fzf && tmux send-keys C-j) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -D"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'bind -n C-k run "($is_vim && tmux send-keys C-k) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 ($is_fzf && tmux send-keys C-k)  || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -U"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'bind -n C-l run "($is_vim && tmux send-keys C-l) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -R"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
     fi
 }
 #<}}}
