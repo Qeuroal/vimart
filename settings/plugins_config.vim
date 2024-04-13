@@ -234,17 +234,6 @@ let g:DoxygenToolkit_returnTag="\\return "
 let g:DoxygenToolkit_commentType="C++"
 "<}}}
 
-"{{{> cpp-mode
-nnoremap <leader>y :CopyCode<cr>
-nnoremap <leader>p :PasteCode<cr>
-nnoremap <leader>U :GoToFunImpl<cr>
-nnoremap <silent> <leader>a :Switch<cr>
-nnoremap <leader><leader>fp :FormatFunParam<cr>
-nnoremap <leader><leader>if :FormatIf<cr>
-nnoremap <leader><leader>t dd :GenTryCatch<cr>
-xnoremap <leader><leader>t d :GenTryCatch<cr>
-"<}}}
-
 "{{{> vim-rainbow
 " autocmd VimEnter * :RainbowLoad
 autocmd BufWinEnter *.* RainbowLoad
