@@ -194,7 +194,7 @@ function configure_tmux {
     if [ ! -f "${HOME}/.tmux.conf" \
         -o `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
     then
-        # echo 'set -s escape-time 0' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '# 取消tmux的escape延迟' | tee -a ${HOME}/.tmux.conf > /dev/null
         echo 'set -s escape-time 0' | tee -a ${HOME}/.tmux.conf > /dev/null
     fi
 
