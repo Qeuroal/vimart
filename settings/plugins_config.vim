@@ -234,17 +234,6 @@ let g:DoxygenToolkit_returnTag="\\return "
 let g:DoxygenToolkit_commentType="C++"
 "<}}}
 
-"{{{> cpp-mode
-nnoremap <leader>y :CopyCode<cr>
-nnoremap <leader>p :PasteCode<cr>
-nnoremap <leader>U :GoToFunImpl<cr>
-nnoremap <silent> <leader>a :Switch<cr>
-nnoremap <leader><leader>fp :FormatFunParam<cr>
-nnoremap <leader><leader>if :FormatIf<cr>
-nnoremap <leader><leader>t dd :GenTryCatch<cr>
-xnoremap <leader><leader>t d :GenTryCatch<cr>
-"<}}}
-
 "{{{> vim-rainbow
 " autocmd VimEnter * :RainbowLoad
 autocmd BufWinEnter *.* RainbowLoad
@@ -262,11 +251,11 @@ let g:vim_markdown_folding_disabled = 1
 
 "{{{> preservim/vimux
 " Prompt for a command to run
-nnoremap <Leader>kvp :VimuxPromptCommand<CR>
+nnoremap <Leader>p :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-nnoremap <Leader>kvl :VimuxRunLastCommand<CR>
+nnoremap <Leader>l :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nnoremap <Leader>kvi :VimuxInspectRunner<CR>
+nnoremap <Leader>ki :VimuxInspectRunner<CR>
 "<}}}
 
 
