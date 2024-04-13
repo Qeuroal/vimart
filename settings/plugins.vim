@@ -24,6 +24,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
 Plug 'chxuan/cpp-mode'                              " cpp-mode
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
