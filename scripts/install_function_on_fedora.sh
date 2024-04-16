@@ -59,6 +59,7 @@ function install_ycm_on_fedora() {
 function configure_plugins_on_fedora() {
     configure_fzf_on_linux
     configure_tmux
+    configure_shell
 }
 #<}}}
 
