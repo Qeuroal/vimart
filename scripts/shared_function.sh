@@ -189,7 +189,7 @@ function configure_fzf_on_linux() {
 #<}}}
 
 #{{{> config tmux
-function configure_tmux {
+function configure_tmux() {
     # 取消tmux的escape延迟
     if [ ! -f "${HOME}/.tmux.conf" \
         -o `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
@@ -231,6 +231,43 @@ function configure_tmux {
         echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
         echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
     fi
+}
+#<}}}
+
+#{{{> config shell
+function configure_shell() {
+    if [[ -f ${HOME}/.zshrc ]]
+    then
+        if test `cat ${HOME}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
+        then
+            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "set -o IGNOREEOF" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+        fi
+    fi
+
+    if [[ -f ${HOME}/.bashrc ]]
+    then
+        if test `cat ${HOME}/.bashrc | grep -c "set -o IGNOREEOF"` = 0
+        then
+            echo "" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "set -o IGNOREEOF" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "" | tee -a ${HOME}/.bashrc > /dev/null
+        fi
+    elif [[ -f ${HOME}/.bash_profile ]]
+    then
+        if test `cat ${HOME}/.bash_profile | grep -c "set -o IGNOREEOF"` = 0
+        then
+            echo "" | tee -a ${HOME}/.bash_profile > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bash_profile > /dev/null
+            echo "set -o IGNOREEOF" | tee -a ${HOME}/.bash_profile > /dev/null
+            echo "" | tee -a ${HOME}/.bash_profile > /dev/null
+        fi
+
+    fi
+
 }
 #<}}}
 

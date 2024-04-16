@@ -122,6 +122,7 @@ function configure_plugins_on_mac() {
     # configure fzf
     configure_fzf_on_mac
     configure_tmux
+    configure_shell
 }
 #<}}}
 
