@@ -189,7 +189,7 @@ function configure_fzf_on_linux() {
 #<}}}
 
 #{{{> config tmux
-function configure_tmux {
+function configure_tmux() {
     # 取消tmux的escape延迟
     if [ ! -f "${HOME}/.tmux.conf" \
         -o `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
@@ -235,7 +235,7 @@ function configure_tmux {
 #<}}}
 
 #{{{> config shell
-function config_shell() {
+function configure_shell() {
     if [[ -f ${HOME}/.zshrc ]]
     then
         if test `cat ${HOME}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
