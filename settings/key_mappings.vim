@@ -76,7 +76,9 @@ nnoremap <leader><leader>p "+p
 nnoremap <leader>ks :%s/^\s*$//g<cr>
 
 " 手动触发 CursorHold 事件
-nnoremap  <leader>kc :doautocmd CursorHold<cr>
+nnoremap <leader>kh :doautocmd CursorHold<cr>
+" 关闭popup
+nnoremap <leader>kc :call popup_clear(1)<cr>
 "<}}}
 
 "{{{> 会话相关
