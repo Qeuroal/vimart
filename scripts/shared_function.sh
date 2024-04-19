@@ -253,7 +253,8 @@ function configure_shell() {
         then
             echo "" | tee -a ${HOME}/.bashrc > /dev/null
             echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bashrc > /dev/null
-            echo "set -o IGNOREEOF" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "set -o ignoreeof" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "ignoreeof=3" | tee -a ${HOME}/.bashrc > /dev/null
             echo "" | tee -a ${HOME}/.bashrc > /dev/null
         fi
     elif [[ -f ${HOME}/.bash_profile ]]
