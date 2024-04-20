@@ -110,21 +110,21 @@ function local_install_vimart_on_linux() {
         local userhome=$(eval echo ~${referenceUser})
         color_print "warning" "reference user: ${referenceUser}, userhome: ${userhome}"
         if [ -d "${userhome}/.vim" ]; then
-            sudo cp -rf ~${referenceUser}/.vim ${destPath}
+            sudo cp -rf ${userhome}/.vim ${destPath}
         else
-            color_print "warning" "don't exist ~${referenceUser}/.vim"
+            color_print "warning" "don't exist ${userhome}/.vim"
         fi
 
         if [ -f "${userhome}/.vimrc.custom.config" ]; then
-            cp -f ~${referenceUser}/.vimrc.custom.config ${destPath}
+            cp -f ${userhome}/.vimrc.custom.config ${destPath}
         else
-            color_print "warning" "don't exist ~${referenceUser}/.vimrc.custom.config"
+            color_print "warning" "don't exist ${userhome}/.vimrc.custom.config"
         fi
 
         if [ -f "${userhome}/.vimrc.custom.plugins" ]; then
-            cp -f ~${referenceUser}/.vimrc.custom.plugins ${destPath}
+            cp -f ${userhome}/.vimrc.custom.plugins ${destPath}
         else
-            color_print "warning" "don't exist ~${referenceUser}/.vimrc.custom.plugins"
+            color_print "warning" "don't exist ${userhome}/.vimrc.custom.plugins"
         fi
     fi
 
