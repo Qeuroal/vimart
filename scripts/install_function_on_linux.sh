@@ -92,18 +92,26 @@ function install_vimart_on_linux() {
 
 #{{{> offline install vimart
 function local_install_vimart_on_linux() {
+
     srcPath=${VIMART_SRC_PATH}
     if [ "${srcPath}" = "" ]; then
         srcPath=${PWD}
     fi
-    color_print "info" "srcPath: $srcPath"
+    color_print "info" "source path: $srcPath"
 
     destPath=${VIMART_DEST_PATH}
     if [ "${destPath}" = "" ]; then
         destPath=$HOME
     fi
+    color_print "info" "destination path: $destPath"
 
-    color_print "info" "destPath: $destPath"
+    referenceUser=${VIMART_REFERENCE_USER}
+    if [ "${referenceUser}" != "" ]; then
+        color_print "warning" "reference user: ${referenceUser}"
+        sudo cp -rf ${referenceUser}/.vim ${destPath}
+        cp -f ${referenceUser}/.vimrc.custom.config ${destPath}
+        cp -f ${referenceUser}/.vimrc.custom.plugins ${destPath}
+    fi
 
     copy_files $srcPath $destPath
 }
