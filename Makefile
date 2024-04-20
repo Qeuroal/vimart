@@ -3,6 +3,9 @@
 install:
 	@bash scripts/install.sh
 
+local:
+	@bash scripts/local_install.sh
+
 uninstall:
 	@bash scripts/uninstall.sh
 
