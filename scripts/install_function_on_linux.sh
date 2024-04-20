@@ -93,15 +93,19 @@ function install_vimart_on_linux() {
 #{{{> offline install vimart
 function local_install_vimart_on_linux() {
 
-    srcPath="`realpath ${VIMART_SRC_PATH}`"
+    srcPath="${VIMART_SRC_PATH}"
     if [ "${srcPath}" = "" ]; then
         srcPath=${PWD}
+    else
+        srcPath="`realpath ${VIMART_SRC_PATH}`"
     fi
     color_print "info" "source path: $srcPath"
 
-    destPath="`realpath ${VIMART_DEST_PATH}`"
+    destPath="${VIMART_DEST_PATH}"
     if [ "${destPath}" = "" ]; then
         destPath=$HOME
+    else
+        destPath="`realpath ${VIMART_DEST_PATH}`"
     fi
     color_print "info" "destination path: $destPath"
 
