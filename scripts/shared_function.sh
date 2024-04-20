@@ -20,10 +20,9 @@ function copy_files() {
         destPath=$2
     fi
 
-    color_print "warning" "srcPath: $srcPath"
-    color_print "warning" "dstPath: $destPath"
+    color_print "info" "srcPath: $srcPath"
+    color_print "info" "dstPath: $destPath"
 
-    return 0
     # .vimrc
     rm -rf ${destPath}/.vimrc
     ln -s ${srcPath}/configuration/.vimrc ${destPath}
