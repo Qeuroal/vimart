@@ -10,6 +10,20 @@ function copy_files() {
     # echo -e "\033[32m===> Copying files...\033[0m"
     color_print "info" "Copying files..."
 
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2" ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
+    color_print "warning" "srcPath: $srcPath"
+    color_print "warning" "dstPath: $destPath"
+
+    return 0
     # .vimrc
     rm -rf ~/.vimrc
     ln -s ${PWD}/configuration/.vimrc ~

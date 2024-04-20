@@ -100,11 +100,12 @@ function local_install_vimart_on_linux() {
 
     destPath=${VIMART_DEST_PATH}
     if [ "${destPath}" = "" ]; then
-        destPath=~
+        destPath=$HOME
     fi
 
     color_print "info" "destPath: $destPath"
 
+    copy_files $srcPath $destPath
 }
 #<}}}
 
