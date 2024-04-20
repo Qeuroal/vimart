@@ -108,9 +108,17 @@ function local_install_vimart_on_linux() {
     referenceUser=${VIMART_REFERENCE_USER}
     if [ "${referenceUser}" != "" ]; then
         color_print "warning" "reference user: ${referenceUser}"
-        sudo cp -rf ~${referenceUser}/.vim ${destPath}
-        cp -f ~${referenceUser}/.vimrc.custom.config ${destPath}
-        cp -f ~${referenceUser}/.vimrc.custom.plugins ${destPath}
+        if [ -d ~${referenceUser}/.vim ]; then
+            sudo cp -rf ~${referenceUser}/.vim ${destPath}
+        fi
+
+        if [ -f ~${referenceUser}/.vimrc.custom.config ]; then
+            cp -f ~${referenceUser}/.vimrc.custom.config ${destPath}
+        fi
+
+        if [ -f ~${referenceUser}/.vimrc.custom.plugins ]; then
+            cp -f ~${referenceUser}/.vimrc.custom.plugins ${destPath}
+        fi
     fi
 
     copy_files $srcPath $destPath
