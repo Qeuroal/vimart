@@ -2,8 +2,9 @@
 #
 source ${PWD}/scripts/color_print.sh
 source ${PWD}/scripts/shared_function.sh
+source ${PWD}/scripts/install_function_on_linux.sh
 
-function checkOs() {
+function main() {
     curDir=${PWD}
     type=$(uname)
     echo "Platform type: "${type}
@@ -26,3 +27,5 @@ function checkOs() {
     fi
 
 }
+
+main
