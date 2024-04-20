@@ -89,3 +89,48 @@ function install_vimart_on_linux() {
     fi
 }
 # <}}}
+
+#{{{> offline install vimart
+function local_install_vimart_on_linux() {
+
+    srcPath=${VIMART_SRC_PATH}
+    if [ "${srcPath}" = "" ]; then
+        srcPath=${PWD}
+    fi
+    color_print "info" "source path: $srcPath"
+
+    destPath=${VIMART_DEST_PATH}
+    if [ "${destPath}" = "" ]; then
+        destPath=$HOME
+    fi
+    color_print "info" "destination path: $destPath"
+
+    referenceUser=${VIMART_REFERENCE_USER}
+    if [ "${referenceUser}" != "" ]; then
+        local userhome=$(eval echo ~${referenceUser})
+        color_print "warning" "reference user: ${referenceUser}, userhome: ${userhome}"
+        if [ -d "${userhome}/.vim" ]; then
+            sudo cp -rf ${userhome}/.vim ${destPath}
+        else
+            color_print "warning" "don't exist ${userhome}/.vim"
+        fi
+
+        if [ -f "${userhome}/.vimrc.custom.config" ]; then
+            cp -f ${userhome}/.vimrc.custom.config ${destPath}
+        else
+            color_print "warning" "don't exist ${userhome}/.vimrc.custom.config"
+        fi
+
+        if [ -f "${userhome}/.vimrc.custom.plugins" ]; then
+            cp -f ${userhome}/.vimrc.custom.plugins ${destPath}
+        else
+            color_print "warning" "don't exist ${userhome}/.vimrc.custom.plugins"
+        fi
+    fi
+
+    copy_files $srcPath $destPath
+}
+#<}}}
+
+
+

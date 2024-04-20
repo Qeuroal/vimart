@@ -10,45 +10,58 @@ function copy_files() {
     # echo -e "\033[32m===> Copying files...\033[0m"
     color_print "info" "Copying files..."
 
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2" ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
+    color_print "info" "srcPath: $srcPath"
+    color_print "info" "dstPath: $destPath"
+
     # .vimrc
-    rm -rf ~/.vimrc
-    ln -s ${PWD}/configuration/.vimrc ~
+    rm -rf ${destPath}/.vimrc
+    ln -s ${srcPath}/configuration/.vimrc ${destPath}
 
     # vim-plug by download from github
         # curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         # https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # .vimrc.custom.plugins
-    rm -rf ~/.vimrc.custom.plugins
-    cp ${PWD}/configuration/.vimrc.custom.plugins ~
+    rm -rf ${destPath}/.vimrc.custom.plugins
+    cp ${srcPath}/configuration/.vimrc.custom.plugins ${destPath}
 
     # .vimrc.custom.config
-    rm -rf ~/.vimrc.custom.config
-    cp ${PWD}/configuration/.vimrc.custom.config ~
+    rm -rf ${destPath}/.vimrc.custom.config
+    cp ${srcPath}/configuration/.vimrc.custom.config ${destPath}
 
     # .vim/color
-    mkdir ~/.vim
-    rm -rf ~/.vim/colors
-    ln -s ${PWD}/colors ~/.vim/
+    mkdir ${destPath}/.vim
+    rm -rf ${destPath}/.vim/colors
+    ln -s ${srcPath}/colors ${destPath}/.vim/
 
     # vim-plug by copy
-    cp -rf ./autoload ~/.vim/
+    cp -rf ${srcPath}/autoload ${destPath}/.vim/
 
     # ftplugin
-    rm -rf ~/.vim/ftplugin
-    ln -s ${PWD}/ftplugin ~/.vim/
+    rm -rf ${destPath}/.vim/ftplugin
+    ln -s ${srcPath}/ftplugin ${destPath}/.vim/
 
     # settings
-    rm -rf ~/.vim/settings
-    ln -s ${PWD}/settings ~/.vim/
+    rm -rf ${destPath}/.vim/settings
+    ln -s ${srcPath}/settings ${destPath}/.vim/
 
     # ultisnips
-    rm -rf ~/.vim/UltiSnips
-    ln -s ${PWD}/plugin_configuration/UltiSnips ~/.vim/UltiSnips
+    rm -rf ${destPath}/.vim/UltiSnips
+    ln -s ${srcPath}/plugin_configuration/UltiSnips ${destPath}/.vim/UltiSnips
 
     # .vimart
-    rm -rf ~/.vimart
-    ln -s ${PWD} ~/.vimart
+    rm -rf ${destPath}/.vimart
+    ln -s ${srcPath} ${destPath}/.vimart
 }
 
 # 判断文件是否存在
