@@ -89,3 +89,17 @@ function install_vimart_on_linux() {
     fi
 }
 # <}}}
+
+#{{{> offline install vimart
+function local_install_vimart_on_linux() {
+    destPath=${VIMART_DEST_PATH}
+    if [ "${destPath}" = "" ]; then
+        destPath=${PWD}
+    fi
+    echo "$destPath"
+
+}
+#<}}}
+
+
+
