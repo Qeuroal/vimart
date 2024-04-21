@@ -144,7 +144,7 @@ function chown_user_permission() {
     local username="${VIMART_CHOWN_USER}"
     if [ "${username}" = "" ]; then
         color_print "info" "cancel to chown user's .vim*"
-        return 1
+        return 0
     fi
 
     local userhome=$(eval echo ~${username})
