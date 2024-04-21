@@ -8,10 +8,23 @@ function exportEnv() {
     color_print "warning" "Please to ensure env to install vim locally? Where if not exist, please enter directly!!!"
 
     srcPath=${PWD}
-    if [ -e ${srcPath}/vimart_envs ]; then
+    if [ ! -e ${srcPath}/vimart_envs ]; then
         cp -f ${srcPath}/configuration/.vimart_envs ${srcPath}/vimart_envs
     fi
     source ${srcPath}/vimart_envs
+
+    if [ "${VIMART_SRC_PATH}" != "" ]; then
+        export VIMART_SRC_PATH=`realpath ${VIMART_SRC_PATH}`
+    fi
+    if [ "${VIMART_DEST_PATH}" != "" ]; then
+        export VIMART_DEST_PATH=`realpath ${VIMART_DEST_PATH}`
+    fi
+    if [ "${VIMART_REFERENCE_USER}" != "" ]; then
+        export VIMART_REFERENCE_USER=`realpath ${VIMART_REFERENCE_USER}`
+    fi
+    if [ "${VIMART_CHOWN_USER}" != "" ]; then
+        export VIMART_CHOWN_USER=`realpath ${VIMART_CHOWN_USER}`
+    fi
 
     color_print "info" "VIMART_SRC_PATH (vimart directory): " ${VIMART_SRC_PATH}
     color_print "info" "VIMART_DEST_PATH (destination HOME path): " ${VIMART_DEST_PATH}
@@ -19,7 +32,7 @@ function exportEnv() {
     color_print "info" "VIMART_CHOWN_USER (owner of copied files): " ${VIMART_CHOWN_USER}
 
     local opt="y"
-    color_print "warning" "Is this right? [y/n]"
+    color_print "opt" "Is this right? [y/n]"
     read -n 1 opt
     if [ "${opt}" != 'y' -a "${opt}" != 'Y' ]; then
         exit
