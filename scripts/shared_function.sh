@@ -265,8 +265,8 @@ function configureAliases() {
     dstpath="${HOME}/${dstfile}"
 
     if [[ -f "${dstpath}" ]]; then
-        if test `cat ${dstpath}` | grep -c '# import aliases' = 0; then
-            if [ ! -d "$HOME/.aliases" ]; then
+        if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
+            if [ ! -e "$HOME/.aliases" ]; then
                 curl -JL -o $HOME/.aliases https://github.com/Qeuroal/toolbox/blob/master/resource/shell/.aliases
             fi
 
@@ -297,7 +297,7 @@ function configureEof() {
     if [[ -f ${HOME}/.bashrc ]]
     then
         # 设置ctrl+d不退出
-        if test `cat ${HOME}/.bashrc | grep -c "set -o IGNOREEOF"` = 0
+        if test `cat ${HOME}/.bashrc | grep -c "set -o ignoreeof"` = 0
         then
             echo "" | tee -a ${HOME}/.bashrc > /dev/null
             echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bashrc > /dev/null
