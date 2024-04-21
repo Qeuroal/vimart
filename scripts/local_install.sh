@@ -19,12 +19,6 @@ function exportEnv() {
     if [ "${VIMART_DEST_PATH}" != "" ]; then
         export VIMART_DEST_PATH=`realpath ${VIMART_DEST_PATH}`
     fi
-    if [ "${VIMART_REFERENCE_USER}" != "" ]; then
-        export VIMART_REFERENCE_USER=`realpath ${VIMART_REFERENCE_USER}`
-    fi
-    if [ "${VIMART_CHOWN_USER}" != "" ]; then
-        export VIMART_CHOWN_USER=`realpath ${VIMART_CHOWN_USER}`
-    fi
 
     color_print "info" "VIMART_SRC_PATH (vimart directory): " ${VIMART_SRC_PATH}
     color_print "info" "VIMART_DEST_PATH (destination HOME path): " ${VIMART_DEST_PATH}
