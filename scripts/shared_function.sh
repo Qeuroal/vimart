@@ -79,12 +79,8 @@ function is_exist_file()
 }
 #<}}}
 
-#{{{> install vim plugins
-function install_vim_plugins() {
-    # echo -e "\033[32m===> Installing plugins...\033[0m"
-    color_print "info" "Installing plugins..."
-    vim -c "PlugInstall" -c "q" -c "q"
-
+#{{{> config vim ycm
+function config_vim_ycm() {
     # 设置路径变量
     srcPath=${PWD}
     destPath=$HOME
@@ -117,6 +113,16 @@ function install_vim_plugins() {
         # fi
         ###############################################################################
     fi
+
+}
+#<}}}
+
+#{{{> install vim plugins
+function install_vim_plugins() {
+    # echo -e "\033[32m===> Installing plugins...\033[0m"
+    color_print "info" "Installing plugins..."
+    vim -c "PlugInstall" -c "q" -c "q"
+    config_vim_ycm
 }
 #<}}}
 
