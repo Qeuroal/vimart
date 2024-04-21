@@ -14,10 +14,11 @@ function exportEnv() {
     source ${srcPath}/vimart_envs
 
     if [ "${VIMART_SRC_PATH}" != "" ]; then
-        export VIMART_SRC_PATH=`realpath ${VIMART_SRC_PATH}`
+        VIMART_SRC_PATH=`realpath ${VIMART_SRC_PATH}`
     fi
     if [ "${VIMART_DEST_PATH}" != "" ]; then
-        export VIMART_DEST_PATH=`realpath ${VIMART_DEST_PATH}`
+        VIMART_DEST_PATH=`eval echo ${VIMART_DEST_PATH}`
+        VIMART_DEST_PATH=`realpath ${VIMART_DEST_PATH}`
     fi
 
     color_print "info" "VIMART_SRC_PATH (vimart directory): " ${VIMART_SRC_PATH}
