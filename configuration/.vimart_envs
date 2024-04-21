@@ -1,0 +1,4 @@
+export VIMART_SRC_PATH=.
+export VIMART_DEST_PATH=~
+export VIMART_REFERENCE_USER=""
+export VIMART_CHOWN_USER=""
