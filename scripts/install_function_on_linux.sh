@@ -169,6 +169,10 @@ function chown_user_permission() {
     if [ -e "${userhome}/.vimrc.custom.plugins" ]; then
         chown -R ${username}:${username} ${userhome}/.vimrc.custom.plugins
     fi
+
+    if [ -e "${userhome}/.ycm_extra_conf.py" ]; then
+        chown -R ${username}:${username} ${userhome}/.ycm_extra_conf.py
+    fi
 }
 #<}}}
 
