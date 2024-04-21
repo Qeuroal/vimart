@@ -267,7 +267,7 @@ function configureAliases() {
     if [[ -f "${dstpath}" ]]; then
         if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
             if [ ! -e "$HOME/.aliases" ]; then
-                curl -JL -o $HOME/.aliases https://github.com/Qeuroal/toolbox/blob/master/resource/shell/.aliases
+                curl -JL -o $HOME/.aliases https://raw.githubusercontent.com/Qeuroal/toolbox/master/resource/shell/.aliases
             fi
 
             echo "" | tee -a ${dstpath} > /dev/null
