@@ -140,8 +140,8 @@ function local_install_vimart_on_linux() {
     fi
     color_print "info" "destination path: $destPath"
 
-    copy_files ${srcPath} ${destPath}
     copy_reference_usr_file ${destPath}
+    copy_files ${srcPath} ${destPath}
 }
 #<}}}
 
