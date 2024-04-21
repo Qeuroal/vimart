@@ -90,6 +90,23 @@ function install_vimart_on_linux() {
 }
 # <}}}
 
+function copy_ycm_config() {
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1"  ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2"  ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
+    if [ `ls ${destPath}/.vim/plugged | grep -c YouCompleteMe` != 0  ]; then
+        rm -rf ${destPath}/.vimrc.ycm.config
+        ln -s ${srcPath}/configuration/vimrc.ycm.config ${destPath}/.vimrc.ycm.config
+    fi
+}
+
 #{{{> copy reference-user's config-files and plugin-files
 function copy_reference_usr_file() {
     destPath=$HOME
@@ -175,6 +192,7 @@ function local_install_vimart_on_linux() {
 
     copy_reference_usr_file ${destPath}
     copy_files ${srcPath} ${destPath}
+    copy_ycm_config ${srcPath} ${destPath}
     chown_user_permission
 }
 #<}}}
