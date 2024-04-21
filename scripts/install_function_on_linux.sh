@@ -175,6 +175,10 @@ function chown_user_permission() {
     if [ -e "${userhome}/.ycm_extra_conf.py" ]; then
         chown -R ${username}:${username} ${userhome}/.ycm_extra_conf.py
     fi
+
+    if [ -e "${userhome}/.vimrc.ycm.config" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimrc.ycm.config
+    fi
 }
 #<}}}
 
