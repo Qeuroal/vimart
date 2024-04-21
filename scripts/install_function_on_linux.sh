@@ -90,6 +90,7 @@ function install_vimart_on_linux() {
 }
 # <}}}
 
+#{{{> copy ycm config
 function copy_ycm_config() {
     srcPath=${PWD}
     destPath=$HOME
@@ -106,6 +107,7 @@ function copy_ycm_config() {
         ln -s ${srcPath}/configuration/vimrc.ycm.config ${destPath}/.vimrc.ycm.config
     fi
 }
+#<}}}
 
 #{{{> copy reference-user's config-files and plugin-files
 function copy_reference_usr_file() {
