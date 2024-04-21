@@ -131,26 +131,26 @@ function chown_user_permission() {
     fi
 
     local userhome=$(eval echo ~${username})
-    color_print "info" "chown .vim* to user ${username}, userhome: ${usrhome}"
+    color_print "info" "chown .vim* to user ${username}, userhome: ${userhome}"
 
     if [ -d "${userhome}/.vim" ]; then
-        chown ${username}:${username} ${userhome}/.vim
+        chown -R ${username}:${username} ${userhome}/.vim
     fi
 
     if [ -e "${userhome}/.vimart" ]; then
-        chown ${username}:${username} ${userhome}/.vimart
+        chown -R ${username}:${username} ${userhome}/.vimart
     fi
 
     if [ -e "${userhome}/.vimrc" ]; then
-        chown ${username}:${username} ${userhome}/.vimrc
+        chown -R ${username}:${username} ${userhome}/.vimrc
     fi
 
     if [ -e "${userhome}/.vimrc.custom.config" ]; then
-        chown ${username}:${username} ${userhome}/.vimrc.custom.config
+        chown -R ${username}:${username} ${userhome}/.vimrc.custom.config
     fi
 
     if [ -e "${userhome}/.vimrc.custom.plugins" ]; then
-        chown ${username}:${username} ${userhome}/.vimrc.custom.plugins
+        chown -R ${username}:${username} ${userhome}/.vimrc.custom.plugins
     fi
 }
 #<}}}
