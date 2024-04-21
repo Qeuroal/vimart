@@ -90,26 +90,14 @@ function install_vimart_on_linux() {
 }
 # <}}}
 
-#{{{> offline install vimart
-function local_install_vimart_on_linux() {
-
-    srcPath="${VIMART_SRC_PATH}"
-    if [ "${srcPath}" = "" ]; then
-        srcPath=${PWD}
-    else
-        srcPath="`realpath ${VIMART_SRC_PATH}`"
+#{{{> copy reference-user's config-files and plugin-files
+function copy_reference_usr_file() {
+    destPath=$HOME
+    if [ "$#" = "1" ]; then
+        destPath=$1
     fi
-    color_print "info" "source path: $srcPath"
-
-    destPath="${VIMART_DEST_PATH}"
-    if [ "${destPath}" = "" ]; then
-        destPath=$HOME
-    else
-        destPath="`realpath ${VIMART_DEST_PATH}`"
-    fi
-    color_print "info" "destination path: $destPath"
-
     referenceUser=${VIMART_REFERENCE_USER}
+
     if [ "${referenceUser}" != "" ]; then
         local userhome=$(eval echo ~${referenceUser})
         color_print "warning" "reference user: ${referenceUser}, userhome: ${userhome}"
@@ -131,8 +119,29 @@ function local_install_vimart_on_linux() {
             color_print "warning" "don't exist ${userhome}/.vimrc.custom.plugins"
         fi
     fi
+}
+#<}}}
 
-    copy_files $srcPath $destPath
+#{{{> local install vimart
+function local_install_vimart_on_linux() {
+    srcPath="${VIMART_SRC_PATH}"
+    if [ "${srcPath}" = "" ]; then
+        srcPath=${PWD}
+    else
+        srcPath="`realpath ${VIMART_SRC_PATH}`"
+    fi
+    color_print "info" "source path: $srcPath"
+
+    destPath="${VIMART_DEST_PATH}"
+    if [ "${destPath}" = "" ]; then
+        destPath=$HOME
+    else
+        destPath="`realpath ${VIMART_DEST_PATH}`"
+    fi
+    color_print "info" "destination path: $destPath"
+
+    copy_files ${srcPath} ${destPath}
+    copy_reference_usr_file ${destPath}
 }
 #<}}}
 

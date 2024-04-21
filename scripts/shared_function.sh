@@ -40,7 +40,7 @@ function copy_files() {
     cp ${srcPath}/configuration/.vimrc.custom.config ${destPath}
 
     # .vim/color
-    mkdir ${destPath}/.vim
+    mkdir -p ${destPath}/.vim
     rm -rf ${destPath}/.vim/colors
     ln -s ${srcPath}/colors ${destPath}/.vim/
 
