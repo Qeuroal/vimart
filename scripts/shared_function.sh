@@ -256,10 +256,35 @@ function configure_tmux() {
 }
 #<}}}
 
-#{{{> config shell
-function configure_shell() {
+#{{{> configure aliases
+function configureAliases() {
+    dstfile=".zshrc"
+    if [ "$#" = "1" ]; then
+        dstfile="$1"
+    fi
+    dstpath="${HOME}/${dstfile}"
+
+    if [[ -f "${dstpath}" ]]; then
+        if test `cat ${dstpath}` | grep -c '# import aliases' = 0; then
+            if [ ! -d "$HOME/.aliases" ]; then
+                curl -JL -o $HOME/.aliases https://github.com/Qeuroal/toolbox/blob/master/resource/shell/.aliases
+            fi
+
+            echo "" | tee -a ${dstpath} > /dev/null
+            echo '# import aliases' | tee -a ${dstpath} > /dev/null
+            # echo 'if [[ -f ~/.aliases ]]; then {source ~/.aliases}; fi'
+            echo '[[ -f ~/.aliases ]] && source ~/.aliases' | tee -a ${dstpath} > /dev/null
+            echo "" | tee -a ${dstpath} > /dev/null
+        fi
+    fi
+}
+#<}}}
+
+#{{{> config EOF
+function configureEof() {
     if [[ -f ${HOME}/.zshrc ]]
     then
+        # 设置ctrl+d不退出
         if test `cat ${HOME}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
         then
             echo "" | tee -a ${HOME}/.zshrc > /dev/null
@@ -271,6 +296,7 @@ function configure_shell() {
 
     if [[ -f ${HOME}/.bashrc ]]
     then
+        # 设置ctrl+d不退出
         if test `cat ${HOME}/.bashrc | grep -c "set -o IGNOREEOF"` = 0
         then
             echo "" | tee -a ${HOME}/.bashrc > /dev/null
@@ -290,7 +316,16 @@ function configure_shell() {
         fi
 
     fi
+}
+#<}}}
 
+#{{{> config shell
+function configure_shell() {
+    configureAliases ".zshrc"
+    configureAliases ".bashrc"
+    configureAliases ".bash_profile"
+
+    configureEof
 }
 #<}}}
 
