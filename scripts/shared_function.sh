@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# backup personal vim configure
+#{{{> backup personal vim configure
 function backup_vim_data() {
     # echo -e "\033[32m===> Backuping vim data...\033[0m"
     color_print "info" "Backuping vim data..."
 }
+#<}}}
 
+#{{{> copy and link files
 function copy_files() {
     # echo -e "\033[32m===> Copying files...\033[0m"
     color_print "info" "Copying files..."
@@ -63,8 +65,9 @@ function copy_files() {
     rm -rf ${destPath}/.vimart
     ln -s ${srcPath} ${destPath}/.vimart
 }
+#<}}}
 
-# 判断文件是否存在
+#{{{> 判断文件是否存在
 function is_exist_file()
 {
     filename=$1
@@ -74,8 +77,9 @@ function is_exist_file()
         echo 0
     fi
 }
+#<}}}
 
-
+#{{{> install vim plugins
 function install_vim_plugins() {
     # echo -e "\033[32m===> Installing plugins...\033[0m"
     color_print "info" "Installing plugins..."
@@ -103,7 +107,9 @@ function install_vim_plugins() {
         ################################################################################################################
     fi
 }
+#<}}}
 
+#{{{> print vimart's logo
 function print_logo() {
     color="$(tput setaf 6)"
     normal="$(tput sgr0)"
@@ -123,8 +129,9 @@ function print_logo() {
     echo ''
     printf "${normal}"
 }
+#<}}}
 
-# 获取linux发行版名称
+#{{{> 获取linux发行版名称
 function get_linux_distro()
 {
     if grep -Eq "Ubuntu" /etc/*-release; then
@@ -163,12 +170,14 @@ function get_linux_distro()
         echo "Unknown"
     fi
 }
+#<}}}
 
-# 获取当前时间戳
+#{{{> 获取当前时间戳
 function get_now_timestamp() {
     cur_sec_and_ns=`date '+%s-%N'`
     echo ${cur_sec_and_ns%-*}
 }
+#<}}}
 
 #{{{> configure fzf
 function configure_fzf_on_linux() {
@@ -247,10 +256,35 @@ function configure_tmux() {
 }
 #<}}}
 
-#{{{> config shell
-function configure_shell() {
+#{{{> configure aliases
+function configureAliases() {
+    dstfile=".zshrc"
+    if [ "$#" = "1" ]; then
+        dstfile="$1"
+    fi
+    dstpath="${HOME}/${dstfile}"
+
+    if [[ -f "${dstpath}" ]]; then
+        if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
+            if [ ! -e "$HOME/.aliases" ]; then
+                curl -JL -o $HOME/.aliases https://github.com/Qeuroal/toolbox/blob/master/resource/shell/.aliases
+            fi
+
+            echo "" | tee -a ${dstpath} > /dev/null
+            echo '# import aliases' | tee -a ${dstpath} > /dev/null
+            # echo 'if [[ -f ~/.aliases ]]; then {source ~/.aliases}; fi'
+            echo '[[ -f ~/.aliases ]] && source ~/.aliases' | tee -a ${dstpath} > /dev/null
+            echo "" | tee -a ${dstpath} > /dev/null
+        fi
+    fi
+}
+#<}}}
+
+#{{{> config EOF
+function configureEof() {
     if [[ -f ${HOME}/.zshrc ]]
     then
+        # 设置ctrl+d不退出
         if test `cat ${HOME}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
         then
             echo "" | tee -a ${HOME}/.zshrc > /dev/null
@@ -262,7 +296,8 @@ function configure_shell() {
 
     if [[ -f ${HOME}/.bashrc ]]
     then
-        if test `cat ${HOME}/.bashrc | grep -c "set -o IGNOREEOF"` = 0
+        # 设置ctrl+d不退出
+        if test `cat ${HOME}/.bashrc | grep -c "set -o ignoreeof"` = 0
         then
             echo "" | tee -a ${HOME}/.bashrc > /dev/null
             echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bashrc > /dev/null
@@ -281,7 +316,16 @@ function configure_shell() {
         fi
 
     fi
+}
+#<}}}
 
+#{{{> config shell
+function configure_shell() {
+    configureAliases ".zshrc"
+    configureAliases ".bashrc"
+    configureAliases ".bash_profile"
+
+    configureEof
 }
 #<}}}
 
