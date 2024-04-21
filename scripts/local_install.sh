@@ -5,7 +5,7 @@ source ${PWD}/scripts/shared_function.sh
 source ${PWD}/scripts/install_function_on_linux.sh
 
 function exportEnv() {
-    echo "warning" "Please to set env to install vim locally? If not exist, please enter directly!!!"
+    color_print "warning" "Please to set env to install vim locally? If not exist, please enter directly!!!"
 
 	if [ "${VIMART_SRC_PATH}" = "" ]; then
 		read -p "VIMART_SRC_PATH:" curEnv
