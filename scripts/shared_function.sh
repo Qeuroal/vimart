@@ -85,17 +85,28 @@ function install_vim_plugins() {
     color_print "info" "Installing plugins..."
     vim -c "PlugInstall" -c "q" -c "q"
 
+    # 设置路径变量
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1"  ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2"  ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
     # ycm_extra_conf 配置
-    vimrc_ycm_config_path=${HOME}"/.vimrc.ycm.config"
+    vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
     is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
     if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
         # echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
         color_print "info" "Coping the .ycm_tra_conf.py file..."
-        ycm_extra_conf_path=${PWD}"/configuration/.ycm_extra_conf.py"
-        cp -f ${ycm_extra_conf_path} ~
+        ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
+        cp -f ${ycm_extra_conf_path} ${destPath}
 
-        ################################################################################################################
+        ###############################################################################
         # # 使用自带的 ycm_extra_conf 文件 (!!!!!!!!!!!!!!!!!! 舍弃 !!!!!!!!!!!!!!!!!!)
         # isYcmExtraConfExist=$(is_exist_file ${ycm_extra_conf_path})
         # if [ ${isYcmExtraConfExist} == 0 ]; then
@@ -104,7 +115,7 @@ function install_vim_plugins() {
         #     # color_print "info" "===============================>Existing ${ycm_extra_conf_path}"
         #     # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
         # fi
-        ################################################################################################################
+        ###############################################################################
     fi
 }
 #<}}}
