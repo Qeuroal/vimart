@@ -30,7 +30,20 @@ isExist=$(is_exist_folder ${vimPath})
 if [ ${isExist} == 1 ]; then
     # echo -e "\033[31mRemove ${vimPath}\033[0m"
     color_print "info" "Remove ${vimPath}"
-    sudo rm -rf ${vimPath}
+
+    type=$(uname)
+    if [ ${type} == "Darwin" ]; then
+        sudo rm -rf ${vimPath}
+    elif [ ${type} == "FreeBSD" ]; then
+        # installVimartOnFreebsd
+        sudo rm -rf ${vimPath}
+    elif [ ${type} == "Linux" ]; then
+        if [ `groups | grep -c sudo` != 0 ]; then
+            sudo rm -rf ${vimPath}
+        else
+            rm -rf ${vimPath}
+        fi
+    fi
 fi
 
 # delete .viminfo
