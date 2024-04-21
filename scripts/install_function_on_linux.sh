@@ -122,6 +122,39 @@ function copy_reference_usr_file() {
 }
 #<}}}
 
+#{{{> modidy user chown
+function chown_user_permission() {
+    local username="${VIMART_CHOWN_USER}"
+    if [ "${username}" = "" ]; then
+        color_print "info" "cancel to chown user's .vim*"
+        return 1
+    fi
+
+    local userhome=$(eval echo ~${username})
+    color_print "info" "chown .vim* to user ${username}, userhome: ${usrhome}"
+
+    if [ -d "${userhome}/.vim" ]; then
+        chown ${userhome}:${userhome} ${userhome}/.vim
+    fi
+
+    if [ -e "${userhome}/.vimart" ]; then
+        chown ${userhome}:${userhome} ${userhome}/.vimart
+    fi
+
+    if [ -e "${userhome}/.vimrc" ]; then
+        chown ${userhome}:${userhome} ${userhome}/.vimrc
+    fi
+
+    if [ -e "${userhome}/.vimrc.custom.config" ]; then
+        chown ${userhome}:${userhome} ${userhome}/.vimrc.custom.config
+    fi
+
+    if [ -e "${userhome}/.vimrc.custom.plugins" ]; then
+        chown ${userhome}:${userhome} ${userhome}/.vimrc.custom.plugins
+    fi
+}
+#<}}}
+
 #{{{> local install vimart
 function local_install_vimart_on_linux() {
     srcPath="${VIMART_SRC_PATH}"
@@ -142,6 +175,7 @@ function local_install_vimart_on_linux() {
 
     copy_reference_usr_file ${destPath}
     copy_files ${srcPath} ${destPath}
+    chown_user_permission
 }
 #<}}}
 
