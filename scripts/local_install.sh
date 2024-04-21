@@ -7,33 +7,33 @@ source ${PWD}/scripts/install_function_on_linux.sh
 function exportEnv() {
     color_print "warning" "Please to set env to install vim locally? If not exist, please enter directly!!!"
 
-	if [ "${VIMART_SRC_PATH}" = "" ]; then
-		read -p "VIMART_SRC_PATH:" curEnv
-		if [ "${curEnv}" != "" ]; then
-			export VIMART_SRC_PATH=${curEnv}
-		fi
-	fi
+    if [ "${VIMART_SRC_PATH}" = "" ]; then
+        read -p "VIMART_SRC_PATH (vimart directory): " curEnv
+        if [ "${curEnv}" != "" ]; then
+            export VIMART_SRC_PATH=${curEnv}
+        fi
+    fi
 
-	if [ "${VIMART_DEST_PATH}" = "" ]; then
-		read -p "VIMART_DEST_PATH:" curEnv
-		if [ "${curEnv}" != "" ]; then
-			export VIMART_DEST_PATH=${curEnv}
-		fi
-	fi
+    if [ "${VIMART_DEST_PATH}" = "" ]; then
+        read -p "VIMART_DEST_PATH (destination HOME path):" curEnv
+        if [ "${curEnv}" != "" ]; then
+            export VIMART_DEST_PATH=${curEnv}
+        fi
+    fi
 
-	if [ "${VIMART_REFERENCE_USER}" = "" ]; then
-		read -p "VIMART_REFERENCE_USER:" curEnv
-		if [ "${curEnv}" != "" ]; then
-			export VIMART_REFERENCE_USER=${curEnv}
-		fi
-	fi
+    if [ "${VIMART_REFERENCE_USER}" = "" ]; then
+        read -p "VIMART_REFERENCE_USER (user by copied): " curEnv
+        if [ "${curEnv}" != "" ]; then
+            export VIMART_REFERENCE_USER=${curEnv}
+        fi
+    fi
 
-	if [ "${VIMART_CHOWN_USER}" = "" ]; then
-		read -p "VIMART_CHOWN_USER:" curEnv
-		if [ "${curEnv}" != "" ]; then
-			export VIMART_CHOWN_USER=${curEnv}
-		fi
-	fi
+    if [ "${VIMART_CHOWN_USER}" = "" ]; then
+        read -p "VIMART_CHOWN_USER (owner of copied files): " curEnv
+        if [ "${curEnv}" != "" ]; then
+            export VIMART_CHOWN_USER=${curEnv}
+        fi
+    fi
 }
 
 function main() {
