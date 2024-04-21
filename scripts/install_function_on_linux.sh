@@ -90,6 +90,25 @@ function install_vimart_on_linux() {
 }
 # <}}}
 
+#{{{> copy ycm config
+function copy_ycm_config() {
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1"  ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2"  ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
+    if [ `ls ${destPath}/.vim/plugged | grep -c YouCompleteMe` != 0  ]; then
+        rm -rf ${destPath}/.vimrc.ycm.config
+        ln -s ${srcPath}/configuration/vimrc.ycm.config ${destPath}/.vimrc.ycm.config
+    fi
+}
+#<}}}
+
 #{{{> copy reference-user's config-files and plugin-files
 function copy_reference_usr_file() {
     destPath=$HOME
@@ -122,6 +141,43 @@ function copy_reference_usr_file() {
 }
 #<}}}
 
+#{{{> modidy user chown
+function chown_user_permission() {
+    local username="${VIMART_CHOWN_USER}"
+    if [ "${username}" = "" ]; then
+        color_print "info" "cancel to chown user's .vim*"
+        return 0
+    fi
+
+    local userhome=$(eval echo ~${username})
+    color_print "info" "chown .vim* to user ${username}, userhome: ${userhome}"
+
+    if [ -d "${userhome}/.vim" ]; then
+        chown -R ${username}:${username} ${userhome}/.vim
+    fi
+
+    if [ -e "${userhome}/.vimart" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimart
+    fi
+
+    if [ -e "${userhome}/.vimrc" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimrc
+    fi
+
+    if [ -e "${userhome}/.vimrc.custom.config" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimrc.custom.config
+    fi
+
+    if [ -e "${userhome}/.vimrc.custom.plugins" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimrc.custom.plugins
+    fi
+
+    if [ -e "${userhome}/.ycm_extra_conf.py" ]; then
+        chown -R ${username}:${username} ${userhome}/.ycm_extra_conf.py
+    fi
+}
+#<}}}
+
 #{{{> local install vimart
 function local_install_vimart_on_linux() {
     srcPath="${VIMART_SRC_PATH}"
@@ -140,8 +196,11 @@ function local_install_vimart_on_linux() {
     fi
     color_print "info" "destination path: $destPath"
 
-    copy_files ${srcPath} ${destPath}
     copy_reference_usr_file ${destPath}
+    copy_files ${srcPath} ${destPath}
+    copy_ycm_config ${srcPath} ${destPath}
+    config_vim_ycm ${srcPath} ${destPath}
+    chown_user_permission
 }
 #<}}}
 
