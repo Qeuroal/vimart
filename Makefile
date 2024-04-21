@@ -11,5 +11,5 @@ uninstall:
 
 clean:
 	@yes y | bash scripts/uninstall.sh
-	@rm -i vimart_envs
+	@if [ -e ./vimart_envs  ]; then rm -i ./vimart_envs; fi
 
