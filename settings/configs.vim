@@ -29,8 +29,6 @@ set ruler                               " 总是显示光标位置
 set laststatus=2                        " 总是显示状态栏
 set relativenumber number               " 开启行号显示: relative and number
 set cursorline                          " 高亮显示当前行
-set guicursor=n-v-c-i:block             " 设置光标为方块
-" set guicursor=a:block                   " 设置光标为方块
 set whichwrap+=<,>,h,l                  " 设置光标键跨行
 set ttimeoutlen=0                       " 设置<ESC>键响应时间
 set virtualedit=block,onemore           " 允许光标出现在最后一个字符的后面
@@ -113,7 +111,7 @@ set fileencodings=ucs-bom,utf-8,gb18030,latin1
 " {{{> gvim/macvim 设置
 if has("gui_running")
     if has('win32') || has('win64') || has('win16')
-        set guifont=JetBrainsMono\ Nerd\ Font:h18                           " 设置字体: JetBrainsMono Nerd Font
+        set guifont=JetBrainsMonoNL\ NFM:h14                                " 设置字体: JetBrainsMonoNL Nerd Font
     else
         let system = system('uname -s')
         if system == "Darwin\n"
@@ -126,13 +124,14 @@ if has("gui_running")
         endif
     endif
 
-    set guioptions-=m               " 隐藏菜单栏
-    set guioptions-=T               " 隐藏工具栏
-    set guioptions-=L               " 隐藏左侧滚动条
-    set guioptions-=r               " 隐藏右侧滚动条
-    set guioptions-=b               " 隐藏底部滚动条
-    set showtabline=0               " 隐藏Tab栏
-    " set guicursor=n-v-c-i:block     " 设置光标为方块
+    set guioptions-=m                   " 隐藏菜单栏
+    set guioptions-=T                   " 隐藏工具栏
+    set guioptions-=L                   " 隐藏左侧滚动条
+    set guioptions-=r                   " 隐藏右侧滚动条
+    set guioptions-=b                   " 隐藏底部滚动条
+    set showtabline=0                   " 隐藏Tab栏
+    " set guicursor=n-v-c-i:block         " 设置光标为方块
+    set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
 endif
 " <}}}
 
