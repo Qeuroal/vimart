@@ -115,12 +115,9 @@ if has("gui_running")
     else
         let system = system('uname -s')
         if system == "Darwin\n"
-            set guifont=JetBrainsMono\ Nerd\ Font:h18                       " 设置字体: JetBrainsMono Nerd Font
-            " set guifont=JetBrains\ Mono:h18                               " 设置字体: Jetbrain Mono
-            " set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18       " 设置字体
-            " set guifont=MesloLGS\ NF:h18                                  " 设置字体: MesloLGS NF
+            set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
         else
-            set guifont=DroidSansMono\ Nerd\ Font\ Regular\ 18      " 设置字体
+            set guifont=JetBrainsMonoNL\ Nerd\ Font\ 18                     " 设置字体: JetBrainsMonoNL Nerd Font
         endif
     endif
 
