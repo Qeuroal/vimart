@@ -115,7 +115,7 @@ if has("gui_running")
     if system == "Darwin\n"
         set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
     else
-        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 18                     " 设置字体: JetBrainsMonoNL Nerd Font
+        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 16                     " 设置字体: JetBrainsMonoNL Nerd Font
     endif
 
     set guioptions-=m                   " 隐藏菜单栏
