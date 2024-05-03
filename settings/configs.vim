@@ -110,15 +110,12 @@ set fileencodings=ucs-bom,utf-8,gb18030,latin1
 
 " {{{> gvim/macvim 设置
 if has("gui_running")
-    if has('win32') || has('win64') || has('win16')
-        set guifont=JetBrainsMonoNL\ NFM:h14                                " 设置字体: JetBrainsMonoNL Nerd Font
+    # 无需配置windows系统相关
+    let system = system('uname -s')
+    if system == "Darwin\n"
+        set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
     else
-        let system = system('uname -s')
-        if system == "Darwin\n"
-            set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
-        else
-            set guifont=JetBrainsMonoNL\ Nerd\ Font\ 18                     " 设置字体: JetBrainsMonoNL Nerd Font
-        endif
+        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 18                     " 设置字体: JetBrainsMonoNL Nerd Font
     endif
 
     set guioptions-=m                   " 隐藏菜单栏
