@@ -110,7 +110,7 @@ set fileencodings=ucs-bom,utf-8,gb18030,latin1
 
 " {{{> gvim/macvim 设置
 if has("gui_running")
-    # 无需配置windows系统相关
+    " 无需配置windows系统相关
     let system = system('uname -s')
     if system == "Darwin\n"
         set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
