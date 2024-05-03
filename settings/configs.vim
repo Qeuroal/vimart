@@ -126,6 +126,7 @@ if has("gui_running")
     set showtabline=0                   " 隐藏Tab栏
     " set guicursor=n-v-c-i:block         " 设置光标为方块
     set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
+    set lines=999 columns=999           " 设置启动为最大化窗口
 endif
 " <}}}
 
