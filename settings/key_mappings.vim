@@ -77,9 +77,9 @@ nnoremap <leader>kc :call popup_clear(1)<cr>
 
 "{{{> 会话相关
 " 创建会话
-nnoremap <silent> <leader>kms :mksession! .Session.vim<cr>
+nnoremap <silent> <leader>kss :mksession! .Session.vim<cr>
 " 加载会话
-nnoremap <silent> <leader>kls :source .Session.vim<cr>
+nnoremap <silent> <leader>ksl :source .Session.vim<cr>
 "<}}}
 
 "{{{> 窗口相关
