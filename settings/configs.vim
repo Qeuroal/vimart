@@ -31,6 +31,7 @@ set relativenumber number               " 开启行号显示: relative and numbe
 set cursorline                          " 高亮显示当前行
 set whichwrap+=<,>,h,l                  " 设置光标键跨行
 set ttimeoutlen=0                       " 设置<ESC>键响应时间
+set timeoutlen=4000                     " 设置<leader>按键响应时间
 set virtualedit=block,onemore           " 允许光标出现在最后一个字符的后面
 set clipboard=unnamed                   " 设置 vim 与系统共用剪贴板
 set foldmarker={{{>,<}}}                " 设置标志折叠的标志
