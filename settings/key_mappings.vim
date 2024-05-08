@@ -18,31 +18,11 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 "<}}}
 
-"{{{> 括号
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " 定义跳出括号函数，用于跳出括号
-    " func SkipPair()
-    "     if getline('.')[col('.') - 1] == ')' || getline('.')[col('.') - 1] == ']' || getline('.')[col('.') - 1] == '"' || getline('.')[col('.') - 1] == "'" || getline('.')[col('.') - 1] == '}'
-    "         return "\<ESC>la"
-    "     else
-    "         return "\t"
-    "     endif
-    " endfunc
-    " 将tab键绑定为跳出括号
-    " inoremap <TAB> <c-r>=SkipPair()<CR>
-    " inoremap \"<LEFT><CR> <CR>\"<ESC><UP>o
-    " inoremap '<LEFT><CR> <CR>'<ESC><UP>o
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" inoremap }<LEFT><CR> <CR>}<ESC><UP>o
-" inoremap ]<LEFT><CR> <CR>]<ESC><UP>o
-" inoremap )<LEFT><CR> <CR><BS><BS>)<ESC><UP>o<BS>
-"<}}}
-
 "{{{> 正常模式绑定按键
 " 编辑vimrc相关配置文件
 " nnoremap <leader>e :edit $MYVIMRC<cr>
-nnoremap <leader>evc :edit ~/.vimrc.custom.config<cr>
-nnoremap <leader>evp :edit ~/.vimrc.custom.plugins<cr>
+" nnoremap <leader>evc :edit ~/.vimrc.custom.config<cr>
+" nnoremap <leader>evp :edit ~/.vimrc.custom.plugins<cr>
 " 重新加载vimrc文件
 " nnoremap <leader>s :source $MYVIMRC<cr>
 
@@ -53,9 +33,9 @@ nnoremap <leader>h :view +let\ &l:modifiable=0 ~/.vimart/docs/help.md<cr>
 nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 
 " 安装、更新、删除插件
-nnoremap <leader>kpi :PlugInstall<cr>
-nnoremap <leader>kpu :PlugUpdate<cr>
-nnoremap <leader>kpc :PlugClean<cr>
+" nnoremap <leader>kpi :PlugInstall<cr>
+" nnoremap <leader>kpu :PlugUpdate<cr>
+" nnoremap <leader>kpc :PlugClean<cr>
 
 " 相对行号的开启/关闭
 nnoremap <silent> <leader>kn :call ToggleNumber()<cr>
