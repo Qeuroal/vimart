@@ -81,8 +81,6 @@ let g:mkdp_preview_options = {
 "<}}}
 
 "{{{> tabular
-" nnoremap <leader><leader>l :Tab /\|<cr>
-" nnoremap <leader><leader>= :Tab /=<cr>
 "<}}}
 
 "{{{> auto-pairs
@@ -94,8 +92,6 @@ au FileType tex let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`
 "{{{> vim-buffer
 nnoremap <silent> <c-p> :PreviousBuffer<cr>
 nnoremap <silent> <c-n> :NextBuffer<cr>
-" nnoremap <silent> <leader>d :CloseBuffer<cr>
-" nnoremap <silent> <leader>D :BufOnly<cr>
 "<}}}
 
 "{{{> airline
