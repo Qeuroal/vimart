@@ -116,7 +116,8 @@ let g:prepare_code_plugin_path = expand($HOME . "/.vim/plugged/prepare-code")
 "<}}}
 
 "{{{> nerdtree
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
+nnoremap <silent> <leader>nt :NERDTreeToggle<cr>
+nnoremap <silent> <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
