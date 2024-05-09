@@ -46,6 +46,9 @@ function copy_files() {
     rm -rf ${destPath}/.vim/colors
     ln -s ${srcPath}/colors ${destPath}/.vim/
 
+    # .vim/bin
+    mkdir -p ${destPath}/.vim/bin
+
     # vim-plug by copy
     cp -rf ${srcPath}/autoload ${destPath}/.vim/
 
@@ -348,20 +351,38 @@ function configure_shell() {
 
 #{{{> config ctags
 function configureCtags() {
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2" ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
     targetFile="${HOME}/.ctags"
     if [[ ! -f ${targetFile} ]]; then
         touch ${targetFile}
     fi
 
-    if test `cat ${targetFile} | grep -c "\-\-langdef=markdown"` = 0
-    then
-        echo '' >> ${targetFile}
-        echo '--langdef=markdown' >> ${targetFile}
-        echo '--langmap=markdown:.mkd' >> ${targetFile}
-        echo '--regex-markdown=/^#[ \\t]+(.*)/\1/h,Heading_L1/' >> ${targetFile}
-        echo '--regex-markdown=/^##[ \\t]+(.*)/\1/i,Heading_L2/' >> ${targetFile}
-        echo '--regex-markdown=/^###[ \\t]+(.*)/\1/k,Heading_L3/' >> ${targetFile}
-        echo '' >> ${targetFile}
+    # copy mdctags
+    type=$(uname)
+    if [ "${type}" = "Darwin" ]; then
+        cp -rf ${srcPath}/assets/packages/mdctags/mdctags_Darwin ${destPath}/.vim/bin/mdctags
+    elif [ ${type} = "Linux" ]; then
+        tp=$(uname -a)
+        if [[ $tp =~ "Android" ]]; then
+            echo "mdctags doesn't support platform type: Android"
+        else
+            distro=`get_linux_distro`
+            targetFile="${srcPath}/assets/packages/mdctags/mdctags_${distro}"
+            if [[ -f ${targetFile} ]]; then
+                cp -rf ${targetFile} ${destPath}/.vim/bin/mdctags
+            fi
+        fi
+    else
+        echo "mdctags doesn't support platform type: "${type}
     fi
 }
 #<}}}
