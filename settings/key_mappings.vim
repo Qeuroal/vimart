@@ -45,8 +45,8 @@ nnoremap <leader>c :doautocmd CursorHold<cr>
 
 "{{{> popup
 " 滚动popup
-nnoremap <F9> :call ScrollPopup()<CR>
-nnoremap <F10> :call ScrollPopup(1)<CR>
+nnoremap <F9> :call ScrollPopup(1)<CR>
+nnoremap <F10> :call ScrollPopup(-1)<CR>
 " 关闭popup
 nnoremap <leader>pc :call popup_clear(1)<cr>
 "<}}}
