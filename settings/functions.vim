@@ -16,4 +16,18 @@ function! ToggleNumber()
     endif
 endfunction
 
+" popup滚动
+function ScrollPopup(up=0)
+    if (len(popup_list()) >= 1)
+        let popid = popup_list()[0]
+        let firstline = popup_getoptions(popid)['firstline']
+        if (a:up)
+            call popup_setoptions(popid, {'firstline': max([1, firstline-1])})
+        else
+            call popup_setoptions(popid, {'firstline': firstline+1})
+        endif
+    endif
+endfunc
+
+
 
