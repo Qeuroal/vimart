@@ -18,6 +18,7 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 "<}}}
 
+"{{{> basic key mapping
 " 查看 vimart 的help文件
 nnoremap <leader>h :view +let\ &l:modifiable=0 ~/.vimart/docs/help.md<cr>
 
@@ -35,11 +36,19 @@ nnoremap <leader><leader>p "+p
 
 " 清理所有空行的空格
 nnoremap <leader>ks :%s/^\s*$//g<cr>
+"<}}}
 
+"{{{> autocmd key mapping
 " 手动触发 CursorHold 事件
 nnoremap <leader>c :doautocmd CursorHold<cr>
+"<}}}
+
+"{{{> popup
+" 滚动popup
+nnoremap <F9> :call ScrollPopup()<CR>
+nnoremap <F10> :call ScrollPopup(1)<CR>
 " 关闭popup
-nnoremap <leader>p :call popup_clear(1)<cr>
+nnoremap <leader>pc :call popup_clear(1)<cr>
 "<}}}
 
 "{{{> 会话相关
