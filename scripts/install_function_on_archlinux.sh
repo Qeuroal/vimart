@@ -47,6 +47,7 @@ function configure_plugins_on_archlinux() {
     configure_fzf_on_linux
     configure_tmux
     configure_shell
+    configureCtags
 }
 #<}}}
 

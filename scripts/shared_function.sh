@@ -346,4 +346,26 @@ function configure_shell() {
 }
 #<}}}
 
+#{{{> config ctags
+function configureCtags() {
+    targetFile="${HOME}/.ctags"
+    if [[ ! -f ${targetFile} ]]; then
+        touch ${targetFile}
+    fi
+
+    if test `cat ${targetFile} | grep -c "\-\-langdef=markdown"` = 0
+    then
+        echo '' >> ${targetFile}
+        echo '--langdef=markdown' >> ${targetFile}
+        echo '--langmap=markdown:.mkd' >> ${targetFile}
+        echo '--regex-markdown=/^#[ \\t]+(.*)/\1/h,Heading_L1/' >> ${targetFile}
+        echo '--regex-markdown=/^##[ \\t]+(.*)/\1/i,Heading_L2/' >> ${targetFile}
+        echo '--regex-markdown=/^###[ \\t]+(.*)/\1/k,Heading_L3/' >> ${targetFile}
+        echo '' >> ${targetFile}
+    fi
+}
+#<}}}
+
+
+
 

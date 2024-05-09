@@ -135,6 +135,15 @@ autocmd FileType java,c,cpp set commentstring=//\ %s
 "{{{> tagbar
 let g:tagbar_width = 30
 nnoremap <silent> <leader>tt :TagbarToggle<cr>
+" 支持markdown
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+\ }
 "<}}}
 
 "{{{> nerdtree-git-plugin

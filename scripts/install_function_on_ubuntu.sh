@@ -125,6 +125,7 @@ function configure_plugins_on_ubuntu() {
     configure_fzf_on_linux
     configure_tmux
     configure_shell
+    configureCtags
 }
 #<}}}
 

@@ -24,6 +24,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'Yggdroot/indentLine'                          " 缩进线
 Plug 'preservim/vimux'                              " 不离开vim在随意shell中随便运行命令
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
