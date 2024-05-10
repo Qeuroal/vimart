@@ -16,6 +16,8 @@ source $HOME/.vim/settings/plugins.vim
 source $HOME/.vim/settings/plugins_config.vim
 " 加载键盘映射
 source $HOME/.vim/settings/key_mappings.vim
+" 加载指令配置
+source $HOME/.vim/settings/commands.vim
 " 加载自动指令配置
 source $HOME/.vim/settings/command_automation.vim
 
