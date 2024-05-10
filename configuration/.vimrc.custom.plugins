@@ -12,7 +12,6 @@
 "{{{> 增加~/.vimrc里没有的插件
 " Plug 'iamcco/mathjax-support-for-mkdp'
 " (需要自己安装nodejs和yarn) Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-" Plug 'Yggdroot/indentLine'
 " Plug 'gorodinskiy/vim-coloresque'
 "<}}}
 
