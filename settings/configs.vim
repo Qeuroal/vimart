@@ -40,6 +40,7 @@ set mouse=""                            " 设置鼠标不可用
 set splitbelow                          " 分割窗口, 默认在下方
 set splitright                          " 分割窗口, 默认在右侧
 set noerrorbells visualbell t_vb=       " disable audible bell
+set nofoldenable                        " disable folding by default
 if has("patch-7.4.710")
     set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_ " 设置不可见字符
 else
