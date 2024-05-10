@@ -8,6 +8,10 @@ if exists("s:did_load_mappings_vim")
 endif
 let s:did_load_mappings_vim = 1
 
+"{{{> 解绑按键
+" nmap Q <nop>
+"<}}}
+
 "{{{> import vim scripts
 " 导入 functions.vim
 source ${HOME}/.vim/settings/functions.vim
