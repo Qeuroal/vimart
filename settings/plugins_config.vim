@@ -8,6 +8,16 @@ endif
 let s:did_load_plugins_config_vim = 1
 "<}}}
 
+"{{{> LeaderF
+nnoremap <leader>o :LeaderfFile .<CR>
+nnoremap <leader>f :LeaderfFunction<CR>
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+let g:Lf_UseCache = 0
+"<}}}
+
 "{{{> ultisnips
 " 设置 tab 触发
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -134,7 +144,7 @@ autocmd FileType java,c,cpp set commentstring=//\ %s
 
 "{{{> tagbar
 let g:tagbar_width = 30
-nnoremap <silent> <leader>tt :TagbarToggle<cr>
+nnoremap <silent> <leader>t :TagbarToggle<cr>
 " 支持markdown
 let g:tagbar_type_markdown = {
             \ 'ctagsbin'  : '~/.vim/bin/mdctags',

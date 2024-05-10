@@ -28,12 +28,6 @@ nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 " 相对行号的开启/关闭
 nnoremap <silent> <leader>kn :call ToggleNumber()<cr>
 
-" 复制当前选中到系统剪切板
-vmap <leader><leader>y "+y
-
-" 将系统剪切板内容粘贴到vim
-nnoremap <leader><leader>p "+p
-
 " 清理所有空行的空格
 nnoremap <leader>ks :%s/^\s*$//g<cr>
 "<}}}
