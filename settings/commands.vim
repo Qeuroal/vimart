@@ -9,7 +9,7 @@ let s:did_load_commands_vim = 1
 " <}}}
 
 " save read-only files
-command -nargs=0 sudow w !sudo tee % >/dev/null
+command -nargs=0 Sudow w !sudo tee % >/dev/null
 
 
 
