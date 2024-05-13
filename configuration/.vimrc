@@ -89,7 +89,7 @@ call plug#end()
 runtime macros/matchit.vim
 " <}}}
 
-"<}}}
+"====================================================== <}}}
 
 
 "{{{> ====================== 加载通用配置 ======================
@@ -285,12 +285,12 @@ endif
 set scrolloff=0         " vimrc_example 设置值为5, 导致只要屏幕能滚动, 光标就移不到最上面的 4 行和最下面的 4 行里, 因为一移进去屏幕就会自动滚动
 "<}}}
 
-"<}}}
+"========================================================= <}}}
 
 
 "{{{> ====================== 加载自定义函数 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 相对行号的开启/关闭
+"{{{> 相对行号的开启/关闭
 function! ToggleNumber()
     if (&relativenumber == 1)
         set norelativenumber
@@ -298,8 +298,9 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunction
+"<}}}
 
-" popup滚动
+"{{{> popup滚动
 function! ScrollPopup(nlines=0)
     let winids = popup_list()
     if len(winids) == 0
@@ -322,8 +323,9 @@ function! ScrollPopup(nlines=0)
 
     call popup_setoptions(winids[0], {'firstline': firstline})
 endfunction
-
 "<}}}
+
+"============================================================ <}}}
 
 
 "{{{> ====================== 加载插件配置 ======================
@@ -619,10 +621,7 @@ nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <leader>vz :VimuxZoomRunner<CR>
 "<}}}
 
-
-
-
-"<}}}
+"=========================================================== <}}}
 
 
 "{{{> ====================== 加载指令配置 ======================
@@ -630,7 +629,7 @@ nnoremap <leader>vz :VimuxZoomRunner<CR>
 " save read-only files
 command -nargs=0 Sudow w !sudo tee % >/dev/null
 
-"<}}}
+"========================================================== <}}}
 
 
 "{{{> ====================== 加载自动指令配置 ======================
@@ -652,7 +651,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=3 | set softtabstop=3
 "<}}}
 
-"<}}}
+"============================================================== <}}}
 
 
 "{{{> ====================== 加载键盘映射 ======================
@@ -708,10 +707,10 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 "<}}}
 
-"<}}}
+"========================================================== <}}}
 
 
-"{{{> ====================== 加载用户设置 ======================
+"{{{> ====================== 加载用户配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> 加载用户自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
@@ -719,7 +718,7 @@ if filereadable(expand($HOME . '/.vimrc.custom.config'))
 endif
 "<}}}
 
-"<}}}
+"========================================================== <}}}
 
 
 
