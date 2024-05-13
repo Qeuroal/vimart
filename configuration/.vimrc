@@ -465,6 +465,7 @@ autocmd FileType java,c,cpp set commentstring=//\ %s
 
 "{{{> tagbar
 let g:tagbar_width = 30
+let g:tagbar_sort = 0
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 " 支持markdown
 let g:tagbar_type_markdown = {
