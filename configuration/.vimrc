@@ -1,23 +1,7 @@
 set nocompatible    " VI compatible mode is disabled so that VIm things work
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 加载配置环境
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 加载用户自定义配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
-endif
-
 "{{{> ====================== 加载插件 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/plugins.vim
-"{{{> 判断是否已经加载过该配置文件
-if exists("s:did_load_plugins_vim")
-    finish
-endif
-let s:did_load_plugins_vim = 1
-"<}}}
-
 " {{{> 卸载默认插件 Unplug
 function! s:deregister(repo)
   let repo = substitute(a:repo, '[\/]\+$', '', '')
@@ -27,7 +11,11 @@ endfunction
 command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 " <}}}
 
-"{{{>加载客制选项
+"{{{> 加载客制选项
+" 导入用户配置
+if filereadable(expand($HOME . '/.vimrc.custom.config'))
+    source $HOME/.vimrc.custom.config
+endif
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
 "<}}}
@@ -101,26 +89,15 @@ call plug#end()
 runtime macros/matchit.vim
 " <}}}
 
-
-
-
 "<}}}
 
 
 "{{{> ====================== 加载通用配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/configs.vim
-" {{{> 判断是否已经加载过
-if exists("s:did_load_configs_vim")
-    finish
-endif
-let s:did_load_configs_vim = 1
-" <}}}
-
 " {{{> 加载外部配置
-" source $VIMRUNTIME/vimrc_example.vim    " 导入 Vim 的示例配置（会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
-                                        " 这会加载一些不知道的选项, 不利于整体维护
-                                        " 如果需要请自行添加
+" source $VIMRUNTIME/vimrc_example.vim      " 导入 Vim 的示例配置（会打开一些有用的选项，如语法加亮、搜索加亮、命令历史、记住上次的文件位置，等等）
+                                            " 这会加载一些不知道的选项, 不利于整体维护
+                                            " 如果需要请自行添加
 " <}}}
 
 " {{{> 通用设置
@@ -308,22 +285,11 @@ endif
 set scrolloff=0         " vimrc_example 设置值为5, 导致只要屏幕能滚动, 光标就移不到最上面的 4 行和最下面的 4 行里, 因为一移进去屏幕就会自动滚动
 "<}}}
 
-
-
-
-
 "<}}}
 
 
 "{{{> ====================== 加载自定义函数 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/functions.vim
-" 判断是否已经加载过
-if exists("s:did_load_functions_vim")
-    finish
-endif
-let s:did_load_functions_vim = 1
-
 " 相对行号的开启/关闭
 function! ToggleNumber()
     if (&relativenumber == 1)
@@ -357,22 +323,11 @@ function! ScrollPopup(nlines=0)
     call popup_setoptions(winids[0], {'firstline': firstline})
 endfunction
 
-
-
-
 "<}}}
 
 
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/plugins_config.vim
-"{{{> 判断是否已经加载过该配置文件
-if exists("s:did_load_plugins_config_vim")
-    finish
-endif
-let s:did_load_plugins_config_vim = 1
-"<}}}
-
 "{{{> LeaderF
 nnoremap <leader>o :LeaderfFile .<CR>
 nnoremap <leader>f :LeaderfFunction<CR>
@@ -672,32 +627,14 @@ nnoremap <leader>vz :VimuxZoomRunner<CR>
 
 "{{{> ====================== 加载指令配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/commands.vim
-" {{{> 判断是否已经加载过
-if exists("s:did_load_commands_vim")
-    finish
-endif
-let s:did_load_commands_vim = 1
-" <}}}
-
 " save read-only files
 command -nargs=0 Sudow w !sudo tee % >/dev/null
-
-
-
 
 "<}}}
 
 
 "{{{> ====================== 加载自动指令配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/command_automation.vim
-" 判断是否已经加载过
-if exists("s:did_load_command_automation_vim")
-    finish
-endif
-let s:did_load_command_automation_vim = 1
-
 "{{{> 打开文件自动定位到最后编辑的位置
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 "<}}}
@@ -715,29 +652,13 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=3 | set softtabstop=3
 "<}}}
 
-
-
-
-
 "<}}}
 
 
 "{{{> ====================== 加载键盘映射 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" source $HOME/.vim/settings/key_mappings.vim
-" 判断是否已经加载过
-if exists("s:did_load_mappings_vim")
-    finish
-endif
-let s:did_load_mappings_vim = 1
-
 "{{{> 解绑按键
 " nmap Q <nop>
-"<}}}
-
-"{{{> import vim scripts
-" 导入 functions.vim
-source ${HOME}/.vim/settings/functions.vim
 "<}}}
 
 "{{{> 端点
@@ -787,9 +708,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 "<}}}
 
-
-
-
 "<}}}
 
 
@@ -801,7 +719,8 @@ if filereadable(expand($HOME . '/.vimrc.custom.config'))
 endif
 "<}}}
 
-
 "<}}}
+
+
 
 
