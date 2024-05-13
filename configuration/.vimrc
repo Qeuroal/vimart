@@ -330,8 +330,8 @@ endfunction
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> LeaderF
-nnoremap <leader>o :LeaderfFile .<CR>
-nnoremap <leader>f :LeaderfFunction<CR>
+nnoremap <silent> <leader>o :LeaderfFile .<CR>
+nnoremap <silent> <leader>f :LeaderfFunction<CR>
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
@@ -604,7 +604,7 @@ autocmd BufWinEnter *.* RainbowLoad
 "<}}}
 
 "{{{> undotree
-nnoremap <leader><F5> :UndotreeToggle<CR>
+nnoremap <silent> <leader><F5> :UndotreeToggle<CR>
 "<}}}
 
 "{{{> vim-markdown
@@ -616,13 +616,13 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 "{{{> preservim/vimux
 " Prompt for a command to run
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
-nnoremap <leader>vz :VimuxZoomRunner<CR>
+nnoremap <silent> <leader>vz :VimuxZoomRunner<CR>
 "<}}}
 
 "====================== 加载插件配置 ====================== <}}}
@@ -685,22 +685,22 @@ nnoremap <leader>ks :%s/^\s*$//g<cr>
 
 "{{{> autocmd key mapping
 " 手动触发 CursorHold 事件
-nnoremap <leader>c :doautocmd CursorHold<cr>
+nnoremap <silent> <leader>c :doautocmd CursorHold<cr>
 "<}}}
 
 "{{{> popup
 " 滚动popup
-nnoremap <F9> :call ScrollPopup(1)<CR>
-nnoremap <F10> :call ScrollPopup(-1)<CR>
+nnoremap <silent> <F9> :call ScrollPopup(1)<CR>
+nnoremap <silent> <F10> :call ScrollPopup(-1)<CR>
 " 关闭popup
-nnoremap <leader>pc :call popup_clear(1)<cr>
+nnoremap <silent> <leader>pc :call popup_clear(1)<cr>
 "<}}}
 
 "{{{> 会话相关
 " 创建会话
-nnoremap <silent> <leader>kss :mksession! .Session.vim<cr>
+nnoremap <leader>kss :mksession! .Session.vim<cr>
 " 加载会话
-nnoremap <silent> <leader>ksl :source .Session.vim<cr>
+nnoremap <leader>ksl :source .Session.vim<cr>
 "<}}}
 
 "{{{> 窗口相关
