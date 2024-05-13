@@ -196,50 +196,6 @@ set fileencodings=ucs-bom,utf-8,gb18030,latin1
 " set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 " <}}}
 
-" {{{> gvim/macvim 设置
-if has("gui_running")
-    " 无需配置windows系统相关
-    let system = system('uname -s')
-    if system == "Darwin\n"
-        set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
-    else
-        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 16                     " 设置字体: JetBrainsMonoNL Nerd Font
-    endif
-
-    set guioptions-=m                   " 隐藏菜单栏
-    set guioptions-=T                   " 隐藏工具栏
-    set guioptions-=L                   " 隐藏左侧滚动条
-    set guioptions-=r                   " 隐藏右侧滚动条
-    set guioptions-=b                   " 隐藏底部滚动条
-    set showtabline=0                   " 隐藏Tab栏
-    " set guicursor=n-v-c-i:block         " 设置光标为方块
-    set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
-    set lines=999 columns=999           " 设置启动为最大化窗口
-elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
-    " Cursor settings:
-    "  1 -> blinking block
-    "  2 -> solid block
-    "  3 -> blinking underscore
-    "  4 -> solid underscore
-    "  5 -> blinking vertical bar
-    "  6 -> solid vertical bar
-
-    " modes:
-    " SI = INSERT mode
-    " SR = REPLACE mode
-    " EI = NORMAL mode (ELSE)
-
-    " 使用 DECSCUSR 转义序列
-    let &t_SI = "\e[2 q"
-    let &t_SR = "\e[2 q"
-    let &t_EI = "\e[2 q"
-    let &t_ti ..= "\e[2 q"
-    let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
-else
-    echo &term
-endif
-" <}}}
-
 " {{{> 主题设置
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -283,6 +239,50 @@ endif
 "{{{> vimrc_example 的设定修改
 set scrolloff=0         " vimrc_example 设置值为5, 导致只要屏幕能滚动, 光标就移不到最上面的 4 行和最下面的 4 行里, 因为一移进去屏幕就会自动滚动
 "<}}}
+
+" {{{> gvim/macvim 设置
+if has("gui_running")
+    " 无需配置windows系统相关
+    let system = system('uname -s')
+    if system == "Darwin\n"
+        set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
+    else
+        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 16                     " 设置字体: JetBrainsMonoNL Nerd Font
+    endif
+
+    set guioptions-=m                   " 隐藏菜单栏
+    set guioptions-=T                   " 隐藏工具栏
+    set guioptions-=L                   " 隐藏左侧滚动条
+    set guioptions-=r                   " 隐藏右侧滚动条
+    set guioptions-=b                   " 隐藏底部滚动条
+    set showtabline=0                   " 隐藏Tab栏
+    " set guicursor=n-v-c-i:block         " 设置光标为方块
+    set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
+    set lines=999 columns=999           " 设置启动为最大化窗口
+elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
+    " Cursor settings:
+    "  1 -> blinking block
+    "  2 -> solid block
+    "  3 -> blinking underscore
+    "  4 -> solid underscore
+    "  5 -> blinking vertical bar
+    "  6 -> solid vertical bar
+
+    " modes:
+    " SI = INSERT mode
+    " SR = REPLACE mode
+    " EI = NORMAL mode (ELSE)
+
+    " 使用 DECSCUSR 转义序列
+    let &t_SI = "\e[2 q"
+    let &t_SR = "\e[2 q"
+    let &t_EI = "\e[2 q"
+    let &t_ti ..= "\e[2 q"
+    let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+else
+    echo &term
+endif
+" <}}}
 
 "====================== 加载通用配置 ====================== <}}}
 
