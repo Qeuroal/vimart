@@ -339,6 +339,10 @@ let g:Lf_WildIgnore = {
 let g:Lf_UseCache = 0
 "<}}}
 
+"{{{> fzf
+nnoremap <silent> <leader>F :Rg<CR>
+"<}}}
+
 "{{{> ultisnips
 " 设置 tab 触发
 let g:UltiSnipsExpandTrigger="<tab>"
