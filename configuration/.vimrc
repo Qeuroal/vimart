@@ -126,7 +126,6 @@ set mouse=""                            " 设置鼠标不可用
 set splitbelow                          " 分割窗口, 默认在下方
 set splitright                          " 分割窗口, 默认在右侧
 set noerrorbells visualbell t_vb=       " disable audible bell
-set nofoldenable                        " disable folding by default
 if has("patch-7.4.710")
     set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_ " 设置不可见字符
 else
@@ -153,7 +152,7 @@ set smarttab                    " 在行和段开始处使用制表符
 " set nowrap                    " 禁止折行
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
-" set nofoldenable              " 禁用折叠代码
+set nofoldenable                " 禁用折叠代码
 " <}}}
 
 " {{{> 代码补全
