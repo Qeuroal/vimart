@@ -14,7 +14,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 "{{{> 加载客制选项
 " 导入用户配置
 if filereadable(expand('~/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
+    source ~/.vimrc.custom.config
 endif
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
@@ -76,11 +76,11 @@ endif
 
 " 加载自定义插件
 if filereadable(expand('~/.vimrc.custom.plugins'))
-    source $HOME/.vimrc.custom.plugins
+    source ~/.vimrc.custom.plugins
 endif
 
 " 加载过去/待选的插件
-source $HOME/.vim/settings/former_plugins.vim
+source ~/.vim/settings/former_plugins.vim
 
 call plug#end()
 " <}}}
@@ -534,7 +534,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 let g:completeScheme=get(g:, "completeScheme", 0)
 " if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config'))
-    source $HOME/.vimrc.ycm.config
+    source ~/.vimrc.ycm.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
     " enable this plugin for filetypes, '*' for all files.
@@ -718,7 +718,7 @@ nnoremap <C-l> <C-W>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> 加载用户自定义配置
 if filereadable(expand('~/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
+    source ~/.vimrc.custom.config
 endif
 "<}}}
 
