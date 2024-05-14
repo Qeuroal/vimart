@@ -13,8 +13,8 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 
 "{{{> 加载客制选项
 " 导入用户配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
+if filereadable(expand('~/.vimrc.custom.config'))
+    source ~/.vimrc.custom.config
 endif
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
@@ -60,7 +60,7 @@ Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
 Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 
 " 加载补全插件
-" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+" if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1
     "启用 ycm 插件
     Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
@@ -75,12 +75,12 @@ elseif g:completeScheme == 3
 endif
 
 " 加载自定义插件
-if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
-    source $HOME/.vimrc.custom.plugins
+if filereadable(expand('~/.vimrc.custom.plugins'))
+    source ~/.vimrc.custom.plugins
 endif
 
 " 加载过去/待选的插件
-source $HOME/.vim/settings/former_plugins.vim
+source ~/.vim/settings/former_plugins.vim
 
 call plug#end()
 " <}}}
@@ -164,7 +164,7 @@ set completeopt=menu,menuone,noselect       " 补全时不选择第一项
 set hlsearch                " 高亮显示搜索结果
 set incsearch               " 开启实时搜索功能
 set ignorecase smartcase    " 智能大小写不敏感
-set grepprg=rg\ --vimgrep\ --smart-case\ --follow " 设置grep 为 grepprg
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow\ --hidden     " 设置grep 为 grepprg
 " <}}}
 
 " {{{> 缓存设置
@@ -194,50 +194,6 @@ set termencoding=utf-8
 set encoding=utf8
 set fileencodings=ucs-bom,utf-8,gb18030,latin1
 " set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
-" <}}}
-
-" {{{> gvim/macvim 设置
-if has("gui_running")
-    " 无需配置windows系统相关
-    let system = system('uname -s')
-    if system == "Darwin\n"
-        set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
-    else
-        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 16                     " 设置字体: JetBrainsMonoNL Nerd Font
-    endif
-
-    set guioptions-=m                   " 隐藏菜单栏
-    set guioptions-=T                   " 隐藏工具栏
-    set guioptions-=L                   " 隐藏左侧滚动条
-    set guioptions-=r                   " 隐藏右侧滚动条
-    set guioptions-=b                   " 隐藏底部滚动条
-    set showtabline=0                   " 隐藏Tab栏
-    " set guicursor=n-v-c-i:block         " 设置光标为方块
-    set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
-    set lines=999 columns=999           " 设置启动为最大化窗口
-elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
-    " Cursor settings:
-    "  1 -> blinking block
-    "  2 -> solid block
-    "  3 -> blinking underscore
-    "  4 -> solid underscore
-    "  5 -> blinking vertical bar
-    "  6 -> solid vertical bar
-
-    " modes:
-    " SI = INSERT mode
-    " SR = REPLACE mode
-    " EI = NORMAL mode (ELSE)
-
-    " 使用 DECSCUSR 转义序列
-    let &t_SI = "\e[2 q"
-    let &t_SR = "\e[2 q"
-    let &t_EI = "\e[2 q"
-    let &t_ti ..= "\e[2 q"
-    let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
-else
-    echo &term
-endif
 " <}}}
 
 " {{{> 主题设置
@@ -283,6 +239,50 @@ endif
 "{{{> vimrc_example 的设定修改
 set scrolloff=0         " vimrc_example 设置值为5, 导致只要屏幕能滚动, 光标就移不到最上面的 4 行和最下面的 4 行里, 因为一移进去屏幕就会自动滚动
 "<}}}
+
+" {{{> gvim/macvim 设置
+if has("gui_running")
+    " 无需配置windows系统相关
+    let system = system('uname -s')
+    if system == "Darwin\n"
+        set guifont=JetBrainsMonoNL\ Nerd\ Font:h20                     " 设置字体: JetBrainsMonoNL Nerd Font
+    else
+        set guifont=JetBrainsMonoNL\ Nerd\ Font\ 16                     " 设置字体: JetBrainsMonoNL Nerd Font
+    endif
+
+    set guioptions-=m                   " 隐藏菜单栏
+    set guioptions-=T                   " 隐藏工具栏
+    set guioptions-=L                   " 隐藏左侧滚动条
+    set guioptions-=r                   " 隐藏右侧滚动条
+    set guioptions-=b                   " 隐藏底部滚动条
+    set showtabline=0                   " 隐藏Tab栏
+    " set guicursor=n-v-c-i:block         " 设置光标为方块
+    set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
+    set lines=999 columns=999           " 设置启动为最大化窗口
+elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
+    " Cursor settings:
+    "  1 -> blinking block
+    "  2 -> solid block
+    "  3 -> blinking underscore
+    "  4 -> solid underscore
+    "  5 -> blinking vertical bar
+    "  6 -> solid vertical bar
+
+    " modes:
+    " SI = INSERT mode
+    " SR = REPLACE mode
+    " EI = NORMAL mode (ELSE)
+
+    " 使用 DECSCUSR 转义序列
+    let &t_SI = "\e[2 q"
+    let &t_SR = "\e[2 q"
+    let &t_EI = "\e[2 q"
+    let &t_ti ..= "\e[2 q"
+    let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+else
+    echo &term
+endif
+" <}}}
 
 "====================== 加载通用配置 ====================== <}}}
 
@@ -330,13 +330,17 @@ endfunction
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> LeaderF
-nnoremap <leader>o :LeaderfFile .<CR>
-nnoremap <leader>f :LeaderfFunction<CR>
+nnoremap <silent> <leader>o :LeaderfFile .<CR>
+nnoremap <silent> <leader>f :LeaderfFunction<CR>
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_UseCache = 0
+"<}}}
+
+"{{{> fzf
+nnoremap <silent> <leader>F :Rg<CR>
 "<}}}
 
 "{{{> ultisnips
@@ -439,7 +443,7 @@ let g:airline_right_alt_sep = ''
 "<}}}
 
 "{{{> prepare-code
-let g:prepare_code_plugin_path = expand($HOME . "/.vim/plugged/prepare-code")
+let g:prepare_code_plugin_path = expand("~/.vim/plugged/prepare-code")
 "<}}}
 
 "{{{> nerdtree
@@ -528,9 +532,9 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "{{{> 加载补全配置
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
-" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
-if g:completeScheme == 1 && filereadable(expand($HOME . '/.vimrc.ycm.config'))
-    source $HOME/.vimrc.ycm.config
+" if filereadable(expand('~/.vimrc.ycm.config'))
+if g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config'))
+    source ~/.vimrc.ycm.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
     " enable this plugin for filetypes, '*' for all files.
@@ -600,7 +604,7 @@ autocmd BufWinEnter *.* RainbowLoad
 "<}}}
 
 "{{{> undotree
-nnoremap <leader><F5> :UndotreeToggle<CR>
+nnoremap <silent> <leader><F5> :UndotreeToggle<CR>
 "<}}}
 
 "{{{> vim-markdown
@@ -612,13 +616,13 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 "{{{> preservim/vimux
 " Prompt for a command to run
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
-nnoremap <leader>vz :VimuxZoomRunner<CR>
+nnoremap <silent> <leader>vz :VimuxZoomRunner<CR>
 "<}}}
 
 "====================== 加载插件配置 ====================== <}}}
@@ -681,22 +685,22 @@ nnoremap <leader>ks :%s/^\s*$//g<cr>
 
 "{{{> autocmd key mapping
 " 手动触发 CursorHold 事件
-nnoremap <leader>c :doautocmd CursorHold<cr>
+nnoremap <silent> <leader>c :doautocmd CursorHold<cr>
 "<}}}
 
 "{{{> popup
 " 滚动popup
-nnoremap <F9> :call ScrollPopup(1)<CR>
-nnoremap <F10> :call ScrollPopup(-1)<CR>
+nnoremap <silent> <F9> :call ScrollPopup(1)<CR>
+nnoremap <silent> <F10> :call ScrollPopup(-1)<CR>
 " 关闭popup
-nnoremap <leader>pc :call popup_clear(1)<cr>
+nnoremap <silent> <leader>pc :call popup_clear(1)<cr>
 "<}}}
 
 "{{{> 会话相关
 " 创建会话
-nnoremap <silent> <leader>kss :mksession! .Session.vim<cr>
+nnoremap <leader>kss :mksession! .Session.vim<cr>
 " 加载会话
-nnoremap <silent> <leader>ksl :source .Session.vim<cr>
+nnoremap <leader>ksl :source .Session.vim<cr>
 "<}}}
 
 "{{{> 窗口相关
@@ -713,8 +717,8 @@ nnoremap <C-l> <C-W>l
 "{{{> ====================== 加载用户配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> 加载用户自定义配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
-    source $HOME/.vimrc.custom.config
+if filereadable(expand('~/.vimrc.custom.config'))
+    source ~/.vimrc.custom.config
 endif
 "<}}}
 
