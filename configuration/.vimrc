@@ -344,6 +344,11 @@ let g:Lf_WildIgnore = {
 let g:Lf_UseCache = 0
 "<}}}
 
+"{{{> indentLine
+let g:indentLine_concealcursor = 'nc'
+let g:indentLine_conceallevel = 2
+"<}}}
+
 "{{{> fzf
 nnoremap <silent> <leader>F :Rg<CR>
 "<}}}
