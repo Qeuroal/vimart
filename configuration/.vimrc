@@ -155,6 +155,11 @@ set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
 " <}}}
 
+"{{{> conceal opts
+set conceallevel=2              " 隐藏水平
+set concealcursor=nc            " 设置在什么模式隐藏
+"<}}}
+
 " {{{> 代码补全
 set wildmenu                                " vim自身命名行模式智能补全
 set completeopt=menu,menuone,noselect       " 补全时不选择第一项
@@ -563,7 +568,6 @@ endif
 "{{{> vimtex
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
 let g:tex_conceal='abdmg'
 " skim relative
 if has('win32') || has('win64') || has('win16')
