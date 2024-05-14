@@ -13,7 +13,7 @@ command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 
 "{{{> 加载客制选项
 " 导入用户配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
+if filereadable(expand('~/.vimrc.custom.config'))
     source $HOME/.vimrc.custom.config
 endif
 " 补全方案
@@ -60,7 +60,7 @@ Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
 Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 
 " 加载补全插件
-" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
+" if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1
     "启用 ycm 插件
     Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
@@ -75,7 +75,7 @@ elseif g:completeScheme == 3
 endif
 
 " 加载自定义插件
-if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
+if filereadable(expand('~/.vimrc.custom.plugins'))
     source $HOME/.vimrc.custom.plugins
 endif
 
@@ -443,7 +443,7 @@ let g:airline_right_alt_sep = ''
 "<}}}
 
 "{{{> prepare-code
-let g:prepare_code_plugin_path = expand($HOME . "/.vim/plugged/prepare-code")
+let g:prepare_code_plugin_path = expand("~/.vim/plugged/prepare-code")
 "<}}}
 
 "{{{> nerdtree
@@ -532,8 +532,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "{{{> 加载补全配置
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
-" if filereadable(expand($HOME . '/.vimrc.ycm.config'))
-if g:completeScheme == 1 && filereadable(expand($HOME . '/.vimrc.ycm.config'))
+" if filereadable(expand('~/.vimrc.ycm.config'))
+if g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config'))
     source $HOME/.vimrc.ycm.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
@@ -717,7 +717,7 @@ nnoremap <C-l> <C-W>l
 "{{{> ====================== 加载用户配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> 加载用户自定义配置
-if filereadable(expand($HOME . '/.vimrc.custom.config'))
+if filereadable(expand('~/.vimrc.custom.config'))
     source $HOME/.vimrc.custom.config
 endif
 "<}}}
