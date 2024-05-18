@@ -34,7 +34,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fzf 搜索
 Plug 'sirver/ultisnips', { 'for': ['tex', 'markdown'] } " 管理片段
 Plug 'lervag/vimtex', { 'for': ['tex'] }            " latex
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }   " markdown 即时预览
-Plug 'chxuan/vim-buffer'                            " buffer 管理
 Plug 'jiangmiao/auto-pairs'                         " 自动匹配括号
 Plug 'godlygeek/tabular'                            " 对齐插件
 Plug 'preservim/vim-markdown', { 'for': ['markdown'] }      " 语法高亮, 匹配规则以及对原始Markdown的映射和拓展
@@ -432,11 +431,6 @@ let g:mkdp_preview_options = {
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 " tex 文件不设置反引号括号匹配
 au FileType tex let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''"}
-"<}}}
-
-"{{{> vim-buffer
-nnoremap <silent> <c-p> :PreviousBuffer<cr>
-nnoremap <silent> <c-n> :NextBuffer<cr>
 "<}}}
 
 "{{{> airline
