@@ -157,7 +157,7 @@ set nofoldenable                " 禁用折叠代码
 
 "{{{> conceal opts
 set conceallevel=2              " 隐藏水平
-set concealcursor=nc            " 设置在什么模式隐藏
+set concealcursor=c             " 设置在什么模式隐藏
 "<}}}
 
 " {{{> 代码补全
@@ -345,7 +345,7 @@ let g:Lf_UseCache = 0
 "<}}}
 
 "{{{> indentLine
-let g:indentLine_concealcursor = 'nc'
+let g:indentLine_concealcursor = 'c'
 let g:indentLine_conceallevel = 2
 "<}}}
 
