@@ -665,6 +665,7 @@ autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=3 | set
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> 解绑按键
 " nmap Q <nop>
+nmap <C-q> <nop>
 "<}}}
 
 "{{{> 端点
