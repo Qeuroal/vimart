@@ -281,8 +281,12 @@ elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
     let &t_SI = "\e[2 q"
     let &t_SR = "\e[2 q"
     let &t_EI = "\e[2 q"
-    let &t_ti ..= "\e[2 q"
-    let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    if (exists(&t_ti))
+        let &t_ti ..= "\e[2 q"
+    endif
+    if (exists(&t_te))
+        let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    endif
 else
     echo &term
 endif
@@ -305,7 +309,12 @@ endfunction
 
 "{{{> popup滚动
 function! ScrollPopup(nlines=0)
-    let winids = popup_list()
+    " let winids = popup_list()
+    if (exists("*popup_list"))
+        let winids = popup_list()
+    else
+        let winids = 0
+    endif
     if len(winids) == 0
         return
     endif
