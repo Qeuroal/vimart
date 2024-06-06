@@ -14,7 +14,7 @@ clean:
 	@if [ -e ./vimart_envs  ]; then rm -i ./vimart_envs; fi
 
 rmvim:
-	@make uninstall -f ~/.vimsrc
+	@make uninstall -C ~/.vimsrc M=${PWD}
 	@rm -rf /usr/local/share/vim/vim82
 	@rm -f /usr/local/bin/eview
 	@rm -f /usr/local/bin/evim
