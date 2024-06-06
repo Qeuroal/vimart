@@ -62,7 +62,11 @@ Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 " if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1
     "启用 ycm 插件
-    Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
+    if system("python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $2}'") > 8
+        Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
+    else
+        Plug 'Qeuroal/YouCompleteMeLowVersion'              " YouCompleteMe低版本, 用以兼容低版本系统、低版本Python3 等等
+    endif
 elseif g:completeScheme == 2
     " Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
     "                                                     " http://www.vim.org/scripts/script.php?script_id=1879
