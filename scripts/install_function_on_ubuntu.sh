@@ -69,7 +69,7 @@ function install_software_on_ubuntu() {
     sudo apt-get install -y python3 python3-dev
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
     
-    if [ $version -ge 18 ];then
+    if [ $version -gt 18 ];then
         sudo apt-get install -y vim vim-gtk
     else
         compile_vim_on_ubuntu
