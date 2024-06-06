@@ -82,7 +82,11 @@ function install_software_on_ubuntu() {
         else
             color_print "warning" "please exec \"python3 ./install.py --clang-completer\" to compile ycm"
         fi
-        compile_vim_on_ubuntu
+
+        vimVersion=`vim --version | grep "IMproved" | awk -F ' ' '{print $5}' | awk -F '.' '{print $1}'`
+        if [ $version -le 8 ]; then
+            compile_vim_on_ubuntu
+        fi
     fi
 }
 # <}}}
