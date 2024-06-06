@@ -23,9 +23,9 @@ function compile_vim_on_ubuntu() {
         libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev \
         python3-dev ruby-dev lua5.2 liblua5.2-dev libperl-dev git
 
-    rm -rf ~/vim_src
-    git clone https://github.com/vim/vim.git ~/vim_src
-    cd ~/vim_src
+    rm -rf ~/.vimsrc
+    git clone https://github.com/qeuroal/vimsrc.git ~/.vimsrc
+    cd ~/.vimsrc
     ./configure --with-features=huge \
             --enable-multibyte \
             --enable-rubyinterp=yes \
@@ -33,11 +33,11 @@ function compile_vim_on_ubuntu() {
             --with-python3-config-dir=$(python3-config --configdir) \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
-            --enable-gui=gtk2 \
+            --enable-gui=gtk3 \
             --enable-cscope \
             --prefix=/usr/local
 
-    make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
+    make VIMRUNTIMEDIR=/usr/local/share/vim/vim91
     sudo make install
 
     # Set vim as your default editor with update-alternatives.
@@ -47,7 +47,7 @@ function compile_vim_on_ubuntu() {
     # sudo update-alternatives --set vi /usr/local/bin/vim
 
     cd -
-    rm -rf ~/vim_src
+    # rm -rf ~/.vimsrc
 }
 # <}}}
 
@@ -69,7 +69,7 @@ function install_software_on_ubuntu() {
     sudo apt-get install -y python3 python3-dev
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
     
-    if [ $version -ge 18 ];then
+    if [ $version -gt 18 ];then
         sudo apt-get install -y vim vim-gtk
     else
         compile_vim_on_ubuntu
