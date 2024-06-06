@@ -77,7 +77,7 @@ function install_software_on_ubuntu() {
         # ubuntu version <= 16
         if [ $version -le 16 ]; then
             sudo apt-get install -y libncurses-dev
-            # sudo apt-get install -y libclang-8-dev
+            sudo apt-get install -y libclang-8-dev
             color_print "warning" "please exec \"python3 ./install.py --clang-completer --system-libclang\" to compile ycm"
         else
             color_print "warning" "please exec \"python3 ./install.py --clang-completer\" to compile ycm"
