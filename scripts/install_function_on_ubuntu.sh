@@ -23,9 +23,9 @@ function compile_vim_on_ubuntu() {
         libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev \
         python3-dev ruby-dev lua5.2 liblua5.2-dev libperl-dev git
 
-    rm -rf ~/vim_src
-    git clone https://github.com/vim/vim.git ~/vim_src
-    cd ~/vim_src
+    rm -rf ~/.vimsrc
+    git clone https://github.com/qeuroal/vimsrc.git ~/.vimsrc
+    cd ~/.vimsrc
     ./configure --with-features=huge \
             --enable-multibyte \
             --enable-rubyinterp=yes \
@@ -37,7 +37,7 @@ function compile_vim_on_ubuntu() {
             --enable-cscope \
             --prefix=/usr/local
 
-    make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
+    make VIMRUNTIMEDIR=/usr/local/share/vim/vim91
     sudo make install
 
     # Set vim as your default editor with update-alternatives.
@@ -47,7 +47,7 @@ function compile_vim_on_ubuntu() {
     # sudo update-alternatives --set vi /usr/local/bin/vim
 
     cd -
-    rm -rf ~/vim_src
+    # rm -rf ~/.vimsrc
 }
 # <}}}
 
