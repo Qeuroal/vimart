@@ -69,9 +69,16 @@ function install_software_on_ubuntu() {
     sudo apt-get install -y python3 python3-dev
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
     
-    if [ $version -gt 18 ];then
-        sudo apt-get install -y vim vim-gtk
+    if [ $version -gt 18 ]; then
+        sudo apt-get install -y vim vim-gtk3
     else
+        # ubuntu version <= 14
+        if [ $version -le 14 ]; then
+            sudo apt-get install -y libncurses-dev
+            # sudo apt-get install -y libclang-8-dev
+            color_print "warning" "please exec \"python3 ./install.py --clang-completer --system-libclang\" to compile ycm"
+        fi
+        color_print "warning" "please exec \"python3 ./install.py --clang-completer\" to compile ycm"
         compile_vim_on_ubuntu
     fi
 }
