@@ -23,8 +23,10 @@ function compile_vim_on_ubuntu() {
         libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev \
         python3-dev ruby-dev lua5.2 liblua5.2-dev libperl-dev git
 
-    rm -rf ~/.vimsrc
-    git clone https://github.com/qeuroal/vimsrc.git ~/.vimsrc
+    if [ ! -d ~/.vimsrc ]; then
+        rm -rf ~/.vimsrc
+        git clone https://github.com/qeuroal/vimsrc.git ~/.vimsrc
+    fi
     cd ~/.vimsrc
     ./configure --with-features=huge \
             --enable-multibyte \
@@ -72,8 +74,8 @@ function install_software_on_ubuntu() {
     if [ $version -gt 18 ]; then
         sudo apt-get install -y vim vim-gtk3
     else
-        # ubuntu version <= 14
-        if [ $version -le 14 ]; then
+        # ubuntu version <= 16
+        if [ $version -le 16 ]; then
             sudo apt-get install -y libncurses-dev
             # sudo apt-get install -y libclang-8-dev
             color_print "warning" "please exec \"python3 ./install.py --clang-completer --system-libclang\" to compile ycm"
