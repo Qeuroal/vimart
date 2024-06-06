@@ -79,8 +79,9 @@ function install_software_on_ubuntu() {
             sudo apt-get install -y libncurses-dev
             # sudo apt-get install -y libclang-8-dev
             color_print "warning" "please exec \"python3 ./install.py --clang-completer --system-libclang\" to compile ycm"
+        else
+            color_print "warning" "please exec \"python3 ./install.py --clang-completer\" to compile ycm"
         fi
-        color_print "warning" "please exec \"python3 ./install.py --clang-completer\" to compile ycm"
         compile_vim_on_ubuntu
     fi
 }
