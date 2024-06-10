@@ -98,6 +98,8 @@ get_python_inc(),
 'cpp/ycm/benchmarks/benchmark/include',
 '-std=c++17',
 # '-I/lib/modules/4.15.0/build/include' # 添加用户头文件
+                                        # 如果没有跳转/补全, 那么将.ycm_extra_conf.py复制到所在项目根目录
+                                        # 同时也可以通过 :YcmDebugInfo 查看.ycm_extra_conf.py的加载情况
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
