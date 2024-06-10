@@ -97,6 +97,7 @@ get_python_inc(),
 '-isystem',
 'cpp/ycm/benchmarks/benchmark/include',
 '-std=c++17',
+# '-I/lib/modules/4.15.0/build/include' # 添加用户头文件
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
