@@ -647,6 +647,23 @@ nnoremap <silent> <leader>vz :VimuxZoomRunner<CR>
 " save read-only files
 command -nargs=0 Sudow w !sudo tee % >/dev/null
 
+"{{{> generate ctags function based on filetype
+function! s:generateTags(isForAll=0)
+    if (a:isForAll != 0)
+        call system("ctags --sort=foldcase -R .")
+    elseif ((&filetype == "c") || (&filetype == "cpp"))
+        call system("ctags --sort=foldcase --fields=+iaS --extra=+q --c-kinds=+p -R .")
+    elseif (&filetype == "python")
+        call system("ctags --sort=foldcase --fields=+l --extras=+f --languages=python -R .")
+    else
+        echom "The current file type is NOT supported!!!"
+    endif
+endfunction
+" command! -nargs=1 -bar UnPlug call s:deregister(<args>)
+" generate ctags based on filetype
+command! -nargs=? Gtags call s:generateTags(<f-args>)
+" command! -nargs=? Gctags call s:generateTags(<f-args> ? <f-args> : 0)
+" <}}}
 "====================== 加载指令配置 ====================== <}}}
 
 
