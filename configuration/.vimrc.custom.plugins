@@ -13,6 +13,7 @@
 " Plug 'iamcco/mathjax-support-for-mkdp'
 " (需要自己安装nodejs和yarn) Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plug 'gorodinskiy/vim-coloresque'
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 "<}}}
 
 "{{{> 卸载/禁用~/.vimrc里的默认插件 (即使配置了相关的插件设置, 但是卸载之后也不会影响)
