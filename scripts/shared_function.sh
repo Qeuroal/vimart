@@ -327,7 +327,7 @@ function configureAliases() {
     if [[ -f "${dstpath}" ]]; then
         if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
             if [ ! -e "${destPath}/.aliases" ]; then
-                cp -rf %{srcPath}/assets/packages/dotfiles/.aliases %{destPath}/.aliases
+                cp -rf ${srcPath}/assets/packages/dotfiles/.aliases ${destPath}/.aliases
             fi
 
             echo "" | tee -a ${dstpath} > /dev/null
