@@ -155,10 +155,13 @@ function config_vimart_dependency() {
         destPath=$2
     fi
 
-    configure_fzf_on_linux
-    configure_tmux
-    configure_shell
-    configureCtags
+    configure_fzf_on_linux ${srcPath} ${destPath}
+    configure_tmux ${srcPath} ${destPath}
+    configureAliases ".zshrc" ${srcPath} ${destPath}
+    configureAliases ".bashrc" ${srcPath} ${destPath}
+    configureAliases ".bash_profile" ${srcPath} ${destPath}
+    configureEof ${srcPath} ${destPath}
+    configureCtags ${srcPath} ${destPath}
 }
 #<}}}
 
@@ -225,7 +228,7 @@ function local_install_vimart_on_linux() {
     copy_files ${srcPath} ${destPath}
     copy_ycm_config ${srcPath} ${destPath}
     config_vim_ycm ${srcPath} ${destPath}
-    config_vimart_dependency
+    config_vimart_dependency ${srcPath} ${destPath}
     chown_user_permission
 }
 #<}}}
