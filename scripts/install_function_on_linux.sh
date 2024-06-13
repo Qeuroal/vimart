@@ -141,6 +141,27 @@ function copy_reference_usr_file() {
 }
 #<}}}
 
+#{{{> config vimart dependency
+function config_vimart_dependency() {
+    color_print "info" "Configuring vimart dependency..."
+
+    srcPath=${PWD}
+    destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath=$1
+    elif [ "$#" = "2" ]; then
+        srcPath=$1
+        destPath=$2
+    fi
+
+    configure_fzf_on_linux
+    configure_tmux
+    configure_shell
+    configureCtags
+}
+#<}}}
+
 #{{{> modidy user chown
 function chown_user_permission() {
     local username="${VIMART_CHOWN_USER}"
@@ -204,6 +225,7 @@ function local_install_vimart_on_linux() {
     copy_files ${srcPath} ${destPath}
     copy_ycm_config ${srcPath} ${destPath}
     config_vim_ycm ${srcPath} ${destPath}
+    config_vimart_dependency
     chown_user_permission
 }
 #<}}}
