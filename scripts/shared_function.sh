@@ -238,7 +238,7 @@ function configure_tmux() {
         targetFilePath="${PWD}/assets/packages/tmux/tmux.conf"
         if [ -f targetFilePath ]
         then
-            cp -r targetFilePath ${HOME}/.tmux.conf
+            cp -rf targetFilePath ${HOME}/.tmux.conf
         fi
     fi
 
