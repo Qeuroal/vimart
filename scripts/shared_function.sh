@@ -324,12 +324,12 @@ function configureAliases() {
 
     local dstpath="${destPath}/${destFile}"
 
+    if [ ! -e "${destPath}/.aliases" ]; then
+        cp -rf ${srcPath}/assets/packages/dotfiles/.aliases ${destPath}/.aliases
+    fi
+
     if [[ -f "${dstpath}" ]]; then
         if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
-            if [ ! -e "${destPath}/.aliases" ]; then
-                cp -rf ${srcPath}/assets/packages/dotfiles/.aliases ${destPath}/.aliases
-            fi
-
             echo "" | tee -a ${dstpath} > /dev/null
             echo '# import aliases' | tee -a ${dstpath} > /dev/null
             # echo 'if [[ -f ~/.aliases ]]; then {source ~/.aliases}; fi'
