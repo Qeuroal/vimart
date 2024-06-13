@@ -235,7 +235,11 @@ function configure_tmux() {
     # 在线下载.tmux.conf
     if [ ! -f "${HOME}/.tmux.conf" ]
     then
-        curl -A "Google Chrome" -o ${HOME}/.tmux.conf -JL https://raw.githubusercontent.com/Qeuroal/toolbox/master/resource/tmux/tmux.conf
+        targetFilePath="${PWD}/assets/packages/tmux/tmux.conf"
+        if [ -f targetFilePath ]
+        then
+            cp -r targetFilePath ${HOME}/.tmux.conf
+        fi
     fi
 
     # 取消tmux的escape延迟
