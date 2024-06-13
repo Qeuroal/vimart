@@ -232,17 +232,27 @@ function configure_fzf_on_linux() {
 
 #{{{> config tmux
 function configure_tmux() {
+    # 在线下载.tmux.conf
+    if [ ! -f "${HOME}/.tmux.conf" ]
+    then
+        targetFilePath="${PWD}/assets/packages/tmux/tmux.conf"
+        if [ -f ${targetFilePath} ]
+        then
+            cp -rf ${targetFilePath} ${HOME}/.tmux.conf
+        fi
+    fi
+
     # 取消tmux的escape延迟
-    if [ ! -f "${HOME}/.tmux.conf" \
-        -o `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
+    if [ ! -f "${HOME}/.tmux.conf" ] \
+        || [ `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
     then
         echo '# 取消tmux的escape延迟' | tee -a ${HOME}/.tmux.conf > /dev/null
         echo 'set -s escape-time 0' | tee -a ${HOME}/.tmux.conf > /dev/null
     fi
 
     # 配置vim-tmux-navigator冲突
-    if [ ! -f "${HOME}/.tmux.conf" \
-        -o `cat ${HOME}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0 ]
+    if [ ! -f "${HOME}/.tmux.conf" ] \
+        || [ `cat ${HOME}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0 ]
     then
         echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
         echo '# 配置vim-tmux-navigator冲突' | tee -a ${HOME}/.tmux.conf > /dev/null
