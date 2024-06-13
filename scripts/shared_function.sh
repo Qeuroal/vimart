@@ -318,8 +318,8 @@ function configureAliases() {
         destPath=$2
     elif [ "$#" = "3" ]; then
         destFile="$1"
-        srcPath=$1
-        destPath=$2
+        srcPath=$2
+        destPath=$3
     fi
 
     local dstpath="${destPath}/${destFile}"
