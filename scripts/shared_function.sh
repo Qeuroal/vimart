@@ -12,8 +12,8 @@ function copy_files() {
     # echo -e "\033[32m===> Copying files...\033[0m"
     color_print "info" "Copying files..."
 
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
         destPath=$1
@@ -73,7 +73,7 @@ function copy_files() {
 #{{{> 判断文件是否存在
 function is_exist_file()
 {
-    filename=$1
+    local filename=$1
     if [ -f $filename ]; then
         echo 1
     else
@@ -85,8 +85,8 @@ function is_exist_file()
 #{{{> config vim ycm
 function config_vim_ycm() {
     # 设置路径变量
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1"  ]; then
         srcPath=${PWD}
         destPath=$1
@@ -96,13 +96,13 @@ function config_vim_ycm() {
     fi
 
     # ycm_extra_conf 配置
-    vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
-    is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
+    local vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
+    local is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
     if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
         # echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
         color_print "info" "Coping the .ycm_tra_conf.py file..."
-        ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
+        local ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
         cp -f ${ycm_extra_conf_path} ${destPath}
 
         ###############################################################################
@@ -131,8 +131,8 @@ function install_vim_plugins() {
 
 #{{{> print vimart's logo
 function print_logo() {
-    color="$(tput setaf 6)"
-    normal="$(tput sgr0)"
+    local color="$(tput setaf 6)"
+    local normal="$(tput sgr0)"
     printf "${color}"
     echo ''
     echo '888     888 d8b                      d8888         888    '
@@ -194,15 +194,15 @@ function get_linux_distro()
 
 #{{{> 获取当前时间戳
 function get_now_timestamp() {
-    cur_sec_and_ns=`date '+%s-%N'`
+    local cur_sec_and_ns=`date '+%s-%N'`
     echo ${cur_sec_and_ns%-*}
 }
 #<}}}
 
 #{{{> configure fzf
 function configure_fzf_on_linux() {
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
         destPath=$1
@@ -242,8 +242,8 @@ function configure_fzf_on_linux() {
 
 #{{{> config tmux
 function configure_tmux() {
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
         destPath=$1
@@ -255,7 +255,7 @@ function configure_tmux() {
     # copy .tmux.conf
     if [ ! -f "${destPath}/.tmux.conf" ]
     then
-        targetFilePath="${srcPath}/assets/packages/dotfiles/.tmux.conf"
+        local targetFilePath="${srcPath}/assets/packages/dotfiles/.tmux.conf"
         if [ -f ${targetFilePath} ]
         then
             cp -rf ${targetFilePath} ${destPath}/.tmux.conf
@@ -308,9 +308,9 @@ function configure_tmux() {
 
 #{{{> configure aliases
 function configureAliases() {
-    destFile=".zshrc"
-    srcPath=${PWD}
-    destPath=$HOME
+    local destFile=".zshrc"
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         destFile="$1"
     elif [ "$#" = "2" ]; then
@@ -322,7 +322,7 @@ function configureAliases() {
         destPath=$2
     fi
 
-    dstpath="${destPath}/${destFile}"
+    local dstpath="${destPath}/${destFile}"
 
     if [[ -f "${dstpath}" ]]; then
         if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
@@ -342,8 +342,8 @@ function configureAliases() {
 
 #{{{> config EOF
 function configureEof() {
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
         destPath=$1
@@ -401,8 +401,8 @@ function configure_shell() {
 
 #{{{> config ctags
 function configureCtags() {
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
         destPath=$1
@@ -411,7 +411,7 @@ function configureCtags() {
         destPath=$2
     fi
 
-    targetFile="${destPath}/.ctags"
+    local targetFile="${destPath}/.ctags"
     if [[ ! -f ${targetFile} ]]; then
         touch ${targetFile}
     fi
@@ -421,12 +421,12 @@ function configureCtags() {
     if [ "${type}" = "Darwin" ]; then
         cp -rf ${srcPath}/assets/packages/mdctags/mdctags_Darwin ${destPath}/.vim/bin/mdctags
     elif [ ${type} = "Linux" ]; then
-        tp=$(uname -a)
+        local tp=$(uname -a)
         if [[ $tp =~ "Android" ]]; then
             echo "mdctags doesn't support platform type: Android"
         else
-            distro=`get_linux_distro`
-            targetFile="${srcPath}/assets/packages/mdctags/mdctags_${distro}"
+            local distro=`get_linux_distro`
+            local targetFile="${srcPath}/assets/packages/mdctags/mdctags_${distro}"
             if [[ -f ${targetFile} ]]; then
                 cp -rf ${targetFile} ${destPath}/.vim/bin/mdctags
             fi
