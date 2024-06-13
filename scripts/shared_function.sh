@@ -16,10 +16,10 @@ function copy_files() {
     local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     color_print "info" "srcPath: $srcPath"
@@ -89,10 +89,10 @@ function config_vim_ycm() {
     local destPath=$HOME
     if [ "$#" = "1"  ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2"  ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     # ycm_extra_conf 配置
@@ -205,10 +205,10 @@ function configure_fzf_on_linux() {
     local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     # configure in zshrc
@@ -246,10 +246,10 @@ function configure_tmux() {
     local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     # copy .tmux.conf
@@ -315,11 +315,11 @@ function configureAliases() {
         destFile="$1"
     elif [ "$#" = "2" ]; then
         destFile="$1"
-        destPath=$2
+        destPath="$2"
     elif [ "$#" = "3" ]; then
         destFile="$1"
-        srcPath=$2
-        destPath=$3
+        srcPath="$2"
+        destPath="$3"
     fi
 
     local dstpath="${destPath}/${destFile}"
@@ -346,10 +346,10 @@ function configureEof() {
     local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     if [[ -f ${destPath}/.zshrc ]]
@@ -405,10 +405,10 @@ function configureCtags() {
     local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     local targetFile="${destPath}/.ctags"
