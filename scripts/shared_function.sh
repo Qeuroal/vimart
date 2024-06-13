@@ -232,6 +232,11 @@ function configure_fzf_on_linux() {
 
 #{{{> config tmux
 function configure_tmux() {
+    # 在线下载.tmux.conf
+    if [ ! -f "${HOME}/.tmux.conf" ]; then
+        curl -A "Google Chrome" -o ${HOME}/.tmux.conf -JL https://raw.githubusercontent.com/Qeuroal/toolbox/master/resource/tmux/tmux.conf
+    fi
+
     # 取消tmux的escape延迟
     if [ ! -f "${HOME}/.tmux.conf" \
         -o `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
