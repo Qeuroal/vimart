@@ -23,7 +23,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'                             " 重复上一次操作
-Plug 'Yggdroot/LeaderF'                             " 更强大的文件和函数模糊搜索工具
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }  " 更强大的文件和函数模糊搜索工具
 Plug 'Yggdroot/indentLine'                          " 缩进线
 Plug 'preservim/vimux'                              " 不离开vim在随意shell中随便运行命令
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
