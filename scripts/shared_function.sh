@@ -12,14 +12,14 @@ function copy_files() {
     # echo -e "\033[32m===> Copying files...\033[0m"
     color_print "info" "Copying files..."
 
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     color_print "info" "srcPath: $srcPath"
@@ -73,7 +73,7 @@ function copy_files() {
 #{{{> 判断文件是否存在
 function is_exist_file()
 {
-    filename=$1
+    local filename=$1
     if [ -f $filename ]; then
         echo 1
     else
@@ -85,31 +85,31 @@ function is_exist_file()
 #{{{> config vim ycm
 function config_vim_ycm() {
     # 设置路径变量
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1"  ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2"  ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
     # ycm_extra_conf 配置
-    vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
-    is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
+    local vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
+    local is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
     if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
         # echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
         color_print "info" "Coping the .ycm_tra_conf.py file..."
-        ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
+        local ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
         cp -f ${ycm_extra_conf_path} ${destPath}
 
         ###############################################################################
         # # 使用自带的 ycm_extra_conf 文件 (!!!!!!!!!!!!!!!!!! 舍弃 !!!!!!!!!!!!!!!!!!)
         # isYcmExtraConfExist=$(is_exist_file ${ycm_extra_conf_path})
         # if [ ${isYcmExtraConfExist} == 0 ]; then
-        #     ycm_extra_conf_path=${HOME}"/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+        #     ycm_extra_conf_path=${destPath}"/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
         #     # echo -e "\033[32m===============================>Existing ${ycm_extra_conf_path}\033[0m"
         #     # color_print "info" "===============================>Existing ${ycm_extra_conf_path}"
         #     # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
@@ -131,8 +131,8 @@ function install_vim_plugins() {
 
 #{{{> print vimart's logo
 function print_logo() {
-    color="$(tput setaf 6)"
-    normal="$(tput sgr0)"
+    local color="$(tput setaf 6)"
+    local normal="$(tput sgr0)"
     printf "${color}"
     echo ''
     echo '888     888 d8b                      d8888         888    '
@@ -194,112 +194,142 @@ function get_linux_distro()
 
 #{{{> 获取当前时间戳
 function get_now_timestamp() {
-    cur_sec_and_ns=`date '+%s-%N'`
+    local cur_sec_and_ns=`date '+%s-%N'`
     echo ${cur_sec_and_ns%-*}
 }
 #<}}}
 
 #{{{> configure fzf
 function configure_fzf_on_linux() {
+    local srcPath=${PWD}
+    local destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath="$1"
+    elif [ "$#" = "2" ]; then
+        srcPath="$1"
+        destPath="$2"
+    fi
+
     # configure in zshrc
-    if [[ -f ${HOME}/.zshrc ]]
+    if [[ -f ${destPath}/.zshrc ]]
     then
-        if test `cat ${HOME}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+        if test `cat ${destPath}/.zshrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
         then
-            echo "" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "fi" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "if type rg &> /dev/null; then" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "fi" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "" | tee -a ${destPath}/.zshrc > /dev/null
         fi
     fi
 
     # configure in bashrc
-    if test `cat ${HOME}/.bashrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
+    if test `cat ${destPath}/.bashrc | grep -c "# fzf:FZF_DEFAULT_COMMAND"` = 0
     then
-        echo "" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "if type rg &> /dev/null; then" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "fi" | tee -a ${HOME}/.bashrc > /dev/null
-        echo "" | tee -a ${HOME}/.bashrc > /dev/null
+        echo "" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "# fzf:FZF_DEFAULT_COMMAND" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "if type rg &> /dev/null; then" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_COMMAND='rg --files'" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "  export FZF_DEFAULT_OPTS='-m'" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "fi" | tee -a ${destPath}/.bashrc > /dev/null
+        echo "" | tee -a ${destPath}/.bashrc > /dev/null
     fi
 }
 #<}}}
 
 #{{{> config tmux
 function configure_tmux() {
-    # 在线下载.tmux.conf
-    if [ ! -f "${HOME}/.tmux.conf" ]
+    local srcPath=${PWD}
+    local destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath="$1"
+    elif [ "$#" = "2" ]; then
+        srcPath="$1"
+        destPath="$2"
+    fi
+
+    # copy .tmux.conf
+    if [ ! -f "${destPath}/.tmux.conf" ]
     then
-        targetFilePath="${PWD}/assets/packages/tmux/tmux.conf"
+        local targetFilePath="${srcPath}/assets/packages/dotfiles/.tmux.conf"
         if [ -f ${targetFilePath} ]
         then
-            cp -rf ${targetFilePath} ${HOME}/.tmux.conf
+            cp -rf ${targetFilePath} ${destPath}/.tmux.conf
         fi
     fi
 
     # 取消tmux的escape延迟
-    if [ ! -f "${HOME}/.tmux.conf" ] \
-        || [ `cat ${HOME}/.tmux.conf | grep -c "set -s escape-time 0"` = 0 ]
+    if [ ! -f "${destPath}/.tmux.conf" ] \
+        || [ `cat ${destPath}/.tmux.conf | grep -c "set -sg escape-time 1"` = 0 ]
     then
-        echo '# 取消tmux的escape延迟' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'set -s escape-time 0' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '# 取消tmux的escape延迟' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'set -sg escape-time 1' | tee -a ${destPath}/.tmux.conf > /dev/null
     fi
 
     # 配置vim-tmux-navigator冲突
-    if [ ! -f "${HOME}/.tmux.conf" ] \
-        || [ `cat ${HOME}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0 ]
+    if [ ! -f "${destPath}/.tmux.conf" ] \
+        || [ `cat ${destPath}/.tmux.conf | grep -c "# 配置vim-tmux-navigator冲突"` = 0 ]
     then
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '# 配置vim-tmux-navigator冲突' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'is_vim="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'is_fzf="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?fzf$'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'bind -n C-h run "($is_vim && tmux send-keys C-h) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 tmux select-pane -L"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'bind -n C-j run "($is_vim && tmux send-keys C-j)  || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 ($is_fzf && tmux send-keys C-j) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 tmux select-pane -D"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'bind -n C-k run "($is_vim && tmux send-keys C-k) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 ($is_fzf && tmux send-keys C-k)  || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 tmux select-pane -U"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'bind -n C-l run "($is_vim && tmux send-keys C-l) || \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '                 tmux select-pane -R"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
-        echo '' | tee -a ${HOME}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '# 配置vim-tmux-navigator冲突' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'is_vim="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"'"'"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'is_fzf="ps -o state= -o comm= -t '"'"'#{pane_tty}'"'"' \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '    | grep -iqE '"'"'^[^TXZ ]+ +(\\S+\\/)?fzf$'"'"'"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'bind -n C-h run "($is_vim && tmux send-keys C-h) || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -L"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'bind -n C-j run "($is_vim && tmux send-keys C-j)  || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 ($is_fzf && tmux send-keys C-j) || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -D"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'bind -n C-k run "($is_vim && tmux send-keys C-k) || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 ($is_fzf && tmux send-keys C-k)  || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -U"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'bind -n C-l run "($is_vim && tmux send-keys C-l) || \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '                 tmux select-pane -R"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo 'if-shell -b '"'"'[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]'"'"' \' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '    "bind-key -n '"'"'C-\\'"'"' if-shell \"$is_vim\" '"'"'send-keys C-\\\\'"'"'  '"'"'select-pane -l'"'"'"' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
+        echo '' | tee -a ${destPath}/.tmux.conf > /dev/null
     fi
 }
 #<}}}
 
 #{{{> configure aliases
 function configureAliases() {
-    dstfile=".zshrc"
+    local destFile=".zshrc"
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
-        dstfile="$1"
+        destFile="$1"
+    elif [ "$#" = "2" ]; then
+        destFile="$1"
+        destPath="$2"
+    elif [ "$#" = "3" ]; then
+        destFile="$1"
+        srcPath="$2"
+        destPath="$3"
     fi
-    dstpath="${HOME}/${dstfile}"
+
+    local dstpath="${destPath}/${destFile}"
+
+    if [ ! -e "${destPath}/.aliases" ]; then
+        cp -rf ${srcPath}/assets/packages/dotfiles/.aliases ${destPath}/.aliases
+    fi
 
     if [[ -f "${dstpath}" ]]; then
         if test `cat ${dstpath} | grep -c '# import aliases'` = 0; then
-            if [ ! -e "$HOME/.aliases" ]; then
-                curl -JL -o $HOME/.aliases https://raw.githubusercontent.com/Qeuroal/toolbox/master/resource/shell/.aliases
-            fi
-
             echo "" | tee -a ${dstpath} > /dev/null
             echo '# import aliases' | tee -a ${dstpath} > /dev/null
             # echo 'if [[ -f ~/.aliases ]]; then {source ~/.aliases}; fi'
@@ -312,37 +342,47 @@ function configureAliases() {
 
 #{{{> config EOF
 function configureEof() {
-    if [[ -f ${HOME}/.zshrc ]]
+    local srcPath=${PWD}
+    local destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath="$1"
+    elif [ "$#" = "2" ]; then
+        srcPath="$1"
+        destPath="$2"
+    fi
+
+    if [[ -f ${destPath}/.zshrc ]]
     then
         # 设置ctrl+d不退出
-        if test `cat ${HOME}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
+        if test `cat ${destPath}/.zshrc | grep -c "set -o IGNOREEOF"` = 0
         then
-            echo "" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "set -o IGNOREEOF" | tee -a ${HOME}/.zshrc > /dev/null
-            echo "" | tee -a ${HOME}/.zshrc > /dev/null
+            echo "" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "set -o IGNOREEOF" | tee -a ${destPath}/.zshrc > /dev/null
+            echo "" | tee -a ${destPath}/.zshrc > /dev/null
         fi
     fi
 
-    if [[ -f ${HOME}/.bashrc ]]
+    if [[ -f ${destPath}/.bashrc ]]
     then
         # 设置ctrl+d不退出
-        if test `cat ${HOME}/.bashrc | grep -c "set -o ignoreeof"` = 0
+        if test `cat ${destPath}/.bashrc | grep -c "set -o ignoreeof"` = 0
         then
-            echo "" | tee -a ${HOME}/.bashrc > /dev/null
-            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bashrc > /dev/null
-            echo "set -o ignoreeof" | tee -a ${HOME}/.bashrc > /dev/null
-            echo "ignoreeof=3" | tee -a ${HOME}/.bashrc > /dev/null
-            echo "" | tee -a ${HOME}/.bashrc > /dev/null
+            echo "" | tee -a ${destPath}/.bashrc > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${destPath}/.bashrc > /dev/null
+            echo "set -o ignoreeof" | tee -a ${destPath}/.bashrc > /dev/null
+            echo "ignoreeof=3" | tee -a ${destPath}/.bashrc > /dev/null
+            echo "" | tee -a ${destPath}/.bashrc > /dev/null
         fi
-    elif [[ -f ${HOME}/.bash_profile ]]
+    elif [[ -f ${destPath}/.bash_profile ]]
     then
-        if test `cat ${HOME}/.bash_profile | grep -c "set -o IGNOREEOF"` = 0
+        if test `cat ${destPath}/.bash_profile | grep -c "set -o IGNOREEOF"` = 0
         then
-            echo "" | tee -a ${HOME}/.bash_profile > /dev/null
-            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${HOME}/.bash_profile > /dev/null
-            echo "set -o IGNOREEOF" | tee -a ${HOME}/.bash_profile > /dev/null
-            echo "" | tee -a ${HOME}/.bash_profile > /dev/null
+            echo "" | tee -a ${destPath}/.bash_profile > /dev/null
+            echo "# prevent tmux exiting with Ctrl-d" | tee -a ${destPath}/.bash_profile > /dev/null
+            echo "set -o IGNOREEOF" | tee -a ${destPath}/.bash_profile > /dev/null
+            echo "" | tee -a ${destPath}/.bash_profile > /dev/null
         fi
 
     fi
@@ -361,17 +401,17 @@ function configure_shell() {
 
 #{{{> config ctags
 function configureCtags() {
-    srcPath=${PWD}
-    destPath=$HOME
+    local srcPath=${PWD}
+    local destPath=$HOME
     if [ "$#" = "1" ]; then
         srcPath=${PWD}
-        destPath=$1
+        destPath="$1"
     elif [ "$#" = "2" ]; then
-        srcPath=$1
-        destPath=$2
+        srcPath="$1"
+        destPath="$2"
     fi
 
-    targetFile="${HOME}/.ctags"
+    local targetFile="${destPath}/.ctags"
     if [[ ! -f ${targetFile} ]]; then
         touch ${targetFile}
     fi
@@ -381,12 +421,12 @@ function configureCtags() {
     if [ "${type}" = "Darwin" ]; then
         cp -rf ${srcPath}/assets/packages/mdctags/mdctags_Darwin ${destPath}/.vim/bin/mdctags
     elif [ ${type} = "Linux" ]; then
-        tp=$(uname -a)
+        local tp=$(uname -a)
         if [[ $tp =~ "Android" ]]; then
             echo "mdctags doesn't support platform type: Android"
         else
-            distro=`get_linux_distro`
-            targetFile="${srcPath}/assets/packages/mdctags/mdctags_${distro}"
+            local distro=`get_linux_distro`
+            local targetFile="${srcPath}/assets/packages/mdctags/mdctags_${distro}"
             if [[ -f ${targetFile} ]]; then
                 cp -rf ${targetFile} ${destPath}/.vim/bin/mdctags
             fi
