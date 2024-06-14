@@ -23,14 +23,14 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'                             " 重复上一次操作
-Plug 'Yggdroot/LeaderF'                             " 更强大的文件和函数模糊搜索工具
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }  " 更强大的文件和函数模糊搜索工具
 Plug 'Yggdroot/indentLine'                          " 缩进线
 Plug 'preservim/vimux'                              " 不离开vim在随意shell中随便运行命令
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fzf 搜索
+Plug 'junegunn/fzf.vim'
 Plug 'sirver/ultisnips', { 'for': ['tex', 'markdown'] } " 管理片段
 Plug 'lervag/vimtex', { 'for': ['tex'] }            " latex
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }   " markdown 即时预览
@@ -352,6 +352,7 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_UseCache = 0
+let g:Lf_CommandMap = {'<C-UP>': ['<S-tab>'], '<C-DOWN>': ['<tab>']}
 "<}}}
 
 "{{{> indentLine
