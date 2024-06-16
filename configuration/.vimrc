@@ -22,6 +22,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'easymotion/vim-easymotion'                    " EasyMotion, 移动指令增强
 Plug 'tpope/vim-repeat'                             " 重复上一次操作
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }   " 更强大的文件和函数模糊搜索工具
 Plug 'Yggdroot/indentLine'                          " 缩进线
@@ -344,6 +345,10 @@ endfunction
 
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"{{{> easymotion
+map <Space> <Plug>(easymotion-prefix)
+"<}}}
+
 "{{{> LeaderF
 nnoremap <silent> <leader>o :LeaderfFile .<CR>
 nnoremap <silent> <leader>f :LeaderfFunction<CR>
