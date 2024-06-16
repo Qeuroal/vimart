@@ -38,7 +38,7 @@ if [ ${isExist} == 1 ]; then
         # installVimartOnFreebsd
         sudo rm -rf ${vimPath}
     elif [ ${type} == "Linux" ]; then
-        if [ `groups | grep -c sudo` != 0 ]; then
+        if [ `groups | grep -c sudo` != 0 ] || [ `groups | grep -c wheel` != 0 ]; then
             sudo rm -rf ${vimPath}
         else
             rm -rf ${vimPath}
