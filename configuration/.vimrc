@@ -660,7 +660,7 @@ function! s:generateTags(isForAll=0)
     elseif ((&filetype == "c") || (&filetype == "cpp"))
         call system("ctags --sort=foldcase --fields=+iaS --extra=+q --c-kinds=+p -R .")
     elseif (&filetype == "python")
-        call system("ctags --sort=foldcase --fields=+l --extras=+f --languages=python -R .")
+        call system("ctags --sort=foldcase --fields=+l --languages=python -R .")
     else
         echom "The current file type is NOT supported!!!"
     endif
