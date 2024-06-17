@@ -753,6 +753,15 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'gj'
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'gk'
 "<}}}
 
+"{{{> buffer
+nnoremap <silent> <c-p> :bp<bar>if &bt!=''<bar>bp<bar>endif<cr>
+nnoremap <silent> <c-n> :bn<bar>if &bt!=''<bar>bn<bar>endif<cr>
+nnoremap <silent> <leader>d :bd<cr>
+nnoremap <silent> <expr> <c-m> &bt==''?":w<cr>":
+            \ getwininfo(win_getid())[0]["quickfix"]!=0?"\<cr>:cclose<cr>":
+            \ getwininfo(win_getid())[0]["loclist"]!=0?"\<cr>:lclose<cr>":"\<cr>"
+"<}}}
+
 "====================== 加载键盘映射 ====================== <}}}
 
 
