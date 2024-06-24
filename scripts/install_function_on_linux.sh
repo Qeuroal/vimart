@@ -215,6 +215,10 @@ function chown_user_permission() {
     if [ -e "${userhome}/.tmux.conf" ]; then
         chown -R ${username}:${username} ${userhome}/.tmux.conf
     fi
+
+    if [ -e "${userhome}/.aliases" ]; then
+        chown -R ${username}:${username} ${userhome}/.aliases
+    fi
 }
 #<}}}
 
