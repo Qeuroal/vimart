@@ -203,6 +203,18 @@ function chown_user_permission() {
     if [ -e "${userhome}/.vimrc.ycm.config" ]; then
         chown -R ${username}:${username} ${userhome}/.vimrc.ycm.config
     fi
+
+    if [ -e "${userhome}/.bashrc" ]; then
+        chown -R ${username}:${username} ${userhome}/.bashrc
+    fi
+
+    if [ -e "${userhome}/.ctags" ]; then
+        chown -R ${username}:${username} ${userhome}/.ctags
+    fi
+
+    if [ -e "${userhome}/.tmux.conf" ]; then
+        chown -R ${username}:${username} ${userhome}/.tmux.conf
+    fi
 }
 #<}}}
 
