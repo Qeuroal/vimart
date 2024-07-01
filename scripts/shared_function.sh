@@ -35,13 +35,13 @@ function copy_files() {
 
     # .vimrc.custom.plugins
     # rm -rf ${destPath}/.vimrc.custom.plugins
-    if [ -e "${destPath}/.vimrc.custom.plugins" ]; then
+    if [ ! -e "${destPath}/.vimrc.custom.plugins" ]; then
         cp ${srcPath}/configuration/.vimrc.custom.plugins ${destPath}
     fi
 
     # .vimrc.custom.config
     # rm -rf ${destPath}/.vimrc.custom.config
-    if [ -e "${destPath}/.vimrc.custom.config" ]; then
+    if [ ! -e "${destPath}/.vimrc.custom.config" ]; then
         cp ${srcPath}/configuration/.vimrc.custom.config ${destPath}
     fi
 
