@@ -34,12 +34,16 @@ function copy_files() {
         # https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # .vimrc.custom.plugins
-    rm -rf ${destPath}/.vimrc.custom.plugins
-    cp ${srcPath}/configuration/.vimrc.custom.plugins ${destPath}
+    # rm -rf ${destPath}/.vimrc.custom.plugins
+    if [ -e "${destPath}/.vimrc.custom.plugins" ]; then
+        cp ${srcPath}/configuration/.vimrc.custom.plugins ${destPath}
+    fi
 
     # .vimrc.custom.config
-    rm -rf ${destPath}/.vimrc.custom.config
-    cp ${srcPath}/configuration/.vimrc.custom.config ${destPath}
+    # rm -rf ${destPath}/.vimrc.custom.config
+    if [ -e "${destPath}/.vimrc.custom.config" ]; then
+        cp ${srcPath}/configuration/.vimrc.custom.config ${destPath}
+    fi
 
     # .vim/color
     mkdir -p ${destPath}/.vim
