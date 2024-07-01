@@ -114,6 +114,16 @@ function install_ycm_on_ubuntu() {
     rm -rf ~/.vimrc.ycm.config
     ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
 
+    # 配置YCM版本
+    version=$(get_ubuntu_version)
+    if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=1"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
+        # Plug 'Valloric/YouCompleteMe', { 'commit' : '4556062839aa2e86f2f4f1c0b4532697d607af23' }
+        echo "" >> ${HOME}/.vimrc.custom.plugins
+        echo '" configure ycm commit' >> ${HOME}/.vimrc.custom.plugins
+        echo 'Plug '"'"'Valloric/YouCompleteMe'"'"', { '"'"'commit'"'"' : '"'"'4556062839aa2e86f2f4f1c0b4532697d607af23'"'"' }' >> ${HOME}/.vimrc.custom.plugins
+        echo "" >> ${HOME}/.vimrc.custom.plugins
+    fi
+
     # install dependency
     install_choice=n
     read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
