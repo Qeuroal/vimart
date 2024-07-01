@@ -116,7 +116,7 @@ function install_ycm_on_ubuntu() {
 
     # 配置YCM版本
     version=$(get_ubuntu_version)
-    if [ $version -eq 22 ] -a [ `cat ${HOME}/.vimrc.custom.plugins| grep -c "# configure ycm commit"` = 0 ];then
+    if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=1"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
         # Plug 'Valloric/YouCompleteMe', { 'commit' : '4556062839aa2e86f2f4f1c0b4532697d607af23' }
         echo "" >> ${HOME}/.vimrc.custom.plugins
         echo '# configure ycm commit' >> ${HOME}/.vimrc.custom.plugins
