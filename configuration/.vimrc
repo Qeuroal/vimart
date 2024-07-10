@@ -752,8 +752,8 @@ nnoremap <C-l> <C-W>l
 
 "{{{> 跳转相关
 " 将nj和nk加入跳转列表
-nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'gj'
-nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'gk'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 "<}}}
 
 "{{{> buffer
