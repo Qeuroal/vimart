@@ -7,7 +7,9 @@ function install_softwares_on_mac() {
     # echo -e "\033[32m===> Installing softwares...\033[0m"
     color_print "info" "Installing softwares..."
     # xcode-select --install
-    brew install vim gcc cmake ctags-exuberant ack ripgrep
+    brew install macvim gcc cmake ctags-exuberant ack ripgrep
+    local macvimPath=`realpath \`which mvim\` | awk -F /Contents '{print $1}'`
+    ln -sf ${macvimPath} /Applications
 
 }
 # <}}}
