@@ -8,7 +8,14 @@ function install_softwares_on_mac() {
     color_print "info" "Installing softwares..."
     # xcode-select --install
     brew install macvim gcc cmake ctags-exuberant ack ripgrep
-    local macvimPath=`realpath \`which mvim\` | awk -F /Contents '{print $1}'`
+    local macvimPath=`realpath \`which mvim\` | awk -F / '{
+        path=""
+        for (i = 1; i < NF - 2; i++)
+        {
+            if ($i) path=path"/"$i
+        }
+        print path
+    }'`
     ln -sf ${macvimPath} /Applications
 
 }
