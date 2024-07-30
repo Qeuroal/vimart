@@ -346,7 +346,7 @@ endfunction
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> easymotion
-map <Space> <Plug>(easymotion-prefix)
+map <Space><Space> <Plug>(easymotion-prefix)
 nmap <leader>s <Plug>(easymotion-s)
 omap <leader>s <Plug>(easymotion-s)
 vmap <leader>s <Plug>(easymotion-s)
