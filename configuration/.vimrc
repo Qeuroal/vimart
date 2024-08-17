@@ -673,6 +673,11 @@ endfunction
 " generate ctags based on filetype
 command! -nargs=? Gtags call s:generateTags(<f-args>)
 " <}}}
+
+"{{{> buffer management
+" delete other buffers
+command! -nargs=0 Bonly %bd | e#
+"<}}}
 "====================== 加载指令配置 ====================== <}}}
 
 
