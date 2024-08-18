@@ -347,9 +347,6 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> easymotion
 map <Space> <Plug>(easymotion-prefix)
-" nmap <leader>s <Plug>(easymotion-s)
-" omap <leader>s <Plug>(easymotion-s)
-" vmap <leader>s <Plug>(easymotion-s)
 "<}}}
 
 "{{{> LeaderF
