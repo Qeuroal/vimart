@@ -697,6 +697,10 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 autocmd FileType markdown set shiftwidth=3 | set expandtab | set tabstop=3 | set softtabstop=3
 "<}}}
 
+"{{{> quickfix 设置
+" 设置 quickfix 窗口默认在最下面
+autocmd FileType qf wincmd J
+"<}}}
 "====================== 加载自动指令配置 ====================== <}}}
 
 
