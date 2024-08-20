@@ -351,7 +351,6 @@ map <Space> <Plug>(easymotion-prefix)
 
 "{{{> LeaderF
 nnoremap <silent> <leader>o :LeaderfFile .<CR>
-nnoremap <silent> <leader>f :LeaderfFunction<CR>
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
