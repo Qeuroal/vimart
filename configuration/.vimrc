@@ -677,8 +677,8 @@ command! -nargs=0 Bonly %bd | e#
 
 "{{{>
 " 清理所有空行的空格
-command -nargs=0 DelBlankSpace :'<,'>s/^\s*$//g
-command -nargs=0 DelBlankSpaces :%s/^\s*$//g
+command! -nargs=0 DelBlankSpace :'<,'>s/^\s*$//g
+command! -nargs=0 DelBlankSpaces :%s/^\s*$//g
 "<}}}
 "====================== 加载指令配置 ====================== <}}}
 
