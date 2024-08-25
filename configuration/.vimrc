@@ -365,7 +365,7 @@ let g:indentLine_conceallevel = &conceallevel
 "<}}}
 
 "{{{> fzf
-nnoremap <silent> <leader>F :Rg<CR>
+nnoremap <silent> <leader>f :Rg<CR>
 "<}}}
 
 "{{{> ultisnips
@@ -467,8 +467,8 @@ let g:prepare_code_plugin_path = expand("~/.vim/plugged/prepare-code")
 "<}}}
 
 "{{{> nerdtree
-nnoremap <silent> <leader>nt :NERDTreeToggle<cr>
-nnoremap <silent> <leader>nf :NERDTreeFind<cr>
+nnoremap <silent> <leader>n :NERDTreeToggle<cr>
+nnoremap <silent> <leader>N :NERDTreeFind<cr>
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
