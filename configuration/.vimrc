@@ -117,7 +117,7 @@ set cmdheight=2                         " 设置命令行的高度
 set showcmd                             " select模式下显示选中的行数
 set ruler                               " 总是显示光标位置
 set laststatus=2                        " 总是显示状态栏
-set relativenumber number               " 开启行号显示: relative and number
+set number                              " 开启行号显示
 set cursorline                          " 高亮显示当前行
 set whichwrap+=<,>,h,l                  " 设置光标键跨行
 set ttimeoutlen=0                       " 设置<ESC>键响应时间
