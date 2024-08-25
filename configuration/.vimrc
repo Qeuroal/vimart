@@ -674,6 +674,12 @@ command! -nargs=? Gtags call s:generateTags(<f-args>)
 " delete other buffers
 command! -nargs=0 Bonly %bd | e#
 "<}}}
+
+"{{{>
+" 清理所有空行的空格
+command -nargs=0 DelBlankSpace :'<,'>s/^\s*$//g
+command -nargs=0 DelBlankSpaces :%s/^\s*$//g
+"<}}}
 "====================== 加载指令配置 ====================== <}}}
 
 
@@ -725,8 +731,6 @@ nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 " 相对行号的开启/关闭
 nnoremap <silent> <leader>kn :call ToggleNumber()<cr>
 
-" 清理所有空行的空格
-nnoremap <leader>ks :%s/^\s*$//g<cr>
 "<}}}
 
 "{{{> autocmd key mapping
