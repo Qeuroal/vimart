@@ -356,6 +356,7 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
 let g:Lf_CommandMap = {'<C-UP>': ['<S-tab>'], '<C-DOWN>': ['<tab>']}
 "<}}}
 
