@@ -775,6 +775,10 @@ nnoremap <silent> <c-n> :bn<bar>if &bt!=''<bar>bn<bar>endif<cr>
 nnoremap <silent> <leader>d :bd<cr>
 "<}}}
 
+"{{{> window
+nnoremap <silent> <leader>w :clo<cr>
+"<}}}
+
 "====================== 加载键盘映射 ====================== <}}}
 
 
