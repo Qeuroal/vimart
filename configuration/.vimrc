@@ -626,6 +626,9 @@ autocmd BufWinEnter *.* RainbowLoad
 
 "{{{> undotree
 nnoremap <silent> <leader><F5> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
+let g:undotree_CustomUndotreeCmd  = 'botright vertical 30 new'
+let g:undotree_CustomDiffpanelCmd = 'botright 10 new'
 "<}}}
 
 "{{{> vim-markdown
