@@ -777,7 +777,10 @@ nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 "{{{> buffer
 nnoremap <silent> <c-p> :bp<bar>if &bt!=''<bar>bp<bar>endif<cr>
 nnoremap <silent> <c-n> :bn<bar>if &bt!=''<bar>bn<bar>endif<cr>
+" 删除当前缓冲区
 nnoremap <silent> <leader>d :bd<cr>
+" 删除上一个缓冲区
+nnoremap <silent> <leader>D :bd#<cr>
 "<}}}
 
 "{{{> window
