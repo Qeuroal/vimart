@@ -53,7 +53,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'                       " 文件类型图标
 Plug 'junegunn/vim-slash'                           " 优化搜索，移动光标后清除高亮
 Plug 'Shougo/echodoc.vim'                           " 补全函数时在命令栏显示函数签名
-Plug 'terryma/vim-smooth-scroll'                    " 让翻页更顺畅
+" Plug 'terryma/vim-smooth-scroll'                    " 让翻页更顺畅
 Plug 'rhysd/clever-f.vim'                           " 强化f和F键
 Plug 'vim-scripts/indentpython.vim'                 " 自动缩进
 Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
@@ -157,6 +157,7 @@ set smarttab                    " 在行和段开始处使用制表符
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
+set smoothscroll                " 让翻页更顺畅
 " <}}}
 
 "{{{> conceal opts
@@ -546,10 +547,10 @@ let g:echodoc_enable_at_startup = 1
 "<}}}
 
 "{{{> vim-smooth-scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "<}}}
 
 "{{{> 加载补全配置
