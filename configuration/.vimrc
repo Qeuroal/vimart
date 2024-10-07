@@ -42,7 +42,7 @@ Plug 'chxuan/prepare-code'                          " 新建文件时，生成�
 Plug 'mhinz/vim-startify'                           " 开始页面
 Plug 'preservim/tagbar'                             " 使用preservim/tagbar的最新版本，taglist的替代品，显示类/方法/变量
 Plug 'preservim/nerdtree'                           " 代码资源管理器
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      " highlight	NerdTree文件类型高亮
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      " highlight NerdTree文件类型高亮
 Plug 'Xuyuanp/nerdtree-git-plugin'                  " NerdTree显示git状态
 Plug 'tpope/vim-commentary'                         " 快速注释代码插件
 Plug 'tpope/vim-endwise'                            " if/end/endif/endfunction补全
