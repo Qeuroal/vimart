@@ -8,7 +8,8 @@
 
 if [[ "$(uname)" = 'Linux' ]]; then
     alias la="ls -ah"
-    alias srcproxy="source /opt/proxy.sh"
+    # alias srcproxy="source /opt/proxy.sh"
+    alias srcproxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 elif [[ "$(uname)" = 'Darwin' ]]; then
     alias openmd="open -a Typora"
     alias la="ls -ah"
