@@ -51,7 +51,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'             " 高亮
 Plug 'vim-airline/vim-airline'                      " 可以取代powerline的状态栏美化插件
 Plug 'vim-airline/vim-airline-themes'             
 Plug 'ryanoasis/vim-devicons'                       " 文件类型图标
-" Plug 'junegunn/vim-slash'                           " 优化搜索，移动光标后清除高亮
 Plug 'qeuroal/vimslash'                             " 优化搜索，移动光标后清除高亮
 Plug 'Shougo/echodoc.vim'                           " 补全函数时在命令栏显示函数签名
 Plug 'rhysd/clever-f.vim'                           " 强化f和F键
