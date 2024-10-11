@@ -4,9 +4,9 @@ set nocompatible    " VI compatible mode is disabled so that VIm things work
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{> 卸载默认插件 Unplug
 function! s:deregister(repo)
-  let repo = substitute(a:repo, '[\/]\+$', '', '')
-  let name = fnamemodify(repo, ':t:s?\.git$??')
-  call remove(g:plugs, name)
+    let repo = substitute(a:repo, '[\/]\+$', '', '')
+    let name = fnamemodify(repo, ':t:s?\.git$??')
+    call remove(g:plugs, name)
 endfunction
 command! -nargs=1 -bar UnPlug call s:deregister(<args>)
 " <}}}
