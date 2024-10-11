@@ -58,6 +58,13 @@ Plug 'vim-scripts/indentpython.vim'                 " 自动缩进
 Plug 'junegunn/vim-peekaboo'                        " 显示寄存器的内容
 Plug 'frazrepo/vim-rainbow'                         " 为括号涂上颜色
 
+" 让翻页更顺畅
+if exists('&smoothscroll')
+    set smoothscroll                                " 仅在vim版本9后支持
+else
+    Plug 'psliwka/vim-smoothie'                     " 平滑插件
+endif
+
 " 加载补全插件
 " if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1
@@ -104,7 +111,7 @@ runtime macros/matchit.vim
 " <}}}
 
 " {{{> 通用设置
-let mapleader = ";"                    " 定义<leader>键
+let mapleader = ";"                     " 定义<leader>键
 set nocompatible                        " 设置不兼容原始vi模式
 filetype on                             " 设置开启文件类型侦测
 filetype plugin on                      " 设置加载对应文件类型的插件
@@ -156,7 +163,6 @@ set smarttab                    " 在行和段开始处使用制表符
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
-set smoothscroll                " 让翻页更顺畅
 " <}}}
 
 "{{{> conceal opts
