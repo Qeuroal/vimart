@@ -581,6 +581,17 @@ elseif g:completeScheme == 3
     " 禁用某些类型的字典
     let g:vim_dict_config = {'text': ''}
 endif
+
+if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config')))
+    " nop 按键
+    imap <C-L> <nop>
+    nnoremap <leader>u <nop>
+    nnoremap <leader>U <nop>
+    nnoremap <leader>r <nop>
+    nnoremap <leader>g <nop>
+    nnoremap <leader>yt <nop>
+    nnoremap <leader>yh <nop>
+endif
 "<}}}
 
 "{{{> vimtex
