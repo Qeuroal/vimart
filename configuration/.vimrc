@@ -584,7 +584,7 @@ endif
 
 if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config')))
     " nop 按键
-    imap <C-L> <nop>
+    imap <C-L> <C-N>
     nnoremap <leader>u <nop>
     nnoremap <leader>U <nop>
     nnoremap <leader>r <nop>
