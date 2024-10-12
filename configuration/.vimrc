@@ -22,6 +22,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/AnsiEsc.vim', { 'on': ['AnsiEsc'] }       " 高亮Ansi字符. 默认不加载, 使用 :AnsiEsc 加载插件
 Plug 'easymotion/vim-easymotion'                    " EasyMotion, 移动指令增强
 Plug 'tpope/vim-repeat'                             " 重复上一次操作
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }   " 更强大的文件和函数模糊搜索工具
@@ -30,9 +31,9 @@ Plug 'preservim/vimux'                              " 不离开vim在随意shell
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Fzf 搜索
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fzf 搜索
 Plug 'junegunn/fzf.vim'
-Plug 'sirver/ultisnips', { 'for': ['tex', 'markdown'] } " 管理片段
+Plug 'sirver/ultisnips', { 'for': ['tex', 'markdown'] }     " 管理片段
 Plug 'lervag/vimtex', { 'for': ['tex'] }            " latex
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }   " markdown 即时预览
 Plug 'jiangmiao/auto-pairs'                         " 自动匹配括号
