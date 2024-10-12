@@ -580,6 +580,15 @@ elseif g:completeScheme == 3
     let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
     " 禁用某些类型的字典
     let g:vim_dict_config = {'text': ''}
+
+    " nop 按键
+    imap <C-L> <nop>
+    nnoremap <leader>u <nop>
+    nnoremap <leader>U <nop>
+    nnoremap <leader>r <nop>
+    nnoremap <leader>g <nop>
+    nnoremap <leader>yt <nop>
+    nnoremap <leader>yh <nop>
 endif
 "<}}}
 
