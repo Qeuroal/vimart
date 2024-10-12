@@ -580,7 +580,9 @@ elseif g:completeScheme == 3
     let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
     " 禁用某些类型的字典
     let g:vim_dict_config = {'text': ''}
+endif
 
+if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config')))
     " nop 按键
     imap <C-L> <nop>
     nnoremap <leader>u <nop>
