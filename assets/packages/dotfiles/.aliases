@@ -27,3 +27,8 @@ if [ "$?" = "0" ]; then
     alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 fi
 
+type joshuto &> /dev/null
+if [ "$?" = "0" ]; then
+    alias jt='joshuto'
+fi
+
