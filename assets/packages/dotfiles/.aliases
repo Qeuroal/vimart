@@ -22,13 +22,13 @@ fi
 
 alias gtags="ctags --fields=+iaS --extra=+q --c-kinds=+p -R ."
 
-type ranger &> /dev/null
-if [ "$?" = "0" ]; then
+# type ranger &> /dev/null
+if command -v ranger > /dev/null; then
     alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 fi
 
-type joshuto &> /dev/null
-if [ "$?" = "0" ]; then
+# type joshuto &> /dev/null
+if command -v joshuto > /dev/null; then
     alias jt='joshuto'
 fi
 
