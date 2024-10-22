@@ -163,6 +163,7 @@ set smarttab                    " 在行和段开始处使用制表符
 set wrap                        " 自动折行
 " set nowrap                    " 禁止折行
 set diffopt+=followwrap         " 设置 diff 默认跟随现有设置
+" set linebreak                   " 不会在单词内部折行
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
