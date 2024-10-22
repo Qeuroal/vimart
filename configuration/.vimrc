@@ -160,7 +160,9 @@ set softtabstop=4               " 设置4个空格为制表符, 即"软"制表�
                                 " softtabstop看成"虚拟"的tapstop, 一旦设置了这个选项为非零值，再键入<Tab>和<BS>(退格键)
                                 " 你就感觉像设置了这个宽度的 tabstop 一样, " 实际插入的仍受expandtab和tabstop两个选项控制
 set smarttab                    " 在行和段开始处使用制表符
+set wrap                        " 自动折行
 " set nowrap                    " 禁止折行
+set diffopt+=followwrap         " 设置 diff 默认跟随现有设置
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
@@ -301,6 +303,17 @@ else
     echo &term
 endif
 " <}}}
+
+"{{{> diff
+" 新增的行
+highlight DiffAdd ctermbg=235 ctermfg=108 guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse
+" 删除的行
+highlight DiffDelete ctermbg=235 ctermfg=131 guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse
+" 差异的行
+highlight DiffChange ctermbg=235 ctermfg=103 guibg=#262626 guifg=#8787af cterm=reverse gui=reverse
+" 差异的文字
+highlight DiffText ctermbg=235 ctermfg=208 guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse
+"<}}}
 
 "====================== 加载通用配置 ====================== <}}}
 
@@ -728,6 +741,11 @@ augroup END
 " 设置 quickfix 窗口默认在最下面
 autocmd FileType qf wincmd J
 "<}}}
+
+""{{{> 自动换行
+"autocmd FileType * setlocal textwidth=100 formatoptions+=t
+""<}}}
+
 "====================== 加载自动指令配置 ====================== <}}}
 
 
