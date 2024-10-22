@@ -305,9 +305,14 @@ endif
 " <}}}
 
 "{{{> diff
-highlight DiffText ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse
-" if (&diff)
-" endif
+" 新增的行
+highlight DiffAdd ctermbg=235 ctermfg=108 guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse
+" 删除的行
+highlight DiffDelete ctermbg=235 ctermfg=131 guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse
+" 差异的行
+highlight DiffChange ctermbg=235 ctermfg=103 guibg=#262626 guifg=#8787af cterm=reverse gui=reverse
+" 差异的文字
+highlight DiffText ctermbg=235 ctermfg=208 guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse
 "<}}}
 
 "====================== 加载通用配置 ====================== <}}}
