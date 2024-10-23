@@ -51,7 +51,7 @@ Plug 'tpope/vim-endwise'                            " if/end/endif/endfunction�
 Plug 'tpope/vim-surround'                           " 自动增加、替换配对符的插件
 Plug 'octol/vim-cpp-enhanced-highlight'             " 高亮
 Plug 'vim-airline/vim-airline'                      " 可以取代powerline的状态栏美化插件
-Plug 'vim-airline/vim-airline-themes'             
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'                       " 文件类型图标
 Plug 'qeuroal/vimslash'                             " 优化搜索，移动光标后清除高亮
 Plug 'Shougo/echodoc.vim'                           " 补全函数时在命令栏显示函数签名
@@ -117,7 +117,7 @@ let mapleader = ";"                     " 定义<leader>键
 set nocompatible                        " 设置不兼容原始vi模式
 filetype on                             " 设置开启文件类型侦测
 filetype plugin on                      " 设置加载对应文件类型的插件
-" set noeb                              " 关闭错误的提示
+" set noeb                                " 关闭错误的提示
 syntax enable                           " 开启语法高亮功能
 syntax on                               " 自动语法高亮
 set t_Co=256                            " 开启256色支持
@@ -149,9 +149,9 @@ endif
 set autoindent                  " 设置自动缩进
 set cindent                     " 设置使用C/C++语言的自动缩进方式
 set cinoptions=:0,g0,N-s,(0,w1  " 设置C/C++语言的具体缩进方式
-                                "  :0 表示 switch 下面的 case 语句不进行额外缩进
-                                "  g0 代表作用域声明(public:、private: 等)不额外缩进
-                                "  (0 和 w1 配合代表没结束的圆括号里的内容折行时不额外缩进
+                                "   :0 表示 switch 下面的 case 语句不进行额外缩进
+                                "   g0 代表作用域声明(public:、private: 等)不额外缩进
+                                "   (0 和 w1 配合代表没结束的圆括号里的内容折行时不额外缩进
 set smartindent                 " 智能的选择对其方式
 filetype indent on              " 自适应不同语言的智能缩进
 set expandtab                   " 将制表符<Tab>扩展为空格
