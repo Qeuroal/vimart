@@ -29,6 +29,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }   " 更强大的文件和函�
 Plug 'Yggdroot/indentLine'                          " 缩进线
 Plug 'preservim/vimux'                              " 不离开vim在随意shell中随便运行命令
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
+Plug 'tmux-plugins/vim-tmux-focus-events'           " 支持FocusGained和FocusLost自动命令事件在终端vim中起作用
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fzf 搜索
@@ -163,6 +164,8 @@ set smarttab                    " 在行和段开始处使用制表符
 set wrap                        " 自动折行
 " set nowrap                    " 禁止折行
 set diffopt+=followwrap         " 设置 diff 默认跟随现有设置
+set diffopt+=context:3          " 显示不同之处上下各3行文本
+" set linebreak                   " 不会在单词内部折行
 set backspace=2                 " 使用回车键正常处理indent,eol,start等
 set sidescroll=10               " 设置向右滚动字符数
 set nofoldenable                " 禁用折叠代码
@@ -740,6 +743,14 @@ augroup END
 "{{{> quickfix 设置
 " 设置 quickfix 窗口默认在最下面
 autocmd FileType qf wincmd J
+"<}}}
+
+"{{{> 自动刷新文件命令
+augroup auto_read
+    autocmd!
+    autocmd FocusGained,BufEnter * checktime
+    autocmd CursorHold,CursorHoldI * checktime
+augroup END
 "<}}}
 
 ""{{{> 自动换行
