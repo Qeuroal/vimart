@@ -743,6 +743,14 @@ augroup END
 autocmd FileType qf wincmd J
 "<}}}
 
+"{{{> 自动刷新文件命令
+augroup auto_read
+    autocmd!
+    autocmd FocusGained,BufEnter * checktime
+    autocmd CursorHold,CursorHoldI * checktime
+augroup END
+"<}}}
+
 ""{{{> 自动换行
 "autocmd FileType * setlocal textwidth=100 formatoptions+=t
 ""<}}}
