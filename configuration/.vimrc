@@ -299,9 +299,9 @@ elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
     let &t_SR = "\e[2 q"
     let &t_EI = "\e[2 q"
     " let &t_ti ..= "\e[2 q"
-    " let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    " let &t_te ..= "\e[2 q"    " 缺省 (取决于终端，通常是闪烁块状)
     let &t_ti .= "\e[2 q"
-    let &t_te .= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    let &t_te .= "\e[2 q"       " 缺省 (取决于终端，通常是闪烁块状)
 else
     echo &term
 endif
