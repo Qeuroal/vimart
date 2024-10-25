@@ -748,7 +748,7 @@ autocmd FileType qf wincmd J
 "{{{> 自动刷新文件命令
 augroup auto_read
     autocmd!
-    autocmd FocusGained,BufEnter * checktime
+    " autocmd FocusGained,BufEnter * checktime
     autocmd CursorHold,CursorHoldI * checktime
 augroup END
 "<}}}
