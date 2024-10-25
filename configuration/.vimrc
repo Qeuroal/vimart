@@ -29,7 +29,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }   " 更强大的文件和函�
 Plug 'Yggdroot/indentLine'                          " 缩进线
 Plug 'preservim/vimux'                              " 不离开vim在随意shell中随便运行命令
 Plug 'christoomey/vim-tmux-navigator'               " vim与tmux无缝导航
-Plug 'tmux-plugins/vim-tmux-focus-events'           " 支持FocusGained和FocusLost自动命令事件在终端vim中起作用
+Plug 'qeuroal/vim_tmux_events'                      " 支持FocusGained和FocusLost自动命令事件在终端vim中起作用
 Plug 'mbbill/undotree'                              " 可视化undo历史, 浏览和切换undo分支
 Plug 'vim-scripts/DoxygenToolkit.vim'               " Doxygen 注释
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " Fzf 搜索
@@ -299,9 +299,9 @@ elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
     let &t_SR = "\e[2 q"
     let &t_EI = "\e[2 q"
     " let &t_ti ..= "\e[2 q"
-    " let &t_te ..= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    " let &t_te ..= "\e[2 q"      " 缺省 (取决于终端，通常是闪烁块状)
     let &t_ti .= "\e[2 q"
-    let &t_te .= "\e[2 q"  " 缺省 (取决于终端，通常是闪烁块状)
+    let &t_te .= "\e[2 q"       " 缺省 (取决于终端，通常是闪烁块状)
 else
     echo &term
 endif
@@ -748,7 +748,7 @@ autocmd FileType qf wincmd J
 "{{{> 自动刷新文件命令
 augroup auto_read
     autocmd!
-    autocmd FocusGained,BufEnter * checktime
+    " autocmd FocusGained,BufEnter * checktime
     autocmd CursorHold,CursorHoldI * checktime
 augroup END
 "<}}}
