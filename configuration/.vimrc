@@ -758,13 +758,6 @@ augroup END
 "autocmd FileType * setlocal textwidth=100 formatoptions+=t
 ""<}}}
 
-"{{{> 设置conceal
-augroup auto_conceal
-    autocmd!
-    autocmd BufReadPost,BufNewFile *.tex setlocal conceallevel=0
-augroup END
-"<}}}
-
 "====================== 加载自动指令配置 ====================== <}}}
 
 
