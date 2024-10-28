@@ -386,8 +386,9 @@ let g:Lf_CommandMap = {'<C-UP>': ['<S-tab>'], '<C-DOWN>': ['<tab>']}
 "<}}}
 
 "{{{> indentLine
-let g:indentLine_concealcursor = &concealcursor
-let g:indentLine_conceallevel = &conceallevel
+let g:indentLine_setConceal = 0
+" let g:indentLine_concealcursor = &concealcursor
+" let g:indentLine_conceallevel = &conceallevel
 "<}}}
 
 "{{{> fzf
@@ -756,6 +757,13 @@ augroup END
 ""{{{> 自动换行
 "autocmd FileType * setlocal textwidth=100 formatoptions+=t
 ""<}}}
+
+"{{{> 设置conceal
+augroup auto_conceal
+    autocmd!
+    autocmd BufReadPost,BufNewFile *.tex setlocal conceallevel=0
+augroup END
+"<}}}
 
 "====================== 加载自动指令配置 ====================== <}}}
 
