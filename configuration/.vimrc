@@ -303,7 +303,7 @@ elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32' || &term == 'al
     let &t_ti .= "\e[2 q"
     let &t_te .= "\e[2 q"       " 缺省 (取决于终端，通常是闪烁块状)
 else
-    echom "not support term ("&term")."
+    echom "not support term (" . &term . ")."
 endif
 " <}}}
 
