@@ -613,7 +613,7 @@ endif
 
 "{{{> vimtex
 let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=1
+let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 " skim relative
 if has('win32') || has('win64') || has('win16')
@@ -623,7 +623,7 @@ else
     if system == "Darwin\n"
         let g:vimtex_view_method='skim'
         let g:vimtex_view_skim_sync=1
-        let g:vimtex_view_skim_activate=1
+        let g:vimtex_view_skim_activate=0
     elseif system == "Linux\n"
         let g:vimtex_view_method='zathura'
     else
