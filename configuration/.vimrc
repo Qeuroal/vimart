@@ -613,7 +613,7 @@ endif
 
 "{{{> vimtex
 let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=2
+let g:vimtex_quickfix_mode=1
 let g:tex_conceal='abdmg'
 " skim relative
 if has('win32') || has('win64') || has('win16')
