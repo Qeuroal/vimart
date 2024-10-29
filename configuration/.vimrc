@@ -280,7 +280,7 @@ if has("gui_running")
     " set guicursor=n-v-c-i:block         " 设置光标为方块
     set guicursor=a:block,a:blinkon0    " 设置光标为方块, 且光标不闪烁
     set lines=999 columns=999           " 设置启动为最大化窗口
-elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
+elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32' || &term == 'alacritty' || &term =~ 'st'
     " Cursor settings:
     "  1 -> blinking block
     "  2 -> solid block
@@ -303,7 +303,7 @@ elseif &term =~ 'xterm' || &term =~ 'screen' || &term == 'win32'
     let &t_ti .= "\e[2 q"
     let &t_te .= "\e[2 q"       " 缺省 (取决于终端，通常是闪烁块状)
 else
-    echo &term
+    echom "not support term ("&term")."
 endif
 " <}}}
 
