@@ -1,4 +1,5 @@
-.PHONY: install uninstall clean rmvim
+.PHONY: install uninstall clean rmvim \
+	gm gitmerge
 
 install:
 	@bash scripts/install.sh
@@ -49,3 +50,5 @@ rmvim:
 	@sudo rm -f /usr/local/man/man1/vimtutor.1
 	@sudo rm -f /usr/local/man/man1/xxd.1
 
+gm gitmerge:
+	@git switch master && git merge --no-ff -m "merge dev" dev && git push && git switch dev
