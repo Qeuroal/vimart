@@ -319,7 +319,7 @@ highlight DiffText ctermbg=235 ctermfg=208 guibg=#262626 guifg=#ff8700 cterm=rev
 "<}}}
 
 "{{{> highlight
-highlight Search term=bold cterm=bold ctermbg=28 ctermfg=228 gui=bold guibg=#388424 guifg=#fffd97
+highlight Search term=bold cterm=bold ctermbg=28 ctermfg=228 gui=bold guibg=#047b17 guifg=#ffff73
 "<}}}
 "====================== 加载通用配置 ====================== <}}}
 
