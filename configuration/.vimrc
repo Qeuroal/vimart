@@ -53,7 +53,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'             " 高亮
 Plug 'vim-airline/vim-airline'                      " 可以取代powerline的状态栏美化插件
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'                       " 文件类型图标
-Plug 'qeuroal/vimslash'                             " 优化搜索，移动光标后清除高亮
+Plug 'qxxxb/vim-searchhi'                           " 增强搜索, 高亮当前结果
 Plug 'Shougo/echodoc.vim'                           " 补全函数时在命令栏显示函数签名
 Plug 'rhysd/clever-f.vim'                           " 强化f和F键
 Plug 'vim-scripts/indentpython.vim'                 " 自动缩进
@@ -368,6 +368,42 @@ endfunction
 
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"{{{> vim-searchhi
+" n状态搜索
+nmap n <Plug>(searchhi-n)
+nmap N <Plug>(searchhi-N)
+nmap * <Plug>(searchhi-*)
+nmap g* <Plug>(searchhi-g*)
+nmap # <Plug>(searchhi-#)
+nmap g# <Plug>(searchhi-g#)
+nmap gd <Plug>(searchhi-gd)
+nmap gD <Plug>(searchhi-gD)
+" v状态搜索
+vmap n <Plug>(searchhi-v-n)
+vmap N <Plug>(searchhi-v-N)
+vmap * <Plug>(searchhi-v-*)
+vmap g* <Plug>(searchhi-v-g*)
+vmap # <Plug>(searchhi-v-#)
+vmap g# <Plug>(searchhi-v-g#)
+vmap gd <Plug>(searchhi-v-gd)
+vmap gD <Plug>(searchhi-v-gD)
+" " 快捷键清除高亮
+" nmap <silent> <C-L> <Plug>(searchhi-clear-all)
+" vmap <silent> <C-L> <Plug>(searchhi-v-clear-all)
+" 设置光标移动清除高亮
+let g:searchhi_clear_all_asap = 1
+" 设置高亮颜色
+highlight CurrentSearch
+    \ cterm=reverse,bold ctermfg=108 ctermbg=235
+    \ gui=reverse,bold guifg=#8ec07c guibg=#282828
+highlight link SearchCursor WarningMsg
+" 设置/?搜索
+nmap / <Plug>(searchhi-/)
+nmap ? <Plug>(searchhi-?)
+vmap / <Plug>(searchhi-v-/)
+vmap ? <Plug>(searchhi-v-?)
+"<}}}
+
 "{{{> easymotion
 map <Space> <Plug>(easymotion-prefix)
 "<}}}
