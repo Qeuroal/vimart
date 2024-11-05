@@ -395,7 +395,7 @@ let g:searchhi_clear_all_asap = 1
 " 设置高亮颜色
 highlight CurrentSearch
     \ cterm=reverse,bold ctermfg=202 ctermbg=235
-    \ gui=reverse,bold guifg=#8ec07c guibg=#282828
+    \ gui=reverse,bold guifg=#ff5520 guibg=#282828
 highlight link SearchCursor WarningMsg
 " 设置/?搜索
 nmap / <Plug>(searchhi-/)
