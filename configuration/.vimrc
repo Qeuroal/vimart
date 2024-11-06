@@ -516,6 +516,8 @@ let g:NERDTreeShowHidden=1
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 " 修改 java, c, cpp 注释风格
 autocmd FileType java,c,cpp set commentstring=//\ %s
+" 修改 snippets 注释风格
+autocmd FileType snippets set commentstring=#\ %s
 "<}}}
 
 "{{{> tagbar
