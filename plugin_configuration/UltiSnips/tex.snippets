@@ -591,3 +591,9 @@ endsnippet
 #<}}}
 
 
+#{{{> cites
+snippet '(?<!\\)\;(cite|ref|eqref)' "ln" rw
+~\\`!p snip.rv = match.group(1)`{$1}$0
+endsnippet
+#<}}}
+
