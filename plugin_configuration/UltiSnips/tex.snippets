@@ -1,5 +1,7 @@
+#! vim:ft=snippets:
+
 #{{{> GLOBAL
-#
+
 global !p
 
 def create_table(snip):
@@ -33,98 +35,98 @@ endglobal
 
 
 #{{{> ENVIRONMENT
-#
-snippet beg "begin{} / end{}" bi
+
+snippet ;beg "begin{} / end{}" bi
 \begin{$1}
 	${0:${VISUAL}}
 \end{$1}
 endsnippet
 
-snippet cnt "Center" bi
+snippet ;cnt "Center" bi
 \begin{center}
 	${0:${VISUAL}}
 \end{center}
 endsnippet
 
-snippet desc "Description" bi
+snippet ;desc "Description" bi
 \begin{description}
 	\item[${1:${VISUAL}}] $0
 \end{description}
 endsnippet
 
-snippet lemma "Lemma" bi
+snippet ;lemma "Lemma" bi
 \begin{lemma}
 	${0:${VISUAL}}
 \end{lemma}
 endsnippet
 
-snippet prop "Proposition" bi
+snippet ;prop "Proposition" bi
 \begin{prop}[$1]
 	${0:${VISUAL}}
 \end{prop}
 endsnippet
 
-snippet thrm "Theorem" bi
+snippet ;thrm "Theorem" bi
 \begin{theorem}[$1]
 	${0:${VISUAL}}
 \end{theorem}
 endsnippet
 
-snippet post "postulate" bi
+snippet ;post "postulate" bi
 \begin{postulate}[$1]
 	${0:${VISUAL}}
 \end{postulate}
 endsnippet
 
-snippet prf "Proof" bi
+snippet ;prf "Proof" bi
 \begin{myproof}[$1]
 	${0:${VISUAL}}
 \end{myproof}
 endsnippet
 
-snippet def "Definition" bi
+snippet ;def "Definition" bi
 \begin{definition}[$1]
 	${0:${VISUAL}}
 \end{definition}
 endsnippet
 
-snippet nte "Note" bi
+snippet ;nte "Note" bi
 \begin{note}[$1]
 	${0:${VISUAL}}
 \end{note}
 endsnippet
 
-snippet prob "Problem" bi
+snippet ;prob "Problem" bi
 \begin{problem}[$1]
 	${0:${VISUAL}}
 \end{problem}
 endsnippet
 
-snippet corl "Corollary" bi
+snippet ;corl "Corollary" bi
 \begin{corollary}[$1]
 	${0:${VISUAL}}
 \end{corollary}
 endsnippet
 
-snippet example "Example" bi
+snippet ;example "Example" bi
 \begin{example}[$1]
 	${0:${VISUAL}}
 \end{example}
 endsnippet
 
-snippet notion "Notation" bi
+snippet ;notion "Notation" bi
 \begin{notation}[$1]
 	$0${VISUAL}
 \end{notation}
 endsnippet
 
-snippet conc "Conclusion" bi
+snippet ;conc "Conclusion" bi
 \begin{conclusion}[$1]
 	$0${VISUAL}
 \end{conclusion}
 endsnippet
 
-snippet fig "Figure environment" bi
+snippet ;fig "Figure environment" bi
 \begin{figure}[${1:htpb}]
 	\centering
 	${2:\includegraphics[width=0.8\textwidth]{$3}}
@@ -133,37 +135,37 @@ snippet fig "Figure environment" bi
 \end{figure}
 endsnippet
 
-snippet enum "Enumerate" bi
+snippet ;enum "Enumerate" bi
 \begin{enumerate}
 	\item ${0:${VISUAL}}
 \end{enumerate}
 endsnippet
 
-snippet item "Itemize" bi
+snippet ;item "Itemize" bi
 \begin{itemize}
 	\item ${0:${VISUAL}}
 \end{itemize}
 endsnippet
 
-snippet case "cases" bi
+snippet ;case "cases" bi
 \begin{cases}
 	${0:${VISUAL}}
 \end{cases}
 endsnippet
 
-snippet abs "abstract environment" b
+snippet ;abs "abstract environment" b
 \begin{abstract}
 	${0:${VISUAL}}
 .\end{abstract}
 endsnippet
 
-snippet tab "tabular / array environment" b
+snippet ;tab "tabular / array environment" b
 \begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
 $0${2/(?<=.)(c|l|r)|./(?1: & )/g}
 \end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
 endsnippet
 
-snippet table "Table environment" b
+snippet ;table "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
 	\caption{${2:caption}}
@@ -179,7 +181,7 @@ endsnippet
 
 
 #{{{> MATH
-#
+
 snippet ;cc "subset" w
 \subset 
 endsnippet
@@ -234,7 +236,7 @@ snippet ;ss "Super Script" i
 ^{$1}$0
 endsnippet
 
-snippet ;__ "subscript" Aw
+snippet ;__ "subscript" w
 _{$1}$0
 endsnippet
 
@@ -387,7 +389,7 @@ snippet ;lll "l" w
 \ell
 endsnippet
 
-snippet ;xx "cross" Aw
+snippet ;xx "cross" w
 \times 
 endsnippet
 
@@ -395,15 +397,15 @@ snippet '(?<!\\);(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
-snippet ;<! "normal" Aw
+snippet ;<! "normal" w
 \triangleleft 
 endsnippet
 
-snippet "((\d|\w)+);invs" "inverse" Awr
+snippet "((\d|\w)+)\;invs" "inverse" wr
 `!p snip.rv = match.group(1)`^{-1}
 endsnippet
 
-snippet ;!> "mapsto" Aw
+snippet ;!> "mapsto" w
 \mapsto 
 endsnippet
 
@@ -411,7 +413,7 @@ endsnippet
 
 
 #{{{> TABLES
-#
+
 pre_expand "create_table(snip)"
 snippet "gentbl(\d+)x(\d+)" "Generate table of *width* by *height*" r
 endsnippet
@@ -420,12 +422,13 @@ pre_expand "add_row(snip)"
 snippet "tr(\d+)" "Add table row of dimension ..." r
 endsnippet
 
+
 #<}}}
 
 
 #{{{> POSTFIX
-#
-snippet bar "bar" wi
+
+snippet ;bar "bar" wi
 \bar{${1:${VISUAL}}}$0
 endsnippet
 
@@ -437,7 +440,7 @@ snippet "\|(.*?)\>" "ket" wri
 \ket{`!p snip.rv = match.group(1).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 
-snippet "(.*)\\bra{(.*?)}([^\|]*?)\>" "braket" Awri
+snippet "(.*)\\bra{(.*?)}([^\|]*?)\>" "braket" wri
 `!p snip.rv = match.group(1)`\braket{`!p snip.rv = match.group(2)`}{`!p snip.rv = match.group(3).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 
@@ -445,138 +448,138 @@ endsnippet
 
 
 #{{{> PRE-AMBLE
-#
-snippet pac "usepackage - removes square braces if options removed" b
+
+snippet ;pac "usepackage - removes square braces if options removed" b
 \usepackage`!p snip.rv='[' if t[1] else ""`${1:options}`!p snip.rv = ']' if t[1] else ""`{${2:package}}$0
 endsnippet
 
-snippet docls "Document Class" bA
+snippet ;docls "Document Class" bA
 \documentclass{$1}$0
 endsnippet
+
 
 #<}}}
 
 
 #{{{> OTHER
-#
-snippet acl "Acroynm expanded" bi
+
+snippet ;acl "Acroynm expanded" bi
 \acl{${1:acronym}}
 endsnippet
 
-snippet ac "Acroynm normal" bi
+snippet ;ac "Acroynm normal" bi
 \ac{${1:acronym}}
 endsnippet
 
-snippet ni "Non-indented paragraph" bi
+snippet ;ni "Non-indented paragraph" bi
 \noindent
 endsnippet
+
 
 #<}}}
 
 
 #{{{> SECTIONS
-#
-snippet chap "Chapter" wi
+
+snippet ;chap "Chapter" wi
 \chapter{$1${VISUAL}}
 endsnippet
 
-snippet sec "Section" wi
+snippet ;sec "Section" wi
 \section{$1${VISUAL}}
 endsnippet
 
-snippet sec* "Section*" wi
+snippet ;sec* "Section*" wi
 \section*{$1${VISUAL}}
 endsnippet
 
-snippet sub "Subsection" wi
+snippet ;sub "Subsection" wi
 \subsection{$1${VISUAL}}
 endsnippet
 
-snippet sub* "Subsection*" wi
+snippet ;sub* "Subsection*" wi
 \subsection*{$1${VISUAL}}
 endsnippet
 
-snippet subsub "Subsection" wi
+snippet ;subsub "Subsection" wi
 \subsubsection{$1${VISUAL}}
 endsnippet
 
-snippet subsub* "Subsubsection" wi
+snippet ;subsub* "Subsubsection" wi
 \subsubsection*{$1${VISUAL}}
 endsnippet
 
-snippet par "Paragraph" wi
+snippet ;par "Paragraph" wi
 \paragraph{$1${VISUAL}}
 endsnippet
 
-snippet par* "Paragraph*" wi
+snippet ;par* "Paragraph*" wi
 \paragraph*{$1${VISUAL}}
 endsnippet
 
-snippet subpar "Sub Paragraph" wi
+snippet ;subpar "Sub Paragraph" wi
 \subparagraph{$1${VISUAL}}
 endsnippet
 
-snippet subpar* "Sub Paragraph*" wi
+snippet ;subpar* "Sub Paragraph*" wi
 \subparagraph*{$1${VISUAL}}
 endsnippet
 
-snippet chapl "Chapter with label" wi
+snippet ;chapl "Chapter with label" wi
 \chapter{$1${VISUAL}}
 \label{cha:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet secl "Section with label" wi
+snippet ;secl "Section with label" wi
 \section{$1${VISUAL}}
 \label{sec:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet sec*l "Section* with label" wi
+snippet ;sec*l "Section* with label" wi
 \section*{$1${VISUAL}}
 \label{sec:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet subl "Subsection with label" wi
+snippet ;subl "Subsection with label" wi
 \subsection{$1${VISUAL}}
 \label{sub:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet sub*l "Subsection* with label" wi
+snippet ;sub*l "Subsection* with label" wi
 \subsection*{$1${VISUAL}}
 \label{sub:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet subsubl "Subsection with label" wi
+snippet ;subsubl "Subsection with label" wi
 \subsubsection{$1${VISUAL}}
 \label{ssub:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet subsub*l "Subsubsection with label" wi
+snippet ;subsub*l "Subsubsection with label" wi
 \subsubsection*{$1${VISUAL}}
 \label{ssub:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet parl "Paragraph with label" wi
+snippet ;parl "Paragraph with label" wi
 \paragraph{$1${VISUAL}}
 \label{par:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet par*l "Paragraph* with label" wi
+snippet ;par*l "Paragraph* with label" wi
 \paragraph*{$1${VISUAL}}
 \label{par:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet subparl "Sub Paragraph with label" wi
+snippet ;subparl "Sub Paragraph with label" wi
 \subparagraph{$1${VISUAL}}
 \label{subp:${2:${1/\W+/-/g}}}
 endsnippet
 
-snippet subpar*l "Sub Paragraph* with label" wi
+snippet ;subpar*l "Sub Paragraph* with label" wi
 \subparagraph*{$1${VISUAL}}
 \label{subp:${2:${1/\W+/-/g}}}
 endsnippet
 
 #<}}}
-
-# vim:ft=snippets:
 
 
