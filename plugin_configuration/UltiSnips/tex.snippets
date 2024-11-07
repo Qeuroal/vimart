@@ -391,7 +391,7 @@ snippet .xx "cross" Aw
 \times 
 endsnippet
 
-snippet .'(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rw
+snippet '(?<!\\).(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -399,7 +399,7 @@ snippet .<! "normal" Aw
 \triangleleft 
 endsnippet
 
-snippet ."((\d|\w)+)invs" "inverse" Awr
+snippet "((\d|\w)+).invs" "inverse" Awr
 `!p snip.rv = match.group(1)`^{-1}
 endsnippet
 
