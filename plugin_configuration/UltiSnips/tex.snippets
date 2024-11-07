@@ -248,6 +248,10 @@ snippet ;srto "... Root" wi
 \sqrt[$1]{${2:${VISUAL}}}$0
 endsnippet
 
+snippet ;bi "Bold & Italic" wi
+\boldsymbol{${1:${VISUAL}}}$0
+endsnippet
+
 snippet ;bf "Bold" wi
 \bf{${1:${VISUAL}}}$0
 endsnippet
@@ -393,7 +397,7 @@ snippet ;xx "cross" w
 \times 
 endsnippet
 
-snippet '(?<!\\);(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rw
+snippet '(?<!\\)\;(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -408,6 +412,16 @@ endsnippet
 snippet ;!> "mapsto" w
 \mapsto 
 endsnippet
+
+
+snippet '(?<!\\)\;(alpha|theta|upsilon|beta|vartheta|pi|phi|gamma|iota|varpi|varphi|delta|kappa|rho|chi|epsilon|lambda|varrho|psi|varepsilon|mu|sigma|omega|zeta|nu|varsigma|eta|xi|tau|Gamma|Lambda|Sigma|Psi|Delta|Xi|Upsilon|Omega|Theta|Pi|Phi|varGamma|varLambda|varSigma|varPsi|varDelta|varXi|varUpsilon|varOmega|varTheta|varPi|varPhi)' "ln" rw
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+
+
+
+
 
 #<}}}
 
