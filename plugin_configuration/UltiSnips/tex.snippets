@@ -3,30 +3,30 @@
 global !p
 
 def create_table(snip):
-	rows = snip.buffer[snip.line].split('x')[0]
-	cols = snip.buffer[snip.line].split('x')[1]
-	int_val = lambda string: int(''.join(s for s in string if s.isdigit()))
-	rows = int_val(rows)
-	cols = int_val(cols)
-	offset = cols + 1
-	old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
-	snip.buffer[snip.line] = ''
-	final_str = old_spacing + "\\begin{tabular}{|" + "|".join(['$' + str(i + 1) for i in range(cols)]) + "|}\n"
-	for i in range(rows):
-		final_str += old_spacing + '\t'
-		final_str += " & ".join(['$' + str(i * cols + j + offset) for j in range(cols)])
-		final_str += " \\\\\\\n"
-	final_str += old_spacing + "\\end{tabular}\n$0"
-	snip.expand_anon(final_str)
+    rows = snip.buffer[snip.line].split('x')[0]
+    cols = snip.buffer[snip.line].split('x')[1]
+    int_val = lambda string: int(''.join(s for s in string if s.isdigit()))
+    rows = int_val(rows)
+    cols = int_val(cols)
+    offset = cols + 1
+    old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
+    snip.buffer[snip.line] = ''
+    final_str = old_spacing + "\\begin{tabular}{|" + "|".join(['$' + str(i + 1) for i in range(cols)]) + "|}\n"
+    for i in range(rows):
+        final_str += old_spacing + '\t'
+        final_str += " & ".join(['$' + str(i * cols + j + offset) for j in range(cols)])
+        final_str += " \\\\\\\n"
+    final_str += old_spacing + "\\end{tabular}\n$0"
+    snip.expand_anon(final_str)
 
 def add_row(snip):
-	row_len = int(''.join(s for s in snip.buffer[snip.line] if s.isdigit()))
-	old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
-	snip.buffer[snip.line] = ''
-	final_str = old_spacing
-	final_str += " & ".join(['$' + str(j + 1) for j in range(row_len)])
-	final_str += " \\\\\\"
-	snip.expand_anon(final_str)
+    row_len = int(''.join(s for s in snip.buffer[snip.line] if s.isdigit()))
+    old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
+    snip.buffer[snip.line] = ''
+    final_str = old_spacing
+    final_str += " & ".join(['$' + str(j + 1) for j in range(row_len)])
+    final_str += " \\\\\\"
+    snip.expand_anon(final_str)
 endglobal
 
 #<}}}
@@ -36,124 +36,124 @@ endglobal
 #
 snippet beg "begin{} / end{}" bi
 \begin{$1}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{$1}
 endsnippet
 
 snippet cnt "Center" bi
 \begin{center}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{center}
 endsnippet
 
 snippet desc "Description" bi
 \begin{description}
-	\item[${1:${VISUAL}}] $0
+    \item[${1:${VISUAL}}] $0
 \end{description}
 endsnippet
 
 snippet lemma "Lemma" bi
 \begin{lemma}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{lemma}
 endsnippet
 
 snippet prop "Proposition" bi
 \begin{prop}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{prop}
 endsnippet
 
 snippet thrm "Theorem" bi
 \begin{theorem}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{theorem}
 endsnippet
 
 snippet post "postulate" bi
 \begin{postulate}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{postulate}
 endsnippet
 
 snippet prf "Proof" bi
 \begin{myproof}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{myproof}
 endsnippet
 
 snippet def "Definition" bi
 \begin{definition}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{definition}
 endsnippet
 
 snippet nte "Note" bi
 \begin{note}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{note}
 endsnippet
 
 snippet prob "Problem" bi
 \begin{problem}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{problem}
 endsnippet
 
 snippet corl "Corollary" bi
 \begin{corollary}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{corollary}
 endsnippet
 
 snippet example "Example" bi
 \begin{example}[$1]
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{example}
 endsnippet
 
 snippet notion "Notation" bi
 \begin{notation}[$1]
-	$0${VISUAL}
+    $0${VISUAL}
 \end{notation}
 endsnippet
 
 snippet conc "Conclusion" bi
 \begin{conclusion}[$1]
-	$0${VISUAL}
+    $0${VISUAL}
 \end{conclusion}
 endsnippet
 
 snippet fig "Figure environment" bi
 \begin{figure}[${1:htpb}]
-	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
+    \centering
+    ${2:\includegraphics[width=0.8\textwidth]{$3}}
+    \caption{${4:$3}}
+    \label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
 endsnippet
 
 snippet enum "Enumerate" bi
 \begin{enumerate}
-	\item ${0:${VISUAL}}
+    \item ${0:${VISUAL}}
 \end{enumerate}
 endsnippet
 
 snippet item "Itemize" bi
 \begin{itemize}
-	\item ${0:${VISUAL}}
+    \item ${0:${VISUAL}}
 \end{itemize}
 endsnippet
 
 snippet case "cases" bi
 \begin{cases}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{cases}
 endsnippet
 
 snippet abs "abstract environment" b
 \begin{abstract}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 .\end{abstract}
 endsnippet
 
@@ -165,13 +165,13 @@ endsnippet
 
 snippet table "Table environment" b
 \begin{table}[${1:htpb}]
-	\centering
-	\caption{${2:caption}}
-	\label{tab:${3:label}}
+    \centering
+    \caption{${2:caption}}
+    \label{tab:${3:label}}
 
-	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
-		$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
-	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+    \begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
+        $0${5/(?<=.)(c|l|r)|./(?1: & )/g}
+    \end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
 \end{table}
 endsnippet
 
@@ -218,7 +218,7 @@ endsnippet
 
 snippet ;dm "Display Math" w
 \[
-	${1:${VISUAL}}
+    ${1:${VISUAL}}
 \]$0
 endsnippet
 
