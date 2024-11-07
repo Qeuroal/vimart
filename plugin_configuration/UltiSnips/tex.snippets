@@ -1,5 +1,4 @@
 #{{{> GLOBAL
-#
 global !p
 
 def create_table(snip):
@@ -33,7 +32,6 @@ endglobal
 
 
 #{{{> ENVIRONMENT
-#
 snippet beg "begin{} / end{}" bi
 \begin{$1}
     ${0:${VISUAL}}
@@ -179,7 +177,6 @@ endsnippet
 
 
 #{{{> MATH
-#
 snippet ;cc "subset" w
 \subset 
 endsnippet
@@ -411,7 +408,6 @@ endsnippet
 
 
 #{{{> TABLES
-#
 pre_expand "create_table(snip)"
 snippet "gentbl(\d+)x(\d+)" "Generate table of *width* by *height*" r
 endsnippet
@@ -424,7 +420,6 @@ endsnippet
 
 
 #{{{> POSTFIX
-#
 snippet bar "bar" wi
 \bar{${1:${VISUAL}}}$0
 endsnippet
@@ -445,7 +440,6 @@ endsnippet
 
 
 #{{{> PRE-AMBLE
-#
 snippet pac "usepackage - removes square braces if options removed" b
 \usepackage`!p snip.rv='[' if t[1] else ""`${1:options}`!p snip.rv = ']' if t[1] else ""`{${2:package}}$0
 endsnippet
@@ -458,7 +452,6 @@ endsnippet
 
 
 #{{{> OTHER
-#
 snippet acl "Acroynm expanded" bi
 \acl{${1:acronym}}
 endsnippet
@@ -475,7 +468,6 @@ endsnippet
 
 
 #{{{> SECTIONS
-#
 snippet chap "Chapter" wi
 \chapter{$1${VISUAL}}
 endsnippet
