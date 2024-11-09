@@ -413,15 +413,9 @@ snippet ;!> "mapsto" w
 \mapsto 
 endsnippet
 
-
 snippet '(?<!\\)\;(alpha|theta|upsilon|beta|vartheta|pi|phi|gamma|iota|varpi|varphi|delta|kappa|rho|chi|epsilon|lambda|varrho|psi|varepsilon|mu|sigma|omega|zeta|nu|varsigma|eta|xi|tau|Gamma|Lambda|Sigma|Psi|Delta|Xi|Upsilon|Omega|Theta|Pi|Phi|varGamma|varLambda|varSigma|varPsi|varDelta|varXi|varUpsilon|varOmega|varTheta|varPi|varPhi)' "ln" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
-
-
-
-
-
 
 #<}}}
 
@@ -596,4 +590,10 @@ endsnippet
 
 #<}}}
 
+
+#{{{> cites
+snippet '(?<!\\)\;(cite|ref|eqref)' "ln" rw
+~\\`!p snip.rv = match.group(1)`{$1}$0
+endsnippet
+#<}}}
 

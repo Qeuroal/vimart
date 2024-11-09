@@ -139,9 +139,9 @@ set splitbelow                          " 分割窗口, 默认在下方
 " set splitright                          " 分割窗口, 默认在右侧
 set noerrorbells visualbell t_vb=       " disable audible bell
 if has("patch-7.4.710")
-    set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«,space:_ " 设置不可见字符
+    set listchars=eol:$,tab:>-,trail:@,extends:>,precedes:<,space:_,nbsp:_  " 设置不可见字符
 else
-    set listchars=eol:↵,tab:»·,trail:╳,extends:»,precedes:«         " 设置不可见字符
+    set listchars=eol:$,tab:>-,trail:@,extends:>,precedes:<                 " 设置不可见字符
 endif
 " <}}}
 
