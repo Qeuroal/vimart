@@ -91,7 +91,7 @@ function is_exist_file()
 #<}}}
 
 #{{{> config vim ycm
-function config_vim_ycm() {
+function config_vim_cpt() {
     # 设置路径变量
     local srcPath=${PWD}
     local destPath=$HOME
@@ -138,7 +138,7 @@ function install_vim_plugins() {
     # echo -e "\033[32m===> Installing plugins...\033[0m"
     color_print "info" "Installing plugins..."
     vim -c "PlugInstall" -c "q" -c "q"
-    config_vim_ycm
+    config_vim_cpt
 }
 #<}}}
 

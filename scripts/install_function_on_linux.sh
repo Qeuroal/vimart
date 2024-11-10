@@ -243,7 +243,7 @@ function local_install_vimart_on_linux() {
     copy_reference_usr_file ${destPath}
     copy_files ${srcPath} ${destPath}
     copy_cpt_config ${srcPath} ${destPath}
-    config_vim_ycm ${srcPath} ${destPath}
+    config_vim_cpt ${srcPath} ${destPath}
     config_vimart_dependency ${srcPath} ${destPath}
     chown_user_permission
 }

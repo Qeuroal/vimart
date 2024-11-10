@@ -82,8 +82,7 @@ elseif g:completeScheme == 2
         Plug 'Qeuroal/YouCompleteMeLowVersion'              " YouCompleteMe低版本, 用以兼容低版本系统、低版本Python3 等等
     endif
 elseif g:completeScheme == 3
-    Plug 'skywind3000/vim-auto-popmenu'                 " 基于上下文的自动提示功能
-    Plug 'skywind3000/vim-dict'                         " 根据文件类型自动添加词典文件到当前缓存区
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}         " coc 补全
 endif
 
 " 加载自定义插件
@@ -575,47 +574,12 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:echodoc_enable_at_startup = 1
 "<}}}
 
+
 "{{{> 加载补全配置
-" 补全方案
-let g:completeScheme=get(g:, "completeScheme", 0)
-" if filereadable(expand('~/.vimrc.cpt.config'))
-if g:completeScheme == 2 && filereadable(expand('~/.vimrc.cpt.config'))
+if filereadable(expand('~/.vimrc.cpt.config'))
     source ~/.vimrc.cpt.config
-elseif g:completeScheme == 3
-    " vim-auto-popmenu 配置
-    " enable this plugin for filetypes, '*' for all files.
-    let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1, '*':1}
-    " source for dictionary, current or other loaded buffers, see ':help cpt'
-    set cpt=.,k,w,b
-    " 关闭状态栏的消息。(suppress annoy messages.)
-    set shortmess+=c
-    " 启动该插件。(Default: 1. Set to 0 to disable this plugin.)
-    let g:apc_enable = 1
-    " 提示最小值。(Default: 2 Minimal characters to trigger the completion popup menu.)
-    let g:apc_min_length = 1
-
-    " vim-dict 配置
-    " 添加额外的字典文件夹
-    let g:vim_dict_dict = [
-        \ '~/.vim/dict',
-        \ ]
-    " 覆盖文件类型：即一个文件类型使用其他文件类型的字典文件。下面的 html 使用 html,javascript,css 三个文件类型的字典
-    let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
-    " 禁用某些类型的字典
-    let g:vim_dict_config = {'text': ''}
 endif
-
-if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.cpt.config')))
-    " nop 按键
-    imap <C-L> <C-N>
-    nnoremap <leader>u <nop>
-    nnoremap <leader>U <nop>
-    nnoremap <leader>r <nop>
-    nnoremap <leader>g <nop>
-    nnoremap <leader>yt <nop>
-    nnoremap <leader>yh <nop>
-endif
-"<}}}
+""<}}}
 
 "{{{> vimtex
 let g:tex_flavor='latex'
