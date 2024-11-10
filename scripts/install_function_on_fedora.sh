@@ -33,8 +33,8 @@ function install_ycm_on_fedora() {
     ## python3 install.py --all --verbose # 需要安装的依赖                            ##
     ##################################################################################
     # 添加 vim.ycm.config
-    rm -rf ~/.vimrc.ycm.config
-    ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
+    rm -rf ~/.vimrc.cpt.config
+    ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 
     # install dependency
     install_choice=n

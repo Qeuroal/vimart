@@ -26,8 +26,8 @@ function install_ycm_on_archlinux() {
     ## python3 install.py --all --verbose # 需要安装的依赖                            ##
     ##################################################################################
     # 添加 vim.ycm.config
-    rm -rf ~/.vimrc.ycm.config
-    ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
+    rm -rf ~/.vimrc.cpt.config
+    ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 
     install_choice=n
     read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice

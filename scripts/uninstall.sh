@@ -73,8 +73,8 @@ if [ ${isExist} == 1 ]; then
     rm -rf ${vimartPath}
 fi
 
-# delete .vimrc.ycm.config
-vimrc_ycm_config_path=${HOME}"/.vimrc.ycm.config"
+# delete .vimrc.cpt.config
+vimrc_ycm_config_path=${HOME}"/.vimrc.cpt.config"
 isExist=$(is_exist_file ${vimrc_ycm_config_path})
 if [ ${isExist} == 1 ]; then
     # echo -e "\033[31mRemove ${vimrc_ycm_config_path}\033[0m"

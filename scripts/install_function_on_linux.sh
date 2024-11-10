@@ -103,8 +103,8 @@ function copy_ycm_config() {
     fi
 
     if [ `ls ${destPath}/.vim/plugged | grep -c YouCompleteMe` != 0  ]; then
-        rm -rf ${destPath}/.vimrc.ycm.config
-        ln -s ${srcPath}/configuration/vimrc.ycm.config ${destPath}/.vimrc.ycm.config
+        rm -rf ${destPath}/.vimrc.cpt.config
+        ln -s ${srcPath}/configuration/vimrc.cpt.config ${destPath}/.vimrc.cpt.config
     fi
 }
 #<}}}
@@ -200,8 +200,8 @@ function chown_user_permission() {
         chown -R ${username}:${username} ${userhome}/.ycm_extra_conf.py
     fi
 
-    if [ -e "${userhome}/.vimrc.ycm.config" ]; then
-        chown -R ${username}:${username} ${userhome}/.vimrc.ycm.config
+    if [ -e "${userhome}/.vimrc.cpt.config" ]; then
+        chown -R ${username}:${username} ${userhome}/.vimrc.cpt.config
     fi
 
     if [ -e "${userhome}/.bashrc" ]; then

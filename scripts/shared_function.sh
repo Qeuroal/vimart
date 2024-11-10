@@ -100,7 +100,7 @@ function config_vim_ycm() {
     fi
 
     # ycm_extra_conf 配置
-    local vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
+    local vimrc_ycm_config_path=${destPath}"/.vimrc.cpt.config"
     local is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
     if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件

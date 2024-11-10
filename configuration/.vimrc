@@ -68,7 +68,7 @@ else
 endif
 
 " 加载补全插件
-" if filereadable(expand('~/.vimrc.ycm.config'))
+" if filereadable(expand('~/.vimrc.cpt.config'))
 if g:completeScheme == 1
     " Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
     "                                                     " http://www.vim.org/scripts/script.php?script_id=1879
@@ -578,9 +578,9 @@ let g:echodoc_enable_at_startup = 1
 "{{{> 加载补全配置
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
-" if filereadable(expand('~/.vimrc.ycm.config'))
-if g:completeScheme == 2 && filereadable(expand('~/.vimrc.ycm.config'))
-    source ~/.vimrc.ycm.config
+" if filereadable(expand('~/.vimrc.cpt.config'))
+if g:completeScheme == 2 && filereadable(expand('~/.vimrc.cpt.config'))
+    source ~/.vimrc.cpt.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
     " enable this plugin for filetypes, '*' for all files.
@@ -605,7 +605,7 @@ elseif g:completeScheme == 3
     let g:vim_dict_config = {'text': ''}
 endif
 
-if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config')))
+if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.cpt.config')))
     " nop 按键
     imap <C-L> <C-N>
     nnoremap <leader>u <nop>
