@@ -14,8 +14,9 @@ function install_ycm_on_archlinux() {
         echo "don't install ycm"
         # echo -e "\033[31m===> Canceling install ycm...\033[0m"
         color_print "warning" "Canceling install ycm..."
-        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
         return 0
+    else
+        sed -i 's/let g:completeScheme=2/let g:completeScheme=1/g' ~/.vimrc.custom.config
     fi
 
     # echo -e "\033[41;32m===> Installing ycm...\033[0m"

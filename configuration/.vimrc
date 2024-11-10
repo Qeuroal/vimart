@@ -70,17 +70,17 @@ endif
 " 加载补全插件
 " if filereadable(expand('~/.vimrc.ycm.config'))
 if g:completeScheme == 1
+    " Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
+    "                                                     " http://www.vim.org/scripts/script.php?script_id=1879
+    Plug 'Qeuroal/vimautosense'                         " 自动补全插件, 默认: 不自动选择第一个匹配项
+    Plug 'Qeuroal/vimdicts'                             " 补全词典
+elseif g:completeScheme == 2
     "启用 ycm 插件
     if system("python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $2}'") > 8
         Plug 'Valloric/YouCompleteMe'                       " 基于语义的自动补全插件，支持C/C++、C#、Python、PHP等语言
     else
         Plug 'Qeuroal/YouCompleteMeLowVersion'              " YouCompleteMe低版本, 用以兼容低版本系统、低版本Python3 等等
     endif
-elseif g:completeScheme == 2
-    " Plug 'vim-scripts/AutoComplPop'                     " This is a mirror of 
-    "                                                     " http://www.vim.org/scripts/script.php?script_id=1879
-    Plug 'Qeuroal/vimautosense'                         " 自动补全插件, 默认: 不自动选择第一个匹配项
-    Plug 'Qeuroal/vimdicts'                             " 补全词典
 elseif g:completeScheme == 3
     Plug 'skywind3000/vim-auto-popmenu'                 " 基于上下文的自动提示功能
     Plug 'skywind3000/vim-dict'                         " 根据文件类型自动添加词典文件到当前缓存区
@@ -579,7 +579,7 @@ let g:echodoc_enable_at_startup = 1
 " 补全方案
 let g:completeScheme=get(g:, "completeScheme", 0)
 " if filereadable(expand('~/.vimrc.ycm.config'))
-if g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config'))
+if g:completeScheme == 2 && filereadable(expand('~/.vimrc.ycm.config'))
     source ~/.vimrc.ycm.config
 elseif g:completeScheme == 3
     " vim-auto-popmenu 配置
@@ -605,7 +605,7 @@ elseif g:completeScheme == 3
     let g:vim_dict_config = {'text': ''}
 endif
 
-if !(g:completeScheme == 1 && filereadable(expand('~/.vimrc.ycm.config')))
+if !(g:completeScheme == 2 && filereadable(expand('~/.vimrc.ycm.config')))
     " nop 按键
     imap <C-L> <C-N>
     nnoremap <leader>u <nop>
