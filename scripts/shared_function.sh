@@ -103,12 +103,17 @@ function config_vim_ycm() {
         destPath="$2"
     fi
 
-    # ycm_extra_conf 配置
-    local vimrc_ycm_config_path=${destPath}"/.vimrc.cpt.config"
-    local is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
-    if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
+    # complete 配置
+    local vimrc_custom_config=${destPath}/.vimrc.custom.config
+    local exist_vimrc_custom_config=$(is_exist_file ${vimrc_custom_config})
+    if [ ${exist_vimrc_custom_config} -eq 0 ]; then
+        return
+    fi
+
+    local cpt_scheme=`cat ${vimrc_custom_config} | grep -c "let g:completeScheme=2"`
+    if [ ${cpt_scheme} -eq 1 ]; then
+    # if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
-        # echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
         color_print "info" "Coping the .ycm_tra_conf.py file..."
         local ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
         cp -f ${ycm_extra_conf_path} ${destPath}
