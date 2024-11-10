@@ -498,6 +498,11 @@ function choose_complete_scheme() {
         color_print "error" "don't support sed"
         exit 1
     fi
+
+    if [ "${opt}" = "3" ]; then
+        rm -rf ${destPath}/.vim/coc-settings.json
+        cp -rf ${srcPath}/plugin_configuration/coc/coc-settings.json ${destPath}/.vim/coc-settings.json
+    fi
 }
 #<}}}
 
