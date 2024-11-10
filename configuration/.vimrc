@@ -399,8 +399,8 @@ nnoremap <silent> <leader>s :RG<CR>
 "<}}}
 
 "{{{> ultisnips
-" 设置 tab 触发
-let g:UltiSnipsExpandTrigger="<tab>"
+" 设置触发
+let g:UltiSnipsExpandTrigger=""
 " 使用 tab 切换下一个触发点，
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 " 使用 shit+tab 上一个触发点
@@ -579,7 +579,7 @@ let g:echodoc_enable_at_startup = 1
 if filereadable(expand('~/.vimrc.cpt.config'))
     source ~/.vimrc.cpt.config
 endif
-""<}}}
+"<}}}
 
 "{{{> vimtex
 let g:tex_flavor='latex'
