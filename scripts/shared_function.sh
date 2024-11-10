@@ -459,6 +459,22 @@ function configureCtags() {
 }
 #<}}}
 
+#{{{> choose cpt
+function choose_complete_scheme() {
+    opt_print "Please choose a complete scheme (default 3):" "0. build-in" "1. vimautosense & vimdicts" "2. YouCompleteMe" "3. coc"
+    local opt=3
+    if [ "${opt}" = "0" ]; then
+        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=0/g' ~/.vimrc.custom.config
+    else if [ "${opt}" = "0" ]; then
+        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=1/g' ~/.vimrc.custom.config
+    else if [ "${opt}" = "2" ]; then
+        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
+    else if [ "${opt}" = "3" ]; then
+        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=3/g' ~/.vimrc.custom.config
+    fi
+}
+#<}}}
+
 
 
 
