@@ -110,8 +110,13 @@ function config_vim_cpt() {
         return
     fi
 
-    local cpt_scheme=`cat ${vimrc_custom_config} | grep -c "let g:completeScheme=2"`
-    if [ ${cpt_scheme} -eq 1 ]; then
+    local cpt_scheme_count=`cat ${vimrc_custom_config} | grep -c "let g:completeScheme"`
+    if [ ${cpt_scheme_count} -ne 1 ]; then
+        return
+    fi
+
+    local cpt_scheme=`cat ${vimrc_custom_config} | grep "let g:completeScheme" | awk -F '=' '{print $2}'`
+    if [ ${cpt_scheme} -eq 2 ]; then
     # if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
         color_print "info" "Coping the .ycm_tra_conf.py file..."
@@ -128,6 +133,10 @@ function config_vim_cpt() {
         #     # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
         # fi
         ###############################################################################
+    elif [ ${cpt_scheme} -eq 3 ]; then
+        color_print "info" "Configuring coc ..."
+        vim -c "CocInstall coc-marketplace coc-clangd coc-pyright coc-sh coc-vimlsp coc-snippets coc-texlab "
+        # vim -c "CocInstall coc-explorer"
     fi
 
 }
