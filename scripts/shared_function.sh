@@ -71,6 +71,10 @@ function copy_files() {
     # .vimart
     rm -rf ${destPath}/.vimart
     ln -s ${srcPath} ${destPath}/.vimart
+
+    # .vimrc.cpt.config
+    rm -rf ~/.vimrc.cpt.config
+    ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 }
 #<}}}
 
@@ -87,7 +91,7 @@ function is_exist_file()
 #<}}}
 
 #{{{> config vim ycm
-function config_vim_ycm() {
+function config_vim_cpt() {
     # 设置路径变量
     local srcPath=${PWD}
     local destPath=$HOME
@@ -99,12 +103,22 @@ function config_vim_ycm() {
         destPath="$2"
     fi
 
-    # ycm_extra_conf 配置
-    local vimrc_ycm_config_path=${destPath}"/.vimrc.ycm.config"
-    local is_vimrc_ycm_config_exist=$(is_exist_file ${vimrc_ycm_config_path})
-    if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
+    # complete 配置
+    local vimrc_custom_config=${destPath}/.vimrc.custom.config
+    local exist_vimrc_custom_config=$(is_exist_file ${vimrc_custom_config})
+    if [ ${exist_vimrc_custom_config} -eq 0 ]; then
+        return
+    fi
+
+    local cpt_scheme_count=`cat ${vimrc_custom_config} | grep -c "let g:completeScheme"`
+    if [ ${cpt_scheme_count} -ne 1 ]; then
+        return
+    fi
+
+    local cpt_scheme=`cat ${vimrc_custom_config} | grep "let g:completeScheme" | awk -F '=' '{print $2}'`
+    if [ ${cpt_scheme} -eq 2 ]; then
+    # if [ ${is_vimrc_ycm_config_exist} == 1 ]; then
         # 添加 ycm_extra_conf 文件
-        # echo -e "\033[32m===>Coping the .ycm_tra_conf.py file...\033[0m"
         color_print "info" "Coping the .ycm_tra_conf.py file..."
         local ycm_extra_conf_path=${srcPath}"/configuration/.ycm_extra_conf.py"
         cp -f ${ycm_extra_conf_path} ${destPath}
@@ -119,6 +133,10 @@ function config_vim_ycm() {
         #     # cp -f ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~
         # fi
         ###############################################################################
+    elif [ ${cpt_scheme} -eq 3 ]; then
+        color_print "info" "Configuring coc ..."
+        vim -c "CocInstall coc-marketplace coc-clangd coc-pyright coc-sh coc-vimlsp coc-snippets coc-texlab "
+        # vim -c "CocInstall coc-explorer"
     fi
 
 }
@@ -129,7 +147,7 @@ function install_vim_plugins() {
     # echo -e "\033[32m===> Installing plugins...\033[0m"
     color_print "info" "Installing plugins..."
     vim -c "PlugInstall" -c "q" -c "q"
-    config_vim_ycm
+    config_vim_cpt
 }
 #<}}}
 

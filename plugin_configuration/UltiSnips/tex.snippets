@@ -42,6 +42,24 @@ snippet ;beg "begin{} / end{}" bi
 \end{$1}
 endsnippet
 
+snippet ;eqe "equation" bi
+\begin{equation$1}
+	${0:${VISUAL}}
+\end{equation$1}
+endsnippet
+
+snippet ;eqa "align" bi
+\begin{align$1}
+	${0:${VISUAL}}
+\end{align$1}
+endsnippet
+
+snippet ;eqg "gather" bi
+\begin{gather$1}
+	${0:${VISUAL}}
+\end{gather$1}
+endsnippet
+
 snippet ;cnt "Center" bi
 \begin{center}
 	${0:${VISUAL}}
@@ -182,15 +200,15 @@ endsnippet
 
 #{{{> MATH
 
-snippet ;cc "subset" w
+snippet ;cc "subset" wb
 \subset 
 endsnippet
 
-snippet ;inn "in " w
+snippet ;in "in " wi
 \in 
 endsnippet
 
-snippet ;Nn "cap" w
+snippet ;Nn "cap" wi
 \cap 
 endsnippet
 
@@ -214,7 +232,7 @@ snippet ;DD "D" w
 \mathbb{D}
 endsnippet
 
-snippet ;inmath "Inline Math" w
+snippet ;im "Inline Math" w
 \\(${1}\\) $0
 endsnippet
 
@@ -236,15 +254,15 @@ snippet ;ss "Super Script" i
 ^{$1}$0
 endsnippet
 
-snippet ;__ "subscript" w
+snippet ;sb "subscript" i
 _{$1}$0
 endsnippet
 
-snippet ;srt "Square Root" wi
+snippet ;sq "Square Root" wi
 \sqrt{${1:${VISUAL}}}$0
 endsnippet
 
-snippet ;srto "... Root" wi
+snippet ;sqo "... Root" wi
 \sqrt[$1]{${2:${VISUAL}}}$0
 endsnippet
 
@@ -252,7 +270,7 @@ snippet ;bi "Bold & Italic" wi
 \boldsymbol{${1:${VISUAL}}}$0
 endsnippet
 
-snippet ;bf "Bold" wi
+snippet ;bl "Bold" wi
 \bf{${1:${VISUAL}}}$0
 endsnippet
 
@@ -276,7 +294,7 @@ snippet ;ceil "Ceil" w
 \left\lceil $1 \right\rceil $0
 endsnippet
 
-snippet ;floor "Floor" w
+snippet ;fl "Floor" w
 \left\lfloor $1 \right\rfloor$0
 endsnippet
 
@@ -293,10 +311,6 @@ snippet ;() "Left( right)" w
 endsnippet
 
 snippet ;lr "left( right)" i
-\left( ${1:${VISUAL}} \right) $0
-endsnippet
-
-snippet ;lr( "left( right)" i
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
 
@@ -348,7 +362,7 @@ snippet ;part "d/dx" w
 \frac{\partial ${1:V}}{\partial ${2:x}} $0
 endsnippet
 
-snippet ;ooo "\infty" w
+snippet ;inf "\infty" w
 \infty
 endsnippet
 

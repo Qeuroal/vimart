@@ -100,23 +100,24 @@ function install_ycm_on_ubuntu() {
         echo "don't install ycm"
         # echo -e "\033[31m===> Canceling install ycm...\033[0m"
         color_print "warning" "Canceling install ycm..."
-        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
         return 0
+    else
+        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
     fi
 
     # echo -e "\033[41;32m===> Installing ycm...\033[0m"
     color_print "warning" "Installing ycm..."
 
     ##################################################################################
-    ## python3 install.py --all --verbose # 需要安装的依赖                            ##
+    ## python3 install.py --all --verbose # 需要安装的依赖                          ##
     ##################################################################################
-    # 添加 vim.ycm.config
-    rm -rf ~/.vimrc.ycm.config
-    ln -s ${PWD}/configuration/vimrc.ycm.config ~/.vimrc.ycm.config
+    # # 添加 vim.ycm.config
+    # rm -rf ~/.vimrc.cpt.config
+    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 
     # 配置YCM版本
     version=$(get_ubuntu_version)
-    if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=1"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
+    if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=2"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
         # Plug 'Valloric/YouCompleteMe', { 'commit' : '4556062839aa2e86f2f4f1c0b4532697d607af23' }
         echo "" >> ${HOME}/.vimrc.custom.plugins
         echo '" configure ycm commit' >> ${HOME}/.vimrc.custom.plugins
