@@ -91,7 +91,7 @@ function install_vimart_on_linux() {
 # <}}}
 
 #{{{> copy ycm config
-function copy_ycm_config() {
+function copy_cpt_config() {
     srcPath=${PWD}
     destPath=$HOME
     if [ "$#" = "1"  ]; then
@@ -242,7 +242,7 @@ function local_install_vimart_on_linux() {
 
     copy_reference_usr_file ${destPath}
     copy_files ${srcPath} ${destPath}
-    copy_ycm_config ${srcPath} ${destPath}
+    copy_cpt_config ${srcPath} ${destPath}
     config_vim_ycm ${srcPath} ${destPath}
     config_vimart_dependency ${srcPath} ${destPath}
     chown_user_permission

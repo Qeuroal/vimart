@@ -71,6 +71,10 @@ function copy_files() {
     # .vimart
     rm -rf ${destPath}/.vimart
     ln -s ${srcPath} ${destPath}/.vimart
+
+    # .vimrc.cpt.config
+    rm -rf ~/.vimrc.cpt.config
+    ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 }
 #<}}}
 

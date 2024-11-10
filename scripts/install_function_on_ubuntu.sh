@@ -111,9 +111,9 @@ function install_ycm_on_ubuntu() {
     ##################################################################################
     ## python3 install.py --all --verbose # 需要安装的依赖                          ##
     ##################################################################################
-    # 添加 vim.ycm.config
-    rm -rf ~/.vimrc.cpt.config
-    ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
+    # # 添加 vim.ycm.config
+    # rm -rf ~/.vimrc.cpt.config
+    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
 
     # 配置YCM版本
     version=$(get_ubuntu_version)
