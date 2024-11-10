@@ -211,7 +211,7 @@ endif
 set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
-set encoding=utf8
+set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,gb18030,latin1
 " set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 " <}}}
