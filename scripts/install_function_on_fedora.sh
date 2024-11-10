@@ -12,47 +12,33 @@ function install_software_on_fedora() {
 }
 # <}}}
 
-# {{{> install_ycm_on_fedora
-function install_ycm_on_fedora() {
-    install_choice=n
-    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
-        echo "don't install ycm"
-        # echo -e "\033[31m===> Canceling install ycm...\033[0m"
-        color_print "warning" "Canceling install ycm..."
-        return 0
-    else
-        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
-    fi
+# {{{> install_cpt_on_fedora
+function install_cpt_on_fedora() {
+    local cptScheme=$(get_complete_scheme)
+    if [ "${cptScheme}" = "2" ]; then
+        color_print "warning" "Installing ycm..."
 
-    # echo -e "\033[41;32m===> Installing ycm...\033[0m"
-    color_print "warning" "Installing ycm..."
+        # python3 install.py --all --verbose 需要安装的依赖
+        local install_choice=n
+        read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+        echo ""
+        if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+            color_print "warning" "Installing dependencies of ycm..."
+            # install golang
+            sudo dnf install -y golang
+            go mod init ${HOME}/.vim/plugged/YouCompleteMe
+            # install npm
+            sudo dnf install -y npm
+            # install java
+            # sudo dnf install -y openjdk-8-jdk
+        fi
 
-    ##################################################################################
-    ## python3 install.py --all --verbose # 需要安装的依赖                            ##
-    ##################################################################################
-    # # 添加 vim.ycm.config
-    # rm -rf ~/.vimrc.cpt.config
-    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
-
-    # install dependency
-    install_choice=n
-    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
-        color_print "warning" "Installing dependencies of ycm..."
-        # install golang on Fedora
-        sudo dnf install -y golang
-        go mod init ${HOME}/.vim/plugged/YouCompleteMe
-        # install npm on Fedora
+        # python 编译
+        # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
+    elif [ "$cptScheme" = "3" ]; then
+        color_print "warning" "Installing coc..."
         sudo dnf install -y npm
-        # install java on Fedora
-        # sudo dnf install -y openjdk-8-jdk
     fi
-
-    # python 编译
-    # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
 }
 # <}}}
 
@@ -76,8 +62,9 @@ function install_vimart_on_fedora() {
     copy_files
     # install fonts
     install_fonts_on_linux
-    # install ycm
-    install_ycm_on_fedora
+    # choose & install ycm
+    choose_complete_scheme
+    install_cpt_on_fedora
     # install vim plugins
     install_vim_plugins
     # configure vim plugins

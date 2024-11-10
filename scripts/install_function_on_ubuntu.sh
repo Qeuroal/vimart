@@ -95,19 +95,6 @@ function install_software_on_ubuntu() {
 function install_cpt_on_ubuntu() {
     local cptScheme=$(get_complete_scheme)
     if [ "${cptScheme}" = "2" ]; then
-        # local install_choice=n
-        # read -n1 -p "Would you like to install ycm? [y/n]" install_choice
-        # echo ""
-        # if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
-        #     echo "don't install ycm"
-        #     # echo -e "\033[31m===> Canceling install ycm...\033[0m"
-        #     color_print "warning" "Canceling install ycm..."
-        #     return 0
-        # else
-        #     sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
-        # fi
-
-        # # echo -e "\033[41;32m===> Installing ycm...\033[0m"
         color_print "warning" "Installing ycm..."
 
         # 配置YCM版本
@@ -120,8 +107,8 @@ function install_cpt_on_ubuntu() {
             echo "" >> ${HOME}/.vimrc.custom.plugins
         fi
 
-        # install dependency (--all需要安装的依赖)
-        install_choice=n
+        # python3 install.py --all --verbose 需要安装的依赖
+        local install_choice=n
         read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
         echo ""
         if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
