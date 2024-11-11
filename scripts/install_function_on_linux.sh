@@ -111,32 +111,44 @@ function copy_cpt_config() {
 
 #{{{> copy reference-user's config-files and plugin-files
 function copy_reference_usr_file() {
+    referenceUser=${VIMART_REFERENCE_USER}
+    if [ "${referenceUser}" = "" ]; then
+        return
+    fi
+
+    color_print "warning" "reference user: ${referenceUser}, userhome: ${userhome}"
     destPath=$HOME
     if [ "$#" = "1" ]; then
         destPath=$1
     fi
-    referenceUser=${VIMART_REFERENCE_USER}
+    local userhome=$(eval echo ~${referenceUser})
 
-    if [ "${referenceUser}" != "" ]; then
-        local userhome=$(eval echo ~${referenceUser})
-        color_print "warning" "reference user: ${referenceUser}, userhome: ${userhome}"
-        if [ -d "${userhome}/.vim" ]; then
-            sudo cp -rf ${userhome}/.vim ${destPath}
-        else
-            color_print "warning" "don't exist ${userhome}/.vim"
-        fi
+    if [ -d "${userhome}/.vim" ]; then
+        sudo cp -rf ${userhome}/.vim ${destPath}
+    else
+        color_print "warning" "don't exist ${userhome}/.vim"
+    fi
 
-        if [ -f "${userhome}/.vimrc.custom.config" ]; then
-            cp -f ${userhome}/.vimrc.custom.config ${destPath}
-        else
-            color_print "warning" "don't exist ${userhome}/.vimrc.custom.config"
-        fi
+    if [ -f "${userhome}/.vimrc.custom.config" ]; then
+        cp -f ${userhome}/.vimrc.custom.config ${destPath}
+    else
+        color_print "warning" "don't exist ${userhome}/.vimrc.custom.config"
+    fi
 
-        if [ -f "${userhome}/.vimrc.custom.plugins" ]; then
-            cp -f ${userhome}/.vimrc.custom.plugins ${destPath}
-        else
-            color_print "warning" "don't exist ${userhome}/.vimrc.custom.plugins"
-        fi
+    if [ -f "${userhome}/.vimrc.custom.plugins" ]; then
+        cp -f ${userhome}/.vimrc.custom.plugins ${destPath}
+    else
+        color_print "warning" "don't exist ${userhome}/.vimrc.custom.plugins"
+    fi
+
+    if [ -f "${userhome}/.vim/coc-settings.json" ]; then
+        rm -rf ${destPath}/.vim/coc-settings.json
+        cp -f `realpath ${userhome}/.vim/coc-settings.json` ${destPath}/.vim/coc-settings.json
+    fi
+
+    if [ -d "${userhome}/.config/coc" ]; then
+        rm -rf ${destPath}/.config/coc
+        cp -rf `realpath ${userhome}/.config/coc` ${destPath}/.config/
     fi
 }
 #<}}}

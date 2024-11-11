@@ -59,40 +59,32 @@ function install_fonts_on_mac() {
 # <}}}
 
 # {{{> install ycm
-function install_ycm_on_mac() {
-    install_choice=n
-    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
-        # echo -e "\033[31m===> Canceling install ycm...\033[0m"
-        color_print "warning" "Canceling install ycm..."
-        return 0
-    else
-        sed -i "" 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
+function install_cpt_on_mac() {
+    local cptScheme=$(get_complete_scheme)
+
+    if [ "${cptScheme}" = "2" ]; then
+        color_print "warning" "Installing ycm..."
+
+        #########################################
+        ## 待测试 !!!!!!!!!!!!!!!!!!!          ##
+        #########################################
+
+        # install dependency
+        local install_choice=n
+        read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+        echo ""
+        if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+            color_print "warning" "Installing dependencies of ycm..."
+            brew install cmake python go nodejs
+        fi
+        # brew install java
+
+        # python 编译
+        # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
+    elif [ "${cptScheme}" = "3" ]; then
+        color_print "warning" "Installing coc..."
+        brew install nodejs
     fi
-
-    # echo -e "\033[41;32m===> Installing ycm...\033[0m"
-    color_print "warning" "Installing ycm..."
-
-    #########################################
-    ## 待测试 !!!!!!!!!!!!!!!!!!!           ##
-    #########################################
-    # # 添加 vim.ycm.config
-    # rm -rf ~/.vimrc.cpt.config
-    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
-
-    # install dependency
-    install_choice=n
-    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
-        color_print "warning" "Installing dependencies of ycm..."
-        brew install cmake python go nodejs
-    fi
-    # brew install java
-
-    # python 编译
-    # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
 }
 # <}}}
 
@@ -147,8 +139,9 @@ function install_vimart_on_mac() {
     copy_files
     #install fonts
     install_fonts_on_mac
-    # install ycm
-    install_ycm_on_mac
+    # choose & install cpt
+    choose_complete_scheme
+    install_cpt_on_mac
     # install vim plugins
     install_vim_plugins
     # config vim plugins

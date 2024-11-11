@@ -90,7 +90,7 @@ function is_exist_file()
 }
 #<}}}
 
-#{{{> config vim ycm
+#{{{> config vim cpt
 function config_vim_cpt() {
     # 设置路径变量
     local srcPath=${PWD}
@@ -459,6 +459,76 @@ function configureCtags() {
 }
 #<}}}
 
+#{{{> choose cpt
+function choose_complete_scheme() {
+    local srcPath=${PWD}
+    local destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath="$1"
+    elif [ "$#" = "2" ]; then
+        srcPath="$1"
+        destPath="$2"
+    fi
 
+    opt_print "Complete schemes:" "0. build-in" "1. vimautosense & vimdicts" "2. YouCompleteMe" "3. coc"
+    local opt=""
+    local defaultOpt=2
+    read -n1 -p "Please choose a complete scheme (default ${defaultOpt}):" opt
+    if [ -z "${opt}" ]; then
+        opt=${defaultOpt}
+    fi
+
+    if [ "$(uname)" = "Darwin" ]; then
+        if [ "${opt}" = "0" ]; then
+            sed -i "" 's/let g:completeScheme=1/let g:completeScheme=0/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "1" ]; then
+            sed -i "" 's/let g:completeScheme=1/let g:completeScheme=1/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "2" ]; then
+            sed -i "" 's/let g:completeScheme=1/let g:completeScheme=2/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "3" ]; then
+            sed -i "" 's/let g:completeScheme=1/let g:completeScheme=3/g' ${destPath}/.vimrc.custom.config
+        fi
+    elif [ "$(uname)" = "Linux" ]; then
+        if [ "${opt}" = "0" ]; then
+            sed -i 's/let g:completeScheme=1/let g:completeScheme=0/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "1" ]; then
+            sed -i  's/let g:completeScheme=1/let g:completeScheme=1/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "2" ]; then
+            sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ${destPath}/.vimrc.custom.config
+        elif [ "${opt}" = "3" ]; then
+            sed -i 's/let g:completeScheme=1/let g:completeScheme=3/g' ${destPath}/.vimrc.custom.config
+        fi
+    else
+        color_print "error" "don't support sed"
+        exit 1
+    fi
+
+    if [ "${opt}" = "3" ]; then
+        rm -rf ${destPath}/.vim/coc-settings.json
+        cp -rf ${srcPath}/plugin_configuration/coc/coc-settings.json ${destPath}/.vim/coc-settings.json
+    fi
+}
+#<}}}
+
+#{{{> get_complete_scheme
+function get_complete_scheme() {
+    local srcPath=${PWD}
+    local destPath=$HOME
+    if [ "$#" = "1" ]; then
+        srcPath=${PWD}
+        destPath="$1"
+    elif [ "$#" = "2" ]; then
+        srcPath="$1"
+        destPath="$2"
+    fi
+
+    if [ -e "${destPath}/.vimrc.custom.config" ]; then
+        echo `cat ${destPath}/.vimrc.custom.config | grep "g:completeScheme" | awk -F '=' '{print $2}'`
+    else
+        echo "not exist ${destPath}/.vimrc.custom.config"
+    fi
+}
+#<}}}
 
 

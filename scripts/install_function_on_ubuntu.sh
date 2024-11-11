@@ -91,57 +91,42 @@ function install_software_on_ubuntu() {
 }
 # <}}}
 
-# {{{> install_ycm_on_ubuntu
-function install_ycm_on_ubuntu() {
-    install_choice=n
-    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
-        echo "don't install ycm"
-        # echo -e "\033[31m===> Canceling install ycm...\033[0m"
-        color_print "warning" "Canceling install ycm..."
-        return 0
-    else
-        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
-    fi
+# {{{> install_cpt_on_ubuntu
+function install_cpt_on_ubuntu() {
+    local cptScheme=$(get_complete_scheme)
+    if [ "${cptScheme}" = "2" ]; then
+        color_print "warning" "Installing ycm..."
 
-    # echo -e "\033[41;32m===> Installing ycm...\033[0m"
-    color_print "warning" "Installing ycm..."
+        # 配置YCM版本
+        version=$(get_ubuntu_version)
+        if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=2"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
+            # Plug 'Valloric/YouCompleteMe', { 'commit' : '4556062839aa2e86f2f4f1c0b4532697d607af23' }
+            echo "" >> ${HOME}/.vimrc.custom.plugins
+            echo '" configure ycm commit' >> ${HOME}/.vimrc.custom.plugins
+            echo 'Plug '"'"'Valloric/YouCompleteMe'"'"', { '"'"'commit'"'"' : '"'"'4556062839aa2e86f2f4f1c0b4532697d607af23'"'"' }' >> ${HOME}/.vimrc.custom.plugins
+            echo "" >> ${HOME}/.vimrc.custom.plugins
+        fi
 
-    ##################################################################################
-    ## python3 install.py --all --verbose # 需要安装的依赖                          ##
-    ##################################################################################
-    # # 添加 vim.ycm.config
-    # rm -rf ~/.vimrc.cpt.config
-    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
+        # python3 install.py --all --verbose 需要安装的依赖
+        local install_choice=n
+        read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+        echo ""
+        if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+            color_print "warning" "Installing dependencies of ycm..."
+            # install golang on Ubuntu
+            sudo apt install -y golang
+            # install npm on Ubuntu
+            sudo apt install -y npm
+            # install java on Ubuntu
+            sudo apt install -y openjdk-8-jdk
+        fi
 
-    # 配置YCM版本
-    version=$(get_ubuntu_version)
-    if [ `cat ${HOME}/.vimrc.custom.config | grep -c "let g:completeScheme=2"` -a  $version -eq 22 -a `cat ${HOME}/.vimrc.custom.plugins | grep -c "# configure ycm commit"` = 0 ];then
-        # Plug 'Valloric/YouCompleteMe', { 'commit' : '4556062839aa2e86f2f4f1c0b4532697d607af23' }
-        echo "" >> ${HOME}/.vimrc.custom.plugins
-        echo '" configure ycm commit' >> ${HOME}/.vimrc.custom.plugins
-        echo 'Plug '"'"'Valloric/YouCompleteMe'"'"', { '"'"'commit'"'"' : '"'"'4556062839aa2e86f2f4f1c0b4532697d607af23'"'"' }' >> ${HOME}/.vimrc.custom.plugins
-        echo "" >> ${HOME}/.vimrc.custom.plugins
-    fi
-
-    # install dependency
-    install_choice=n
-    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
-        color_print "warning" "Installing dependencies of ycm..."
-        # install golang on Ubuntu
-        sudo apt install -y golang
-        # install npm on Ubuntu
+        # python 编译
+        # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
+    elif [ "$cptScheme" = "3" ]; then
+        color_print "warning" "Installing coc..."
         sudo apt install -y npm
-        # install java on Ubuntu
-        sudo apt install -y openjdk-8-jdk
     fi
-
-    # python 编译
-    # python3 ~/.vim/plugged/YouCompleteMe/install.py --all
-
 }
 # <}}}
 
@@ -165,8 +150,9 @@ function install_vimart_on_ubuntu() {
     copy_files
     # install fonts
     install_fonts_on_linux
-    # install ycm
-    install_ycm_on_ubuntu
+    # choose & install cpt
+    choose_complete_scheme
+    install_cpt_on_ubuntu
     # install vim plugins
     install_vim_plugins
     # configure vim plugins

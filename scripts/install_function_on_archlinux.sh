@@ -6,40 +6,28 @@ function install_software_on_archlinux() {
     sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 }
 
-function install_ycm_on_archlinux() {
-    install_choice=n
-    read -n1 -p "Would you like to install ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" != 'y' -a "${install_choice}" != 'Y' ]; then
-        echo "don't install ycm"
-        # echo -e "\033[31m===> Canceling install ycm...\033[0m"
-        color_print "warning" "Canceling install ycm..."
-        return 0
-    else
-        sed -i 's/let g:completeScheme=1/let g:completeScheme=2/g' ~/.vimrc.custom.config
-    fi
+function install_cpt_on_archlinux() {
+    local cptScheme=$(get_complete_scheme)
+    if [ "${cptScheme}" = "2" ]; then
+        color_print "warning" "Installing ycm..."
 
-    # echo -e "\033[41;32m===> Installing ycm...\033[0m"
-    color_print "warning" "Installing ycm..."
-
-    ##################################################################################
-    ## python3 install.py --all --verbose # 需要安装的依赖                            ##
-    ##################################################################################
-    # # 添加 vim.ycm.config
-    # rm -rf ~/.vimrc.cpt.config
-    # ln -s ${PWD}/configuration/vimrc.cpt.config ~/.vimrc.cpt.config
-
-    install_choice=n
-    read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
-    echo ""
-    if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
-        color_print "warning" "Installing dependencies of ycm..."
-        # install go on archlinux
-        sudo pacman -S --noconfirm go
-        # install npm on archlinux
+        # python3 install.py --all --verbose 需要安装的依赖
+        local install_choice=n
+        read -n1 -p "Would you like to install dependencies of ycm? [y/n]" install_choice
+        echo ""
+        if [ "${install_choice}" = 'y' -o "${install_choice}" = 'Y' ]; then
+            color_print "warning" "Installing dependencies of ycm..."
+            # install go
+            sudo pacman -S --noconfirm go
+            # install npm
+            sudo pacman -S --noconfirm npm
+            # install java
+            sudo pacman -S --noconfirm jdk8-openjdk
+        fi
+    elif [ "${cptScheme}" = "3" ]; then
+        color_print "warning" "Installing cpt..."
+        # install npm
         sudo pacman -S --noconfirm npm
-        # install java on archlinux
-        sudo pacman -S --noconfirm jdk8-openjdk
     fi
 }
 
@@ -63,8 +51,9 @@ function install_vimart_on_archlinux() {
     copy_files
     # install fonts
     install_fonts_on_linux
-    # install ycm
-    install_ycm_on_archlinux
+    # choose & install ycm
+    choose_complete_scheme
+    install_cpt_on_archlinux
     # install vim plugins
     install_vim_plugins
     # configure vim plugins

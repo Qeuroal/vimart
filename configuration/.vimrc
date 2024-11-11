@@ -211,7 +211,7 @@ endif
 set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
-set encoding=utf8
+set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,gb18030,latin1
 " set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 " <}}}
@@ -399,8 +399,8 @@ nnoremap <silent> <leader>s :RG<CR>
 "<}}}
 
 "{{{> ultisnips
-" 设置 tab 触发
-let g:UltiSnipsExpandTrigger="<tab>"
+" 设置触发
+let g:UltiSnipsExpandTrigger=""
 " 使用 tab 切换下一个触发点，
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 " 使用 shit+tab 上一个触发点
@@ -579,7 +579,7 @@ let g:echodoc_enable_at_startup = 1
 if filereadable(expand('~/.vimrc.cpt.config'))
     source ~/.vimrc.cpt.config
 endif
-""<}}}
+"<}}}
 
 "{{{> vimtex
 let g:tex_flavor='latex'
