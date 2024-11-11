@@ -473,7 +473,7 @@ function choose_complete_scheme() {
 
     opt_print "Complete schemes:" "0. build-in" "1. vimautosense & vimdicts" "2. YouCompleteMe" "3. coc"
     local opt=""
-    local defaultOpt=3
+    local defaultOpt=2
     read -n1 -p "Please choose a complete scheme (default ${defaultOpt}):" opt
     if [ -z "${opt}" ]; then
         opt=${defaultOpt}
