@@ -386,6 +386,10 @@ let g:Lf_ShowHidden = 1
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_CommandMap = {'<C-UP>': ['<S-tab>'], '<C-DOWN>': ['<tab>']}
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_DevIconsFont = "JetbrainsMonoNL Nerd Font"
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 "<}}}
 
 "{{{> indentLine
