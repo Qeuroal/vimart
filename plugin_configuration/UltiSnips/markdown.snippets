@@ -1,3 +1,5 @@
+# vim:ft=snippets:
+
 priority -50
 
 global !p
@@ -84,34 +86,34 @@ endsnippet
 # Text formatting #
 ###################
 
-snippet * "italics"
+snippet * "italics" w
 *${1:${VISUAL}}*$0
 endsnippet
 
-snippet ** "bold"
+snippet ** "bold" w
 **${1:${VISUAL}}**$0
 endsnippet
 
-snippet *** "bold italics"
+snippet *** "bold italics" w
 ***${1:${VISUAL}}***$0
 endsnippet
 
-snippet /* "Comment"
+snippet /* "Comment" w
 <!-- ${1:${VISUAL}} -->$0
 endsnippet
 
 ################
 # Common stuff #
 ################
-snippet link "Link to something"
+snippet link "Link to something" w
 [${1:${VISUAL:Text}}](${3:https://${2:www.url.com}})$0
 endsnippet
 
-snippet img "Image"
+snippet img "Image" w
 ![${1:pic alt}](${2:path}${3/.+/ "/}${3:opt title}${3/.+/"/})$0
 endsnippet
 
-snippet ilc "Inline Code" i
+snippet ilc "Inline Code" w
 \`${1:${VISUAL}}\`$0
 endsnippet
 
@@ -122,27 +124,26 @@ ${2:${VISUAL}}
 $0
 endsnippet
 
-snippet refl "Reference Link"
+snippet refl "Reference Link" w
 [${1:${VISUAL:Text}}][${2:id}]$0
 
 [$2]:${4:https://${3:www.url.com}} "${5:$4}"
 endsnippet
 
-snippet fnt "Footnote"
+snippet fnt "Footnote" w
 [^${1:${VISUAL:Footnote}}]$0
 
 [^$1]:${2:Text}
 endsnippet
 
-snippet detail "Disclosure"
+snippet detail "Disclosure" w
 <details${3: open=""}>
   ${1:<summary>${2}</summary>}$0
 </details>
 endsnippet
 
-post_jump "create_table(snip)"
+post_jump "create_table(snip)" w
 snippet "tb([1-9][1-9])" "Fancy table" br
 `!p snip.rv = match.group(1)`
 endsnippet
 
-# vim:ft=snippets:
