@@ -472,8 +472,12 @@ function choose_complete_scheme() {
     fi
 
     opt_print "Complete schemes:" "0. build-in" "1. vimautosense & vimdicts" "2. YouCompleteMe" "3. coc"
-    local opt=3
+    local opt=""
     read -n1 -p "Please choose a complete scheme (default ${opt}):" opt
+    if [ -z "${opt}" ]; then
+        opt=3
+    fi
+
     if [ "$(uname)" = "Darwin" ]; then
         if [ "${opt}" = "0" ]; then
             sed -i "" 's/let g:completeScheme=1/let g:completeScheme=0/g' ${destPath}/.vimrc.custom.config
