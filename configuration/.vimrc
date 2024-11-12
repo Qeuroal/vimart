@@ -22,6 +22,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
+Plug 'sheerun/vim-polyglot'                         " 语法高亮
 Plug 'vim-scripts/AnsiEsc.vim', { 'on': ['AnsiEsc'] }       " 高亮Ansi字符. 默认不加载, 使用 :AnsiEsc 加载插件
 Plug 'easymotion/vim-easymotion'                    " EasyMotion, 移动指令增强
 Plug 'tpope/vim-repeat'                             " 重复上一次操作
@@ -49,7 +50,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'                  " NerdTree显示git状态
 Plug 'tpope/vim-commentary'                         " 快速注释代码插件
 Plug 'tpope/vim-endwise'                            " if/end/endif/endfunction补全
 Plug 'tpope/vim-surround'                           " 自动增加、替换配对符的插件
-Plug 'octol/vim-cpp-enhanced-highlight'             " 高亮
 Plug 'vim-airline/vim-airline'                      " 可以取代powerline的状态栏美化插件
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'                       " 文件类型图标
