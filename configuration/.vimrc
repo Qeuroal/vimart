@@ -22,7 +22,7 @@ let g:completeScheme=get(g:, "completeScheme", 0)
 
 " {{{> 插件
 call plug#begin('~/.vim/plugged')
-Plug 'sheerun/vim-polyglot'                         " 语法高亮
+" Plug 'sheerun/vim-polyglot'                         " 语法高亮 ( 与 ultisnips 冲突)
 Plug 'vim-scripts/AnsiEsc.vim', { 'on': ['AnsiEsc'] }       " 高亮Ansi字符. 默认不加载, 使用 :AnsiEsc 加载插件
 Plug 'easymotion/vim-easymotion'                    " EasyMotion, 移动指令增强
 Plug 'tpope/vim-repeat'                             " 重复上一次操作

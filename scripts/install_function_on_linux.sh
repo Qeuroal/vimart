@@ -11,6 +11,9 @@ function install_fonts_on_linux() {
     color_print "info" "Installing fonts..."
     mkdir -p ~/.local/share/fonts
 
+    # 解压fonts
+    tar -zxvf ./assets/packages/font/fonts.tar.gz -C ./
+
     # install Droid Sans Mono Nerd Font Complete
         # rm -rf ~/.local/share/fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf
         # cp ./fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ~/.local/share/fonts
@@ -40,6 +43,8 @@ function install_fonts_on_linux() {
     rm -rf ~/.local/share/fonts/jetbrainsmono
     cp -rf ./fonts/jetbrainsmono ~/.local/share/fonts
 
+    # 删除fonts
+    rm -rf ./fonts
 
     fc-cache -vf ~/.local/share/fonts
 }

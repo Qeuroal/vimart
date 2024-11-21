@@ -26,6 +26,9 @@ function install_fonts_on_mac() {
     # echo -e "\033[32m===> Installing fonts...\033[0m"
     color_print "info" "Installing fonts..."
 
+    # 解压fonts
+    tar -zxvf ./assets/packages/font/fonts.tar.gz -C ./
+
     # instal Droid Sans
     rm -rf ~/Library/Fonts/droid_sans_mono
     cp -rf ./fonts/droid_sans_mono ~/Library/Fonts
@@ -37,6 +40,9 @@ function install_fonts_on_mac() {
     # install MesloLGS
     rm -rf ~/Library/Fonts/meslolgs
     cp -rf ./fonts/meslolgs ~/Library/Fonts
+
+    # 删除fonts
+    rm -rf ./fonts
 
     #################################################################
     ## 待测试
