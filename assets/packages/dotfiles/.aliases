@@ -1,3 +1,4 @@
+#! vim:ft=bash:
 
 # # zsh使用
 # if [[ "$SHELL" = '/bin/zsh' ]]; then
@@ -57,5 +58,11 @@ if command -v joshuto > /dev/null; then
         rm -rf $OUTPUT_FILE
     }
     alias jr='joshuto_remain'
+fi
+
+# nvim replace vim
+if command -v nvim > /dev/null; then
+    alias vim="nvim"
+    alias vi="nvim"
 fi
 
