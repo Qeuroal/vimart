@@ -112,7 +112,7 @@ runtime macros/matchit.vim
 " <}}}
 
 " {{{> 通用设置
-let mapleader = ";"                     " 定义<leader>键
+let mapleader = "<space>"                     " 定义<leader>键
 set nocompatible                        " 设置不兼容原始vi模式
 filetype on                             " 设置开启文件类型侦测
 filetype plugin on                      " 设置加载对应文件类型的插件
@@ -372,7 +372,8 @@ endfunction
 "{{{> ====================== 加载插件配置 ======================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{> easymotion
-map <Space> <Plug>(easymotion-prefix)
+nmap s <nop>
+nnoremap s <Plug>(easymotion-prefix)
 "<}}}
 
 "{{{> LeaderF
